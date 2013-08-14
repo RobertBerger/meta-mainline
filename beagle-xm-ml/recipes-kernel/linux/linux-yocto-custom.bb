@@ -42,17 +42,17 @@ SRC_URI += "file://beagle-xm-ml.scc \
 
 KBRANCH = "linux-3.9.y"
 
-LINUX_VERSION ?= "3.9.7"
+LINUX_VERSION ?= "3.9.11"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
-#Author	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-06-20 19:01:46 (GMT)
-#committer	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-06-20 19:01:46 (GMT)
-#commit	485f25fcc014f2744754f22de395f745f2c7e492 (patch)
-#tree	2ee23d2bacc5202860dfaffa2e65bffdb35520b7
-#parent	8e8577e87943a83aa1b84b3d5202f1f4e8f088d0 (diff)
-#Linux 3.9.7 v3.9.7
+#author        Greg Kroah-Hartman <gregkh@linuxfoundation.org> 2013-07-21 00:16:17 (GMT)
+#committer     Greg Kroah-Hartman <gregkh@linuxfoundation.org> 2013-07-21 00:16:17 (GMT)
+#commit        896f5009ed1fbaec43f360c4ebf022639cd61d5f (patch)
+#tree  4b3f5f8244bbf4a787df08c50fb69e7611831338
+#parent        0b2bf3e6dae86b256f6ee0fb428166e111278aa8 (diff)
+#Linux 3.9.11 v3.9.11 linux-3.9.y
 
-SRCREV="485f25fcc014f2744754f22de395f745f2c7e492"
+SRCREV="896f5009ed1fbaec43f360c4ebf022639cd61d5f"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
