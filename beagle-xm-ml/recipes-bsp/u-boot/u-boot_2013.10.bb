@@ -11,7 +11,7 @@ SPL_BINARY = "MLO"
 # UBOOT_LOADADDRESS = "0x80008000"
 
 LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://README;md5=56bd0740d61aff7b51a1ddff19bf1b05"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=025bf9f768cbcb1a165dbe1a110babfb"
 
 PROVIDES += "u-boot"
 
