@@ -40,19 +40,20 @@ SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml-user-patches.scc \
            "
 
-KBRANCH = "linux-3.9.y"
+KBRANCH = "linux-3.12.y"
 
-LINUX_VERSION ?= "3.9.11"
+LINUX_VERSION ?= "3.12.5"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
-#author        Greg Kroah-Hartman <gregkh@linuxfoundation.org> 2013-07-21 00:16:17 (GMT)
-#committer     Greg Kroah-Hartman <gregkh@linuxfoundation.org> 2013-07-21 00:16:17 (GMT)
-#commit        896f5009ed1fbaec43f360c4ebf022639cd61d5f (patch)
-#tree  4b3f5f8244bbf4a787df08c50fb69e7611831338
-#parent        0b2bf3e6dae86b256f6ee0fb428166e111278aa8 (diff)
-#Linux 3.9.11 v3.9.11 linux-3.9.y
 
-SRCREV="896f5009ed1fbaec43f360c4ebf022639cd61d5f"
+# author	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-12-12 06:38:07 (GMT)
+# committer	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-12-12 06:38:07 (GMT)
+# commit	156c7581a8b9b7d9665c63f96e312093736c832e (patch)
+# tree		f31d955511e4b344b29925c11e954540b7046244
+# parent	012228e9c4841140fc6a3e5da6196b6550890f83 (diff)
+# Linux 3.12.5 v3.12.5 linux-3.12.y
+
+SRCREV="156c7581a8b9b7d9665c63f96e312093736c832e"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
