@@ -30,9 +30,9 @@
 inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
-SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;bareclone=1"
+SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git;bareclone=1"
 
-SRC_URI += "file://defconfig"
+SRC_URI += "file://ref_multi_v7_defconfig"
 
 SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml.cfg \
@@ -40,20 +40,19 @@ SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml-user-patches.scc \
            "
 
-KBRANCH = "linux-3.12.y"
+KBRANCH = "master"
 
-LINUX_VERSION ?= "3.12.5"
+LINUX_VERSION ?= "v3.13-rc5"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
+# author	Linus Torvalds <torvalds@linux-foundation.org>	2013-12-22 21:08:32 (GMT)
+# committer	Linus Torvalds <torvalds@linux-foundation.org>	2013-12-22 21:08:32 (GMT)
+# commit	413541dd66d51f791a0b169d9b9014e4f56be13c (patch)
+# tree		6e23a64c6202ed814e7043ca80a38cad3f341f32
+# parent	93579aeec2093ff12b55491c655129431b63e3dd (diff)
+# Linux 3.13-rc5 v3.13-rc5
 
-# author	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-12-12 06:38:07 (GMT)
-# committer	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-12-12 06:38:07 (GMT)
-# commit	156c7581a8b9b7d9665c63f96e312093736c832e (patch)
-# tree		f31d955511e4b344b29925c11e954540b7046244
-# parent	012228e9c4841140fc6a3e5da6196b6550890f83 (diff)
-# Linux 3.12.5 v3.12.5 linux-3.12.y
-
-SRCREV="156c7581a8b9b7d9665c63f96e312093736c832e"
+SRCREV="413541dd66d51f791a0b169d9b9014e4f56be13c"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"

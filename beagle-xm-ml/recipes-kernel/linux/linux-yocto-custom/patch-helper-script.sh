@@ -6,7 +6,7 @@ export ECHO="$(which echo)"
 PATCHPATH="patches"
 
 # It is essential to apply the patches in the right order !
-PATCHSET="omap-next-dt dma-devel general-fixes dtc-fixes dtc-overlays of-fixes pdev-fixes mmc-fixes dts-fixes i2c-fixes pinctrl-fixes capemgr reset capes lcdc-fixes net deassert-hard-reset cape-import audio drm cpufreq"
+PATCHSET="arm drivers imx_next omap_next omap_dt_dss imx omap_usb omap_video omap_clock dts imx_video_staging omap3_beagle_xm_rework omap_sprz319_erratum_v2.1 fixes saucy"
 
 OUTPUT_FILE="proposed_beagle-xm-ml-user-patches.scc"
 
