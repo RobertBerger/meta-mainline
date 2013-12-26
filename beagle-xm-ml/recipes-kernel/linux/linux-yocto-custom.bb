@@ -42,7 +42,7 @@ SRC_URI += "file://beagle-xm-ml.scc \
 
 KBRANCH = "master"
 
-LINUX_VERSION ?= "v3.13-rc5"
+LINUX_VERSION ?= "3.13-rc5"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
 # author	Linus Torvalds <torvalds@linux-foundation.org>	2013-12-22 21:08:32 (GMT)
