@@ -32,7 +32,7 @@ require recipes-kernel/linux/linux-yocto.inc
 
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git;bareclone=1"
 
-SRC_URI += "file://ref_multi_v7_defconfig"
+SRC_URI += "file://example_omap2plus_defconfig"
 
 SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml.cfg \
