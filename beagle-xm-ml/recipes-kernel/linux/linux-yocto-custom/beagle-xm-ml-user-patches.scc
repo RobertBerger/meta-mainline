@@ -143,7 +143,7 @@ patch patches/imx_next/0140-ARM-imx6sl-Add-missing-spba-clock-to-clock-tree.patc
 patch patches/omap_dt_dss/0001-Revert-ARM-OMAP4-hwmod-data-add-DSS-data-back.patch
 # --> error: patch failed: drivers/gpio/gpio-twl4030.c:300
 #| error: drivers/gpio/gpio-twl4030.c: patch does not apply
-#patch patches/omap_dt_dss/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
+# patch patches/omap_dt_dss/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
 # <-- error: patch failed: drivers/gpio/gpio-twl4030.c:300
 patch patches/omap_dt_dss/0003-omap4-sdp.dts-add-power-supply-for-backlight.patch
 patch patches/omap_dt_dss/0004-OMAPDSS-rename-display-sysfs-name-entry.patch
@@ -175,9 +175,9 @@ patch patches/omap_dt_dss/0029-OMAPDSS-hdmi-connector-Add-DT-support.patch
 patch patches/omap_dt_dss/0030-OMAPDSS-panel-dpi-Add-DT-support.patch
 patch patches/omap_dt_dss/0031-OMAPDSS-connector-analog-tv-Add-DT-support.patch
 # --> yocto: error: patch failed: drivers/ata/ahci_imx.c:113##### ]
-patch patches/imx/0001-ahci-imx-Explicitly-clear-IMX6Q_GPR13_SATA_MPLL_CLK_.patch
-patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
-patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
+# patch patches/imx/0001-ahci-imx-Explicitly-clear-IMX6Q_GPR13_SATA_MPLL_CLK_.patch
+# patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
+# patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
 # <-- yocto: error: patch failed: drivers/ata/ahci_imx.c:113##### ]
 patch patches/omap_usb/0001-ARM-dts-omap3-beagle-Fix-USB-host-on-beagle-boards-f.patch
 patch patches/omap_usb/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
