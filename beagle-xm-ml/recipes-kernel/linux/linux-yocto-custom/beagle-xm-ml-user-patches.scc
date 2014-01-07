@@ -143,7 +143,7 @@ patch patches/imx_next/0140-ARM-imx6sl-Add-missing-spba-clock-to-clock-tree.patc
 patch patches/omap_dt_dss/0001-Revert-ARM-OMAP4-hwmod-data-add-DSS-data-back.patch
 # --> error: patch failed: drivers/gpio/gpio-twl4030.c:300
 #| error: drivers/gpio/gpio-twl4030.c: patch does not apply
-#patch patches/omap_dt_dss/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
+patch patches/omap_dt_dss/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
 # <-- error: patch failed: drivers/gpio/gpio-twl4030.c:300
 patch patches/omap_dt_dss/0003-omap4-sdp.dts-add-power-supply-for-backlight.patch
 patch patches/omap_dt_dss/0004-OMAPDSS-rename-display-sysfs-name-entry.patch
