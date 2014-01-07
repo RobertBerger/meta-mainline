@@ -33,6 +33,14 @@ require recipes-kernel/linux/linux-yocto.inc
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git;bareclone=1"
 
 SRC_URI += "file://defconfig"
+# I want this here just for reference
+# should be the same with defconfig
+SRC_URI += "file://config-3.13.0-rc5-armv7-x5"
+
+# I want to trick the patch checker
+do_patch_prepend() {
+	cp ${WORKDIR}/defconfig ${WORKDIR}/.config
+}
 
 SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml.cfg \
