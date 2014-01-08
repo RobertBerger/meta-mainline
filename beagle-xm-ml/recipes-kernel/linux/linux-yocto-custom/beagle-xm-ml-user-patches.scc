@@ -186,10 +186,13 @@ patch patches/omap_usb/0001-ARM-dts-omap3-beagle-Fix-USB-host-on-beagle-boards-f
 # | error: patch failed: drivers/gpio/gpio-twl4030.c:300
 # | error: drivers/gpio/gpio-twl4030.c: patch does not apply
 #patch patches/omap_usb/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
-# <--  Yocto error
-patch patches/omap_usb/0003-ARM-OMAP4-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
-patch patches/omap_usb/0004-ARM-OMAP2-hwmod-Fix-RESET-logic.patch
-patch patches/omap_usb/0005-ARM-OMAP3-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
+# <-- Yocto error
+# --> Yocto error
+# error: patch failed: arch/arm/mach-omap2/omap_hwmod_44xx_data.c:3001
+#patch patches/omap_usb/0003-ARM-OMAP4-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
+#patch patches/omap_usb/0004-ARM-OMAP2-hwmod-Fix-RESET-logic.patch
+#patch patches/omap_usb/0005-ARM-OMAP3-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
+# <-- Yocto error
 patch patches/omap_video/0001-dts-omap3-beagle-add-i2c2-i2c3.patch
 patch patches/omap_clock/0001-Added-the-Texas-Instruments-OMAP-Clock-driver-origin.patch
 patch patches/omap_clock/0002-Add-the-clock-bindings-to-omap3.dtsi-that-were-made-.patch
