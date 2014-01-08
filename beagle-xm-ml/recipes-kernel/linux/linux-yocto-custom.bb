@@ -38,8 +38,15 @@ SRC_URI += "file://defconfig"
 SRC_URI += "file://config-3.13.0-rc5-armv7-x5"
 
 # I want to trick the patch checker
-do_patch_prepend() {
-	cp ${WORKDIR}/defconfig ${WORKDIR}/.config
+#do_patch_prepend() {
+#	cp ${WORKDIR}/defconfig ${WORKDIR}/.config
+#}
+
+# Yocto should copy ${WORKDIR}/defconfig ${B}/.config automatically
+# but for some reason it does not
+# So I do it here myself
+do_configure_prepend() {
+        cp ${WORKDIR}/defconfig ${B}/.config
 }
 
 SRC_URI += "file://beagle-xm-ml.scc \
