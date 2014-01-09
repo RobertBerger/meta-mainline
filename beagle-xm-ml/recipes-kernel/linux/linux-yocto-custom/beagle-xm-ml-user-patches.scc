@@ -176,9 +176,13 @@ patch patches/omap_dt_dss/0028-OMAPDSS-encoder-tpd12s015-Add-DT-support.patch
 patch patches/omap_dt_dss/0029-OMAPDSS-hdmi-connector-Add-DT-support.patch
 patch patches/omap_dt_dss/0030-OMAPDSS-panel-dpi-Add-DT-support.patch
 patch patches/omap_dt_dss/0031-OMAPDSS-connector-analog-tv-Add-DT-support.patch
-patch patches/imx/0001-ahci-imx-Explicitly-clear-IMX6Q_GPR13_SATA_MPLL_CLK_.patch
-patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
-patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
+# --> Yocto error
+# error: patch failed: drivers/ata/ahci_imx.c:113
+# error: drivers/ata/ahci_imx.c: patch does not apply
+#patch patches/imx/0001-ahci-imx-Explicitly-clear-IMX6Q_GPR13_SATA_MPLL_CLK_.patch
+#patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
+#patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
+# <-- Yocto error
 #patch patches/omap_usb/0001-ARM-dts-omap3-beagle-Fix-USB-host-on-beagle-boards-f.patch
 #patch patches/omap_usb/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
 #patch patches/omap_usb/0003-ARM-OMAP4-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
