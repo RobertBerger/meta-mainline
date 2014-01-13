@@ -35,7 +35,7 @@ SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;prot
 SRC_URI += "file://defconfig"
 # I want this here just for reference
 # should be the same with defconfig
-SRC_URI += "file://config-3.13.0-rc5-armv7-x5"
+SRC_URI += "file://config-3.13.0-rc8-armv7-x8"
 
 # I want to trick the patch checker
 #do_patch_prepend() {
@@ -57,17 +57,17 @@ SRC_URI += "file://beagle-xm-ml.scc \
 
 KBRANCH = "master"
 
-LINUX_VERSION ?= "3.13-rc5"
+LINUX_VERSION ?= "3.13-rc8"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
-# author	Linus Torvalds <torvalds@linux-foundation.org>	2013-12-22 21:08:32 (GMT)
-# committer	Linus Torvalds <torvalds@linux-foundation.org>	2013-12-22 21:08:32 (GMT)
-# commit	413541dd66d51f791a0b169d9b9014e4f56be13c (patch)
-# tree		6e23a64c6202ed814e7043ca80a38cad3f341f32
-# parent	93579aeec2093ff12b55491c655129431b63e3dd (diff)
-# Linux 3.13-rc5 v3.13-rc5
+# author	Linus Torvalds <torvalds@linux-foundation.org>	2014-01-12 10:04:18 (GMT)
+# committer	Linus Torvalds <torvalds@linux-foundation.org>	2014-01-12 10:04:18 (GMT)
+# commit	7e22e91102c6b9df7c4ae2168910e19d2bb14cd6 (patch)
+# tree	        a0b3677d442ed08ca16943fb471a90f5fd5bc367
+# parent	3dc91d4338d698ce77832985f9cb183d8eeaf6be (diff)
+# Linux 3.13-rc8 v3.13-rc8
 
-SRCREV="413541dd66d51f791a0b169d9b9014e4f56be13c"
+SRCREV="7e22e91102c6b9df7c4ae2168910e19d2bb14cd6"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
