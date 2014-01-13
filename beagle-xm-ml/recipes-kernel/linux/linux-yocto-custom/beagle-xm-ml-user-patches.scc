@@ -1,6 +1,6 @@
 patch patches/arm/0001-deb-pkg-Simplify-architecture-matching-for-cross-bui.patch
 patch patches/drivers/0001-ARM-i.MX6-Wandboard-add-wifi-bt-rfkill-driver.patch
-# imx-next:
+# imx_next:
 #   From: https://git.linaro.org/people/shawn.guo/linux-2.6.git
 #   git pull --no-edit git://git.linaro.org/people/shawn.guo/linux-2.6.git for-next
 patch patches/imx_next/0001-sh-pfc-r8a7791-Fix-DU-pin-groups-organisation.patch
@@ -144,7 +144,7 @@ patch patches/imx_next/0138-ARM-imx6-Derive-spdif-clock-from-pll3_pfd3_454m.patc
 patch patches/imx_next/0139-ARM-imx6sl-Add-missing-pll4_audio_div-to-the-clock-t.patch
 patch patches/imx_next/0140-ARM-imx6sl-Add-missing-spba-clock-to-clock-tree.patch
 # omap_dt_dss:
-#    From: https://git.kernel.org/cgit/linux/kernel/git/tomba/linux.git/log/?h=work/dss-dt
+#   From: https://git.kernel.org/cgit/linux/kernel/git/tomba/linux.git/log/?h=work/dss-dt
 patch patches/omap_dt_dss/0001-Revert-ARM-OMAP4-hwmod-data-add-DSS-data-back.patch
 #patch patches/omap_dt_dss/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
 patch patches/omap_dt_dss/0003-omap4-sdp.dts-add-power-supply-for-backlight.patch
@@ -176,13 +176,9 @@ patch patches/omap_dt_dss/0028-OMAPDSS-encoder-tpd12s015-Add-DT-support.patch
 patch patches/omap_dt_dss/0029-OMAPDSS-hdmi-connector-Add-DT-support.patch
 patch patches/omap_dt_dss/0030-OMAPDSS-panel-dpi-Add-DT-support.patch
 patch patches/omap_dt_dss/0031-OMAPDSS-connector-analog-tv-Add-DT-support.patch
-# --> Yocto error
-# error: patch failed: drivers/ata/ahci_imx.c:113
-# error: drivers/ata/ahci_imx.c: patch does not apply
 #patch patches/imx/0001-ahci-imx-Explicitly-clear-IMX6Q_GPR13_SATA_MPLL_CLK_.patch
-#patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
-#patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
-# <-- Yocto error
+patch patches/imx/0002-ahci-imx-Pull-out-the-clock-enable-disable-calls.patch
+patch patches/imx/0003-ahci-imx-Add-i.MX53-support.patch
 #patch patches/omap_usb/0001-ARM-dts-omap3-beagle-Fix-USB-host-on-beagle-boards-f.patch
 #patch patches/omap_usb/0002-gpio-twl4030-Fix-regression-for-twl-gpio-LED-output.patch
 #patch patches/omap_usb/0003-ARM-OMAP4-hwmod-data-Don-t-prevent-RESET-of-USB-Host.patch
@@ -193,33 +189,45 @@ patch patches/omap_video/0001-dts-omap3-beagle-add-i2c2-i2c3.patch
 patch patches/omap_clock/0001-Added-the-Texas-Instruments-OMAP-Clock-driver-origin.patch
 # omap3: add device tree clock binding support:
 patch patches/omap_clock/0002-Add-the-clock-bindings-to-omap3.dtsi-that-were-made-.patch
-# beagleboard-xm: add abb bindings and OPP1G operating point for 1 GHz operation:
-patch patches/omap_clock/0004-Now-this-one-is-mine-lol.-Reading-through-the-ti-abb.patch
-#patch patches/dts/0001-ARM-imx-Enable-UART1-for-Sabrelite.patch
-patch patches/dts/0002-ARM-dts-imx6qdl-wandboard-add-gpio-lines-to-wandboar.patch
-patch patches/dts/0003-ARM-dts-imx6qdl-wandboard-Add-support-for-i2c1.patch
-patch patches/dts/0004-ARM-dts-imx6qdl-wandboard-add-bluetooth-control-line.patch
-patch patches/dts/0005-ARM-dts-wandboard-add-binding-for-wand-rfkill-driver.patch
+# beagleboard-xm: add abb bindings and OPP1G operating point for 1 GHz operation
+patch patches/omap_clock/0003-Now-this-one-is-mine-lol.-Reading-through-the-ti-abb.patch
+patch patches/dts/0001-ARM-dts-imx6qdl-wandboard-add-gpio-lines-to-wandboar.patch
+patch patches/dts/0002-ARM-dts-imx6qdl-wandboard-Add-support-for-i2c1.patch
+patch patches/dts/0003-ARM-dts-imx6qdl-wandboard-add-bluetooth-control-line.patch
+patch patches/dts/0004-ARM-dts-wandboard-add-binding-for-wand-rfkill-driver.patch
+patch patches/bone/0001-arm-dts-am335x-boneblack-lcdc-add-panel-info.patch
+patch patches/bone/0002-arm-dts-am335x-boneblack-add-cpu0-opp-points.patch
+patch patches/bone/0003-arm-dts-am335x-bone-common-enable-and-use-i2c2.patch
+patch patches/bone/0004-arm-dts-am335x-bone-common-setup-default-pinmux-http.patch
 patch patches/imx_video_staging/0001-imx-drm-Add-mx6-hdmi-transmitter-support.patch
-patch patches/imx_video_staging/0003-ARM-dts-mx6qdl-Add-HDMI-support.patch
-patch patches/imx_video_staging/0004-ARM-dts-imx6qdl-wandboard-Add-HDMI-support.patch
-# need to re-look at datasheet, and set the correct i2c pin group..:
-#patch patches/imx_video_staging/0005-imx-enable-hdmi-video-for-imx6q-sabrelite-imx6q-sabr.patch
-# -->
-# cp arch/arm/boot/dts/omap3-beagle-xm.dts arch/arm/boot/dts/omap3-beagle-xm-c.dts
-# cp arch/arm/boot/dts/omap3-beagle-xm.dts arch/arm/boot/dts/omap3-beagle-xm-ab.dts
-# gedit arch/arm/boot/dts/Makefile add ^
+patch patches/imx_video_staging/0002-ARM-dts-mx6qdl-Add-HDMI-support.patch
+patch patches/imx_video_staging/0003-ARM-dts-imx6qdl-wandboard-Add-HDMI-support.patch
+# omap3_beagle_xm_rework:
+#   cp arch/arm/boot/dts/omap3-beagle-xm.dts arch/arm/boot/dts/omap3-beagle-xm-c.dts
+#   cp arch/arm/boot/dts/omap3-beagle-xm.dts arch/arm/boot/dts/omap3-beagle-xm-ab.dts
+#   gedit arch/arm/boot/dts/Makefile add ^
 patch patches/omap3_beagle_xm_rework/0001-ARM-dts-split-omap3-beagle-xm-to-ab-and-c-variant.patch
-# <--
 # xm-ab has active high usb host power on...:
 patch patches/omap3_beagle_xm_rework/0002-ARM-dts-omap3-beagle-xm-ab-usb-host-is-active-high-t.patch
 patch patches/omap3_beagle_xm_rework/0003-ARM-dts-beagle-xm-make-sure-dvi-is-enabled.patch
-# Apply the modified sprz319 erratum for the v3.11-rc2 kernel
+# Apply the modified sprz319 erratum for the v3.11-rc2 kernel:
 patch patches/omap_sprz319_erratum_v2.1/0001-hack-omap-clockk-dpll5-apply-sprz319e-2.1-erratum-co.patch
 patch patches/fixes/0001-imx6q-work-around-fec-tx-queue-timeouts-when-SATA-SD.patch
 patch patches/fixes/0002-crypto-omap-aes-add-error-check-for-pm_runtime_get_s.patch
-# need to be re-tested with v3.13-rcX
-# Ubuntu Saucy: so Ubuntu decided to enable almost every Warning -> Error option...
+# vivante:
+#   http://git.freescale.com/git/cgit.cgi/imx/linux-2.6-imx.git/
+#   git checkout v3.10.17 -b freescale
+#   git pull --no-edit git://git.freescale.com/imx/linux-2.6-imx.git imx_3.10.17_1.0.0_beta
+#   git format-patch -1 -o /opt/github/linux-dev/patches/vivante/ 3b934d57da5637f4edabb5504bd668debdbb03b3
+#   git format-patch -1 -o /opt/github/linux-dev/patches/vivante/ 2d570481f146218b5148930b573401070526cc1a
+#   git checkout master -f ; git branch -D freescale
+patch patches/vivante/0001-ENGR00240988-drm-copy-vivante-driver-from-3.5.7-kern.patch
+patch patches/vivante/0002-ENGR00240988-drm-vivante-remove-reclaim_buffers-call.patch
+# fixes:
+patch patches/vivante/0003-drm-vivante-build-fixes.patch
+# saucy:
+#   need to be re-tested with v3.13-rcX
+#   Ubuntu Saucy: so Ubuntu decided to enable almost every Warning -> Error option...
 patch patches/saucy/0001-saucy-error-variable-ilace-set-but-not-used-Werror-u.patch
 patch patches/saucy/0002-saucy-disable-Werror-pointer-sign.patch
 patch patches/saucy/0003-saucy-disable-stack-protector.patch
