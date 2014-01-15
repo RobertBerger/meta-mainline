@@ -37,3 +37,9 @@ S = "${WORKDIR}/git"
 #   ln -sf ${SD_BITSTREAM_IMAGE} ${DEPLOYDIR}/${SD_BITSTREAM_BINARY}.sd
 #   ln -sf ${SD_BITSTREAM_IMAGE} ${DEPLOYDIR}/${SD_BITSTREAM_SYMLINK}
 #}
+
+do_deploy_append () {
+# deploy scripts for sd card
+    install ${WORKDIR}/mkcard.sh ${DEPLOYDIR}
+}
+
