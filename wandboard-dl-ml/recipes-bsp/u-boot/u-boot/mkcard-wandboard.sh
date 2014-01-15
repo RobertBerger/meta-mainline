@@ -99,4 +99,10 @@ fi
 #        fi
 #fi
 
+echo "+ sync"
+sync 
+
+echo "+ sudo fdisk -l ${DRIVE}"
+sudo fdisk -l ${DRIVE}
+
 
