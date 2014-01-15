@@ -12,13 +12,13 @@ require u-boot-fsl.inc
 # UBOOT_SUFFIX = "imx"
 
 LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=025bf9f768cbcb1a165dbe1a110babfb"
 
 PROVIDES += "u-boot"
 
-PV = "v2013.07"
+PV = "v2013.10"
 
-SRCREV = "62c175fbb8a0f9a926c88294ea9f7e88eb898f6c"
+SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
 SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # this needs to go into a folder like e.g. u-boot
