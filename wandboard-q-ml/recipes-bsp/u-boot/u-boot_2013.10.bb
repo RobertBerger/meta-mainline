@@ -5,7 +5,7 @@ require u-boot-fsl.inc
 # To build u-boot for your machine, provide the following lines in
 # your machine config, replacing the assignments as appropriate for
 # your machine.
-# UBOOT_MACHINE = "wandboard_dl_config"
+# UBOOT_MACHINE = "wandboard_quad_config"
 # UBOOT_ENTRYPOINT = "0x10008000"
 # UBOOT_LOADADDRESS = "0x10008000"
 # UBOOT_MAKE_TARGET = "u-boot.imx"

@@ -5,7 +5,7 @@ expand_bootfile=setenv bootfile ${hostname}/uImage
 expand_bootfile_sd=setenv bootfile_sd uImage-wandboard-q-ml.bin
 
 fdt_addr_r=0x18000000
-expand_fdtfile_sd=setenv fdtfile_sd uImage-imx6dl-wandboard.dtb
+expand_fdtfile_sd=setenv fdtfile_sd uImage-imx6q-wandboard.dtb
 
 # --> uImage from mmc
 kernel_mmcload=fatload mmc 0:1 ${kernel_addr_r} ${bootfile_sd}

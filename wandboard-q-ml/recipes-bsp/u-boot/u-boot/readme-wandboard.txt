@@ -20,7 +20,7 @@ unplug/plug card to mount it or mount it
 ./mmc-core-image-minimal-dev-wandboard.sh <boot_part> <kernel_file> <fdt> <rootfs_part> <rootfs_file.tar.bz2> <kernel_modules_file.tar.gz>
 
 e.g.:
-./mmc-core-image-minimal-dev-wandboard.sh /media/boot uImage-wandboard-q-ml.bin uImage-imx6dl-wandboard.dtb /media/rootfs core-image-minimal-dev-wandboard-q-ml.tar.bz2 modules-wandboard-q-ml.tgz
+./mmc-core-image-minimal-dev-wandboard.sh /media/boot uImage-wandboard-q-ml.bin uImage-imx6q-wandboard.dtb /media/rootfs core-image-minimal-dev-wandboard-q-ml.tar.bz2 modules-wandboard-q-ml.tgz
 
 == unmout SD card ==
 
