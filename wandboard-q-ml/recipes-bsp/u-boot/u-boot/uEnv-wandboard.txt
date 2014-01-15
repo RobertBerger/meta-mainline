@@ -2,7 +2,7 @@ hostname=wandboard-dl
 
 kernel_addr_r=0x12000000
 expand_bootfile=setenv bootfile ${hostname}/uImage
-expand_bootfile_sd=setenv bootfile_sd uImage-wandboard-dl-ml.bin
+expand_bootfile_sd=setenv bootfile_sd uImage-wandboard-q-ml.bin
 
 fdt_addr_r=0x18000000
 expand_fdtfile_sd=setenv fdtfile_sd uImage-imx6dl-wandboard.dtb

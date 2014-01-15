@@ -22,4 +22,4 @@ done
 
 echo
 echo
-echo ">>>>>> update your wandboard-dl-ml-user-patches.scc file <<<<<<"
+echo ">>>>>> update your wandboard-q-ml-user-patches.scc file <<<<<<"

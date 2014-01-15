@@ -49,10 +49,10 @@ do_configure_prepend() {
         cp ${WORKDIR}/defconfig ${B}/.config
 }
 
-SRC_URI += "file://wandboard-dl-ml.scc \
-            file://wandboard-dl-ml.cfg \
-            file://wandboard-dl-ml-user-config.cfg \
-            file://wandboard-dl-ml-user-patches.scc \
+SRC_URI += "file://wandboard-q-ml.scc \
+            file://wandboard-q-ml.cfg \
+            file://wandboard-q-ml-user-config.cfg \
+            file://wandboard-q-ml-user-patches.scc \
            "
 
 KBRANCH = "master"
@@ -72,4 +72,4 @@ SRCREV="7e22e91102c6b9df7c4ae2168910e19d2bb14cd6"
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
-COMPATIBLE_MACHINE_wandboard-dl-ml = "wandboard-dl-ml"
+COMPATIBLE_MACHINE_wandboard-q-ml = "wandboard-q-ml"

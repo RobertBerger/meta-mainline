@@ -1,4 +1,4 @@
-This README file contains information on building the meta-mainline/wandboard-dl-ml
+This README file contains information on building the meta-mainline/wandboard-q-ml
 BSP layer, and booting the images contained in the /binary directory.
 Please see the corresponding sections below for details.
 
@@ -34,7 +34,7 @@ Please see the meta-xxxx/MAINTAINERS file for more details.
 Table of Contents
 =================
 
-  I. Building the meta-mainline/meta-wandboard-dl-ml BSP layer
+  I. Building the meta-mainline/meta-wandboard-q-ml BSP layer
  II. Booting the images in /binary
 
 

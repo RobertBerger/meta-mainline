@@ -1,3 +1,3 @@
-FILESEXTRAPATHS_prepend_wandboard-dl-ml := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_prepend_wandboard-q-ml := "${THISDIR}/${PN}:"
 
 PRINC = "1"
