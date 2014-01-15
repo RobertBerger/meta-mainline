@@ -40,6 +40,6 @@ S = "${WORKDIR}/git"
 
 do_deploy_append () {
 # deploy scripts for sd card
-    install ${WORKDIR}/mkcard.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mkcard-wandboard.sh ${DEPLOYDIR}
 }
 
