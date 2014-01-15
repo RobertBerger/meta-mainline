@@ -30,9 +30,6 @@ SRC_URI += "file://mmc-core-image-minimal-dev-wandboard.sh;md5=109a04a9d96c4bfaa
 SRC_URI += "file://readme-wandboard.txt;md5=14cb6225a2131e959059725e5e653f48"
 SRC_URI += "file://uEnv-wandboard.txt;md5=bc5179551180a4182706c1b7dea38424"
 
-# patches
-SRC_URI += "file://0001-enable-uEnv.txt.patch"
-
 S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
