@@ -22,7 +22,7 @@ SRCREV = "62c175fbb8a0f9a926c88294ea9f7e88eb898f6c"
 SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # this needs to go into a folder like e.g. u-boot
-SRC_URI += "file://mkcard.sh;md5=ee397b50cd07219b87e4413bb240b37e"
+SRC_URI += "file://mkcard-wandboard.sh;md5=ee397b50cd07219b87e4413bb240b37e"
 
 S = "${WORKDIR}/git"
 
