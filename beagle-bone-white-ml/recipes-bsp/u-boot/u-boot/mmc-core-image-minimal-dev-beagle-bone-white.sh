@@ -27,7 +27,7 @@ fi
 MLO="MLO-beagle-bone-white-ml"
 
 if [ -f ${MLO} ]; then
-    echo "${MLO} exists - I'll cp it to ${BOOT_PART}"
+    echo "${MLO} exists - I'll cp it to ${BOOT_PART}/MLO"
     echo "press <ENTER> to go on"
     read r
 else
@@ -35,13 +35,13 @@ else
     exit
 fi
 
-echo "+ cp ${MLO} ${BOOT_PART}"
-cp ${MLO} ${BOOT_PART}
+echo "+ cp ${MLO} ${BOOT_PART}/MLO"
+cp ${MLO} ${BOOT_PART}/MLO
 
 U_BOOT="u-boot-beagle-bone-white-ml.img"
 
 if [ -f ${U_BOOT} ]; then
-    echo "${U_BOOT} exists - I'll cp it to ${BOOT_PART}"
+    echo "${U_BOOT} exists - I'll cp it to ${BOOT_PART}/u-boot.img"
     echo "press <ENTER> to go on"
     read r
 else
@@ -49,8 +49,8 @@ else
     exit
 fi
 
-echo "+ cp ${U_BOOT} ${BOOT_PART}"
-cp ${U_BOOT} ${BOOT_PART}
+echo "+ cp ${U_BOOT} ${BOOT_PART}/u-boot.img"
+cp ${U_BOOT} ${BOOT_PART}/u-boot.img
 
 # uEnv.txt
 echo "+ cp uEnv-beagle-bone-white.txt ${BOOT_PART}/uEnv.txt"
@@ -113,8 +113,8 @@ else
     exit
 fi
 
-echo "+ cp ${KERNEL} ${BOOT_PART}/boot"
-cp ${KERNEL} ${BOOT_PART}/boot
+echo "+ cp ${KERNEL} ${ROOTFS_PART}/boot"
+sudo cp ${KERNEL} ${ROOTFS_PART}/boot
 
 # we need to pass the name of the fdt file
 FDT=$3
@@ -128,8 +128,8 @@ else
     exit
 fi
 
-echo "+ cp ${FDT} ${BOOT_PART}/boot"
-cp ${FDT} ${BOOT_PART}/boot
+echo "+ cp ${FDT} ${ROOTFS_PART}/boot"
+sudo cp ${FDT} ${ROOTFS_PART}/boot
 
 echo "+sync"
 sync
