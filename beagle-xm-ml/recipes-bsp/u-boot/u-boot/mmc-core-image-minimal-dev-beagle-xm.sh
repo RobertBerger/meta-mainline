@@ -113,8 +113,8 @@ else
     exit
 fi
 
-echo "+ cp ${KERNEL} ${BOOT_PART}/boot"
-cp ${KERNEL} ${BOOT_PART}/boot
+echo "+ cp ${KERNEL} ${ROOTFS_PART}/boot"
+cp ${KERNEL} ${ROOTFS_PART}/boot
 
 # we need to pass the name of the fdt file
 FDT=$3
@@ -128,8 +128,8 @@ else
     exit
 fi
 
-echo "+ cp ${FDT} ${BOOT_PART}/boot"
-cp ${FDT} ${BOOT_PART}/boot
+echo "+ cp ${FDT} ${ROOTFS_PART}/boot"
+cp ${FDT} ${ROOTFS_PART}/boot
 
 echo "+sync"
 sync
