@@ -1,7 +1,7 @@
 #! /bin/sh
 # mkcard.sh v0.5
 # History: 
-#         2013-08-18 beagle-xm from tftp/nfs (just boot partition necessary)
+#         2013-08-18 panda from tftp/nfs (just boot partition necessary)
 #                    adjusted sfdisk command - hoping no more complaints from kernel
 #         2012-01-12 adjusted for Beagle-XM training (3 partitions)
 #         2011-03-21 used sudo fdisk and sudo umount -f

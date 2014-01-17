@@ -1,12 +1,12 @@
-hostname=beagle-xm
+hostname=panda
 bootdir=/boot
 
 kernel_addr_r=0x80300000
 expand_bootfile=setenv bootfile ${hostname}/uImage
-expand_bootfile_sd=setenv bootfile_sd ${bootdir}/uImage-beagle-xm-ml.bin
+expand_bootfile_sd=setenv bootfile_sd ${bootdir}/uImage-panda-ml.bin
 
 fdt_addr_r=0x815f0000
-expand_fdtfile_sd=setenv fdtfile_sd ${bootdir}/uImage-omap3-beagle-xm-c.dtb
+expand_fdtfile_sd=setenv fdtfile_sd ${bootdir}/uImage-omap4-panda.dtb
 
 # --> uImage from mmc
 kernel_mmcload=load mmc 0:2 ${kernel_addr_r} ${bootfile_sd}

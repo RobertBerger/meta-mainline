@@ -6,7 +6,7 @@ SPL_BINARY = "MLO"
 # To build u-boot for your machine, provide the following lines in
 # your machine config, replacing the assignments as appropriate for
 # your machine.
-# UBOOT_MACHINE = "omap3_beagle_config"
+# UBOOT_MACHINE = "omap4_panda_config"
 # UBOOT_ENTRYPOINT = "0x80008000"
 # UBOOT_LOADADDRESS = "0x80008000"
 
@@ -21,10 +21,10 @@ SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
 SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # extra scripts and readme 
-SRC_URI += "file://mkcard-beagle-xm.sh;md5=2bc338542d0133c05040564fedfb741e"
-SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh;md5=be69c65e67924e26567ee5062e0ad21f"
-SRC_URI += "file://readme-beagle-xm.txt;md5=407a4a3f10581221c4e78bbdf7b5e70d"
-SRC_URI += "file://uEnv-beagle-xm.txt;md5=c1944e3f907c704590dd494dda9c6e28"
+SRC_URI += "file://mkcard-panda.sh;md5=d02a03371e4423086a7e08d746dddb9a"
+SRC_URI += "file://mmc-core-image-minimal-dev-panda.sh;md5=511f1dfea4d633a43be892a059181859"
+SRC_URI += "file://readme-panda.txt;md5=0142cb79bb274d8f32e2bb08b687ac96"
+SRC_URI += "file://uEnv-panda.txt;md5=eb741d20d70328c30ba29260fb3f758a"
 
 S = "${WORKDIR}/git"
 
