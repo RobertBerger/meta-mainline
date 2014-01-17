@@ -24,7 +24,7 @@ fi
 
 # cp MLO, u-boot and uEnv.txt
 
-MLO="MLO-beagle-xm-ml"
+MLO="MLO-igepv2-ml"
 
 if [ -f ${MLO} ]; then
     echo "${MLO} exists - I'll cp it to ${BOOT_PART}/MLO"
@@ -38,7 +38,7 @@ fi
 echo "+ cp ${MLO} ${BOOT_PART}/MLO"
 cp ${MLO} ${BOOT_PART}/MLO
 
-U_BOOT="u-boot-beagle-xm-ml.img"
+U_BOOT="u-boot-igepv2-ml.img"
 
 if [ -f ${U_BOOT} ]; then
     echo "${U_BOOT} exists - I'll cp it to ${BOOT_PART}/u-boot.img"
@@ -53,8 +53,8 @@ echo "+ cp ${U_BOOT} ${BOOT_PART}/u-boot.img"
 cp ${U_BOOT} ${BOOT_PART}/u-boot.img
 
 # uEnv.txt
-echo "+ cp uEnv-beagle-xm.txt ${BOOT_PART}/uEnv.txt"
-cp uEnv-beagle-xm.txt ${BOOT_PART}/uEnv.txt
+echo "+ cp uEnv-igepv2.txt ${BOOT_PART}/uEnv.txt"
+cp uEnv-igepv2.txt ${BOOT_PART}/uEnv.txt
 
 # Let's see if the boot_part exists
 ROOTFS_PART=$4
