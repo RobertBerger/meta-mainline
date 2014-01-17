@@ -1,3 +1,3 @@
-FILESEXTRAPATHS_prepend_beagle-xm-ml := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_prepend_beagle-bone-white-ml := "${THISDIR}/${PN}:"
 
 PRINC = "1"

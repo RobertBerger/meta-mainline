@@ -1,4 +1,4 @@
-This README file contains information on building the meta-mainline/beagle-xm-ml
+This README file contains information on building the meta-mainline/beagle-bone-white-ml
 BSP layer, and booting the images contained in the /binary directory.
 Please see the corresponding sections below for details.
 
@@ -34,11 +34,11 @@ Please see the meta-xxxx/MAINTAINERS file for more details.
 Table of Contents
 =================
 
-  I. Building the meta-mainline/meta-beagle-xm-ml BSP layer
+  I. Building the meta-mainline/meta-beagle-bone-white-ml BSP layer
  II. Booting the images in /binary
 
 
-I. Building the meta-beagle-xm-mainline BSP layer
+I. Building the meta-beagle-bone-white-mainline BSP layer
 ========================================
 
 --- replace with specific instructions for your layer ---
@@ -49,23 +49,23 @@ Package (BSP) Downloads' page of the Yocto Project website.
 
 Having done that, and assuming you extracted the BSP tarball contents
 at the top-level of your yocto build tree, you can build a
-beagle-xm-mainline image by adding the location of the meta-beagle-xm-mainline
+beagle-bone-white-mainline image by adding the location of the meta-beagle-bone-white-mainline
 layer to bblayers.conf, along with any other layers needed (to access
 common metadata shared between BSPs) e.g.:
 
   yocto/meta-xxxx \
-  yocto/meta-xxxx/meta-beagle-xm-mainline \
+  yocto/meta-xxxx/meta-beagle-bone-white-mainline \
 
-To enable the beagle-xm-mainline layer, add the beagle-xm-mainline MACHINE to local.conf:
+To enable the beagle-bone-white-mainline layer, add the beagle-bone-white-mainline MACHINE to local.conf:
 
-  MACHINE ?= "beagle-xm-mainline"
+  MACHINE ?= "beagle-bone-white-mainline"
 
-You should then be able to build a beagle-xm-mainline image as such:
+You should then be able to build a beagle-bone-white-mainline image as such:
 
   $ source oe-init-build-env
   $ bitbake core-image-sato
 
-NOTE: if the 'beagle-xm-mainline' machine includes the emgd-driver-bin
+NOTE: if the 'beagle-bone-white-mainline' machine includes the emgd-driver-bin
 package (i.e. if the emgd version of the xserver is being used), it
 has a proprietary license that must be whitelisted by adding the
 string "license_emgd-driver-bin_1.16" to the LICENSE_FLAGS_WHITELIST
@@ -100,7 +100,7 @@ Under Linux, insert a USB flash drive.  Assuming the USB flash drive
 takes device /dev/sdf, use dd to copy the live image to it.  For
 example:
 
-# dd if=core-image-sato-beagle-xm-mainline-20101207053738.hddimg of=/dev/sdf
+# dd if=core-image-sato-beagle-bone-white-mainline-20101207053738.hddimg of=/dev/sdf
 # sync
 # eject /dev/sdf
 

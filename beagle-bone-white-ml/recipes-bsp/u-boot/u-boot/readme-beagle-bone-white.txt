@@ -6,7 +6,7 @@ umount /media/*
 == partition/format card ==
 
 e.g.:
-./mkcard-beagle-xm.sh /dev/sdb 
+./mkcard-beagle-bone-white.sh /dev/sdb 
 
 === check if this worked ===
 
@@ -17,10 +17,10 @@ sudo fdisk -l /dev/sdb
 
 unplug/plug card to mount it or mount it
 
-./mmc-core-image-minimal-dev-beagle-xm.sh <boot_part> <kernel_file> <fdt> <rootfs_part> <rootfs_file.tar.bz2> <kernel_modules_file.tar.gz>
+./mmc-core-image-minimal-dev-beagle-bone-white.sh <boot_part> <kernel_file> <fdt> <rootfs_part> <rootfs_file.tar.bz2> <kernel_modules_file.tar.gz>
 
 e.g.:
-./mmc-core-image-minimal-dev-beagle-xm.sh /media/boot uImage-beagle-xm-ml.bin uImage-omap3-beagle-xm-c.dtb /media/rootfs core-image-minimal-dev-beagle-xm-ml.tar.bz2 modules-beagle-xm-ml.tgz
+./mmc-core-image-minimal-dev-beagle-bone-white.sh /media/boot uImage-beagle-bone-white-ml.bin uImage-am335x-bone.dtb /media/rootfs core-image-minimal-dev-beagle-bone-white-ml.tar.bz2 modules-beagle-bone-white-ml.tgz
 
 == unmout SD card ==
 
