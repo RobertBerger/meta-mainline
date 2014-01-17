@@ -49,10 +49,10 @@ do_configure_prepend() {
         cp ${WORKDIR}/defconfig ${B}/.config
 }
 
-SRC_URI += "file://beagle-xm-ml.scc \
-            file://beagle-xm-ml.cfg \
-            file://beagle-xm-ml-user-config.cfg \
-            file://beagle-xm-ml-user-patches.scc \
+SRC_URI += "file://igepv2-ml.scc \
+            file://igepv2-ml.cfg \
+            file://igepv2-ml-user-config.cfg \
+            file://igepv2-ml-user-patches.scc \
            "
 
 KBRANCH = "master"
@@ -72,4 +72,4 @@ SRCREV="7e22e91102c6b9df7c4ae2168910e19d2bb14cd6"
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
-COMPATIBLE_MACHINE_beagle-xm-ml = "beagle-xm-ml"
+COMPATIBLE_MACHINE_igepv2-ml = "igepv2-ml"
