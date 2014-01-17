@@ -114,7 +114,7 @@ else
 fi
 
 echo "+ cp ${KERNEL} ${ROOTFS_PART}/boot"
-cp ${KERNEL} ${ROOTFS_PART}/boot
+sudo cp ${KERNEL} ${ROOTFS_PART}/boot
 
 # we need to pass the name of the fdt file
 FDT=$3
@@ -129,7 +129,7 @@ else
 fi
 
 echo "+ cp ${FDT} ${ROOTFS_PART}/boot"
-cp ${FDT} ${ROOTFS_PART}/boot
+sudo cp ${FDT} ${ROOTFS_PART}/boot
 
 echo "+sync"
 sync
