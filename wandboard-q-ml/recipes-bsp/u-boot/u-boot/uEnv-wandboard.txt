@@ -1,0 +1,43 @@
+hostname=wandboard-dl
+
+kernel_addr_r=0x12000000
+expand_bootfile=setenv bootfile ${hostname}/uImage
+expand_bootfile_sd=setenv bootfile_sd uImage-wandboard-q-ml.bin
+
+fdt_addr_r=0x18000000
+expand_fdtfile_sd=setenv fdtfile_sd uImage-imx6q-wandboard.dtb
+
+# --> uImage from mmc
+kernel_mmcload=fatload mmc 0:1 ${kernel_addr_r} ${bootfile_sd}
+# <-- uImage from mmc
+
+# --> fdt from mmc
+fdt_mmcload=fatload mmc 0:1 ${fdt_addr_r} ${fdtfile_sd}
+# <-- fdt from mmc
+
+# --> generic bootargs
+# default:
+bootargs=console=ttymxc0,115200n8
+# bootgraph:
+#bootargs=initcall_debug printk.time=y console=ttyO2,115200n8
+# bootchart:
+#bootargs=initcall_debug printk.time=y init=/sbin/bootchartd console=ttyO2,115200n8
+# <-- generic bootargs
+
+# --> rootfs from mmcblk0p2
+#mmcroot=/dev/mmcblk0p2 ro
+#mmcrootfstype=ext4 rootwait
+mmcroot=/dev/mmcblk0p2 rootwait rw
+mmcrootfstype=ext3 rootwait
+mmc_to_bootargs=setenv bootargs ${bootargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+
+mmcboot=echo Booting from mmc...; run mmc_to_bootargs
+
+compose_mmcboot=run mmcboot
+
+# --> mmc
+mmcload=run kernel_mmcload fdt_mmcload
+
+compose_default=run expand_bootfile_sd; echo bootfile_sd: ${bootfile_sd}; run expand_fdtfile_sd; echo fdtfile: ${fdtfile_sd}
+uenvcmd=run compose_default; run mmcload; run compose_mmcboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}
+# <-- mmc

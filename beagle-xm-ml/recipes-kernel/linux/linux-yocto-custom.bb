@@ -30,9 +30,24 @@
 inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
-SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;bareclone=1"
+SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git;protocol=git;bareclone=1"
 
 SRC_URI += "file://defconfig"
+# I want this here just for reference
+# should be the same with defconfig
+SRC_URI += "file://config-3.13.0-rc8-armv7-x8"
+
+# I want to trick the patch checker
+#do_patch_prepend() {
+#	cp ${WORKDIR}/defconfig ${WORKDIR}/.config
+#}
+
+# Yocto should copy ${WORKDIR}/defconfig ${B}/.config automatically
+# but for some reason it does not
+# So I do it here myself
+do_configure_prepend() {
+        cp ${WORKDIR}/defconfig ${B}/.config
+}
 
 SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml.cfg \
@@ -40,19 +55,19 @@ SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml-user-patches.scc \
            "
 
-KBRANCH = "linux-3.9.y"
+KBRANCH = "master"
 
-LINUX_VERSION ?= "3.9.7"
+LINUX_VERSION ?= "3.13-rc8"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
-#Author	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-06-20 19:01:46 (GMT)
-#committer	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2013-06-20 19:01:46 (GMT)
-#commit	485f25fcc014f2744754f22de395f745f2c7e492 (patch)
-#tree	2ee23d2bacc5202860dfaffa2e65bffdb35520b7
-#parent	8e8577e87943a83aa1b84b3d5202f1f4e8f088d0 (diff)
-#Linux 3.9.7 v3.9.7
+# author	Linus Torvalds <torvalds@linux-foundation.org>	2014-01-12 10:04:18 (GMT)
+# committer	Linus Torvalds <torvalds@linux-foundation.org>	2014-01-12 10:04:18 (GMT)
+# commit	7e22e91102c6b9df7c4ae2168910e19d2bb14cd6 (patch)
+# tree	        a0b3677d442ed08ca16943fb471a90f5fd5bc367
+# parent	3dc91d4338d698ce77832985f9cb183d8eeaf6be (diff)
+# Linux 3.13-rc8 v3.13-rc8
 
-SRCREV="485f25fcc014f2744754f22de395f745f2c7e492"
+SRCREV="7e22e91102c6b9df7c4ae2168910e19d2bb14cd6"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
