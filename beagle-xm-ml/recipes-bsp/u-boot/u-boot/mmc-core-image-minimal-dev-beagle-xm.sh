@@ -27,7 +27,7 @@ fi
 MLO="MLO-beagle-xm-ml"
 
 if [ -f ${MLO} ]; then
-    echo "${MLO} exists - I'll cp it to ${BOOT_PART}"
+    echo "${MLO} exists - I'll cp it to ${BOOT_PART}/MLO"
     echo "press <ENTER> to go on"
     read r
 else
@@ -35,13 +35,13 @@ else
     exit
 fi
 
-echo "+ cp ${MLO} ${BOOT_PART}"
-cp ${MLO} ${BOOT_PART}
+echo "+ cp ${MLO} ${BOOT_PART}/MLO"
+cp ${MLO} ${BOOT_PART}/MLO
 
 U_BOOT="u-boot-beagle-xm-ml.img"
 
 if [ -f ${U_BOOT} ]; then
-    echo "${U_BOOT} exists - I'll cp it to ${BOOT_PART}"
+    echo "${U_BOOT} exists - I'll cp it to ${BOOT_PART}/u-boot.img"
     echo "press <ENTER> to go on"
     read r
 else
@@ -49,8 +49,8 @@ else
     exit
 fi
 
-echo "+ cp ${U_BOOT} ${BOOT_PART}"
-cp ${U_BOOT} ${BOOT_PART}
+echo "+ cp ${U_BOOT} ${BOOT_PART}/u-boot.img"
+cp ${U_BOOT} ${BOOT_PART}/u-boot.img
 
 # uEnv.txt
 echo "+ cp uEnv-beagle-xm.txt ${BOOT_PART}/uEnv.txt"
