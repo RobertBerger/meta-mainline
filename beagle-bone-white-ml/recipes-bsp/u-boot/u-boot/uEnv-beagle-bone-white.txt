@@ -18,7 +18,7 @@ fdt_mmcload=load mmc 0:2 ${fdt_addr_r} ${fdtfile_sd}
 
 # --> generic bootargs
 # default:
-bootargs=console=ttyO2,115200n8
+bootargs=console=ttyO0,115200n8
 # bootgraph:
 #bootargs=initcall_debug printk.time=y console=ttyO2,115200n8
 # bootchart:
