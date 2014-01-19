@@ -25,10 +25,10 @@ SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 SRC_URI += "file://0001-enable-uEnv.txt.patch"
 
 # extra scripts and readme 
-SRC_URI += "file://mkcard-wandboard.sh;md5=4699cff4c14f5bcd27c2f67a46b2f473"
-SRC_URI += "file://mmc-core-image-minimal-dev-wandboard.sh;md5=109a04a9d96c4bfaaa35e547adc9b127"
-SRC_URI += "file://readme-wandboard.txt;md5=14cb6225a2131e959059725e5e653f48"
-SRC_URI += "file://uEnv-wandboard.txt;md5=bc5179551180a4182706c1b7dea38424"
+SRC_URI += "file://mkcard-wandboard.sh;md5=7e6f58ccb8af2ade607d1e99d7b090b1"
+SRC_URI += "file://mmc-core-image-minimal-dev-wandboard.sh;md5=c404f593e7685ba678d620ebd037d044"
+SRC_URI += "file://mmc-uEnv-wandboard.txt;md5=61d5d1f50ead039a92e160eb45475041"
+SRC_URI += "file://readme-wandboard.txt;md5=51f68dde103140a431eba0a0b62b13f1"
 
 S = "${WORKDIR}/git"
 
