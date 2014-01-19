@@ -1,6 +1,7 @@
 #! /bin/sh
 # mkcard.sh v0.5
 # History: 
+#         2014-01-19 3 partitions
 #         2013-08-27 Marek reviewed and removed seek in dd
 #         2013-08-18 m28evk from tftp/nfs (just boot partition necessary)
 #                    adjusted sfdisk command 
@@ -38,14 +39,18 @@ echo "+ sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024"
 sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024
 
 echo "+ # 0x53 --> \"OnTrack DM6 Aux3\""
+echo "+ # 0xE  --> \"Win95 Fat16 (LBA)\""
 echo "+ {"
 echo "+ echo 1,16,0x53,-"
+echo "+ echo ,48,0xE,"
 echo "+ echo ,,,-"
 echo "+ } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}"
 
 # 0x53 --> "OnTrack DM6 Aux3"
+# 0xE  --> "Win95 Fat16 (LBA)"
 {
 echo 1,16,0x53,-
+echo ,48,0xE,
 echo ,,,-
 } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}
 
@@ -55,12 +60,14 @@ sync
 if [ -b ${DRIVE}1 ]; then
         echo "+ sudo umount -f ${DRIVE}1"
         sudo umount -f ${DRIVE}1
+   	echo "+ Note that we write to some offset not to kill part"
         echo "+ sudo dd if=${U_BOOT_SD} of=${DRIVE}1 bs=512"
         sudo dd if=${U_BOOT_SD} of=${DRIVE}1 bs=512
 else
         if [ -b ${DRIVE}p1 ]; then
 		echo "+ sudo umount -f ${DRIVE}p1"
                 sudo umount -f ${DRIVE}p1
+		echo "+ Note that we write to some offset not to kill part"
                 echo "+ sudo dd if=${U_BOOT_SD} of=${DRIVE}p1 bs=512"
                 sudo dd if=${U_BOOT_SD} of=${DRIVE}p1 bs=512
         else
@@ -69,16 +76,32 @@ else
 fi
 
 if [ -b ${DRIVE}2 ]; then
-	echo "+ sudo umount -f ${DRIVE}2"
+        echo "+ sudo umount -f ${DRIVE}2"
         sudo umount -f ${DRIVE}2
-        echo "+ sudo mkfs.ext3 -L "rootfs" ${DRIVE}2"
-        sudo mkfs.ext3 -L "rootfs" ${DRIVE}2
+        echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}2"
+        sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}2
 else
         if [ -b ${DRIVE}p2 ]; then
-		echo "+ sudo umount -f ${DRIVE}p2"
+                echo "+ sudo umount -f ${DRIVE}p2"
                 sudo umount -f ${DRIVE}p2
-                echo "+ sudo mkfs.ext3 -L "rootfs" ${DRIVE}p2"
-                sudo mkfs.ext3 -L "rootfs" ${DRIVE}p2
+                echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p2"
+                sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p2
+        else
+                echo "+ Cant find boot partition in /dev"
+        fi
+fi
+
+if [ -b ${DRIVE}3 ]; then
+	echo "+ sudo umount -f ${DRIVE}3"
+        sudo umount -f ${DRIVE}3
+        echo "+ sudo mkfs.ext3 -L "rootfs" ${DRIVE}3"
+        sudo mkfs.ext3 -L "rootfs" ${DRIVE}3
+else
+        if [ -b ${DRIVE}p2 ]; then
+		echo "+ sudo umount -f ${DRIVE}p3"
+                sudo umount -f ${DRIVE}p3
+                echo "+ sudo mkfs.ext3 -L "rootfs" ${DRIVE}p3"
+                sudo mkfs.ext3 -L "rootfs" ${DRIVE}p3
         else
                 echo "+ Cant find rootfs partition in /dev"
         fi

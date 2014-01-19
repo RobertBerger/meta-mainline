@@ -33,7 +33,6 @@ do_install_append () {
 do_deploy_append () {
    # deploy scripts for sd card
    install ${WORKDIR}/mkcard-m28evk.sh ${DEPLOYDIR}
-   install ${WORKDIR}/mkcard-new-m28evk.sh ${DEPLOYDIR}
    install ${WORKDIR}/mmc-core-image-minimal-dev-m28evk.sh ${DEPLOYDIR}
    install ${WORKDIR}/mmc-uEnv-m28evk.txt ${DEPLOYDIR}
    install ${WORKDIR}/readme-m28evk.txt ${DEPLOYDIR}

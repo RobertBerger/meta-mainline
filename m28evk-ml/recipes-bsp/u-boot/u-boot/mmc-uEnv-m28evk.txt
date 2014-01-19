@@ -8,11 +8,11 @@ fdt_addr_r=0x41000000
 expand_fdtfile_sd=setenv fdtfile_sd imx28-m28evk.dtb
 
 # --> uImage from mmc
-kernel_mmcload=fatload mmc 0:1 ${kernel_addr_r} ${bootfile_sd}
+kernel_mmcload=fatload mmc 0:2 ${kernel_addr_r} ${bootfile_sd}
 # <-- uImage from mmc
 
 # --> fdt from mmc
-fdt_mmcload=fatload mmc 0:1 ${fdt_addr_r} ${fdtfile_sd}
+fdt_mmcload=fatload mmc 0:2 ${fdt_addr_r} ${fdtfile_sd}
 # <-- fdt from mmc
 
 # --> generic bootargs
@@ -24,10 +24,10 @@ bootargs=console=ttyAMA0,115200n8
 #bootargs=initcall_debug printk.time=y init=/sbin/bootchartd console=ttyAMA0,115200n8
 # <-- generic bootargs
 
-# --> rootfs from mmcblk0p2
-#mmcroot=/dev/mmcblk0p2 ro
-#mmcrootfstype=ext4 rootwait
-mmcroot=/dev/mmcblk0p2 rootwait rw
+# --> rootfs from mmcblk0p3
+#mmcroot=/dev/mmcblk0p3 ro
+#mmcrootfstype=ext3 rootwait
+mmcroot=/dev/mmcblk0p3 rootwait rw
 mmcrootfstype=ext3 rootwait
 mmc_to_bootargs=setenv bootargs ${bootargs} root=${mmcroot} rootfstype=${mmcrootfstype}
 
