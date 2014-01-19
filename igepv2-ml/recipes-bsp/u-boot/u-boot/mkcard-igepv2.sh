@@ -15,59 +15,59 @@
 export LC_ALL=C
 
 if [ $# -ne 1 ]; then
-        echo "Usage: $0 <drive>"
+        echo "+ Usage: $0 <drive>"
         exit 1;
 fi
 
 DRIVE=$1
 
+echo "+ sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024"
 sudo dd if=/dev/zero of=$DRIVE bs=1024 count=1024
 
-# --> this is just here for fun
-
-SIZE=`sudo fdisk -l $DRIVE | grep Disk | grep bytes | awk '{print $5}'`
-
-echo DISK SIZE - $SIZE bytes
-
-CYLINDERS=`echo $SIZE/255/63/512 | bc`
-
-echo CYLINDERS - $CYLINDERS
-
-# <-- this is just here for fun
+echo "+ # 0xE --> \"Win95 FAT16 (LBA)\""
+echo "+ {"
+echo "+ echo 1,48,0xE,*"
+echo "+ echo ,,,-"
+echo "+ } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}"
 
 # 0xE --> "Win95 FAT16 (LBA)"
-
 {
 echo 1,48,0xE,*
 echo ,,,-
 } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}
 
-# what I used so far:
-# sudo sfdisk -D -H 255 -S 63 -C $CYLINDERS $DRIVE
-
-sleep 1
+echo "+ sync"
+sync
 
 if [ -b ${DRIVE}1 ]; then
+	echo "+ sudo umount -f ${DRIVE}1"
         sudo umount -f ${DRIVE}1
+	echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1"
         sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1
 else
         if [ -b ${DRIVE}p1 ]; then
+		echo "+ sudo umount -f ${DRIVE}p1"
                 sudo umount -f ${DRIVE}p1
+		echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p1"
                 sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p1
         else
-                echo "Cant find boot partition in /dev"
+                echo "+ Cant find boot partition in /dev"
         fi
 fi
 
 if [ -b ${DRIVE}2 ]; then
+	echo "+ sudo umount -f ${DRIVE}2"
         sudo umount -f ${DRIVE}2
+	echo "+ sudo mkfs.ext3 -L \"rootfs\" ${DRIVE}2"
         sudo mkfs.ext3 -L "rootfs" ${DRIVE}2
 else
-        if [ -b ${DRIVE}p3 ]; then
+        if [ -b ${DRIVE}p2 ]; then
+		echo "+ sudo umount -f ${DRIVE}p2"
                 sudo umount -f ${DRIVE}p2
-                sudo mkfs.ext4 -L "rootfs" ${DRIVE}p2
+		echo "+ sudo mkfs.ext3 -L \"rootfs\" ${DRIVE}p2"
+                sudo mkfs.ext3 -L "rootfs" ${DRIVE}p2
         else
-                echo "Cant find rootfs partition in /dev"
+                echo "+ Cant find rootfs partition in /dev"
         fi
 fi
 
