@@ -33,8 +33,8 @@ do_deploy_append () {
 # deploy scripts for sd card
     install ${WORKDIR}/mkcard-beagle-xm.sh ${DEPLOYDIR}
     install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-xm.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-uEnv-beagle-xm.txt ${DEPLOYDIR}
     install ${WORKDIR}/readme-beagle-xm.txt ${DEPLOYDIR}
-    install ${WORKDIR}/uEnv-beagle-xm.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
