@@ -1,6 +1,7 @@
 #! /bin/sh
 # mkcard.sh v0.6
 # History: 
+#         2014-01-19 more verbosity
 #         2014-01-13 wandboard support
 #         2013-08-18 beagle-xm from tftp/nfs (just boot partition necessary)
 #                    adjusted sfdisk command - hoping no more complaints from kernel
@@ -16,7 +17,7 @@
 export LC_ALL=C
 
 if [ $# -ne 2 ]; then
-        echo "Usage: $0 <drive> <full path to u-boot.imx>"
+        echo "+ Usage: $0 <drive> <full path to u-boot.imx>"
         exit 1;
 fi
 
@@ -26,15 +27,16 @@ DRIVE=$1
 U_BOOT_IMX=$2
 
 if [ -f ${U_BOOT_IMX} ]; then
-    echo "${U_BOOT_IMX} exists - I'll dd it to ${DRIVE}"
-    echo "press <ENTER> to go on"
+    echo "+ ${U_BOOT_IMX} exists - I'll dd it to ${DRIVE}"
+    echo "+ press <ENTER> to go on"
     read r
 else
-    echo "${U_BOOT_IMX} does not exist"
+    echo "+ ${U_BOOT_IMX} does not exist"
     exit
 fi
 
 # Erase microSD/SD card:
+echo "+ sudo dd if=/dev/zero of=${DRIVE} bs=1M count=16"
 sudo dd if=/dev/zero of=${DRIVE} bs=1M count=16
 
 # Install Bootloader:
@@ -44,19 +46,26 @@ sudo dd if=${U_BOOT_IMX} of=${DRIVE} bs=512 seek=2
 echo "+ sync"
 sync
 
+echo "+ # 0xE --> \"Win95 FAT16 (LBA)\""
+echo "+ {"
+echo "+ echo 1,48,0xE,*"
+echo "+ echo ,,,-"
+echo "+ } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}"
+
 # 0xE --> "Win95 FAT16 (LBA)"
 {
 echo 1,48,0xE,*
 echo ,,,-
 } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}
 
-sleep 1
+echo "+ sync"
+sync
 
 if [ -b ${DRIVE}1 ]; then
-       echo "+ sudo umount -f ${DRIVE}1"
-       sudo umount -f ${DRIVE}1
-       echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1"
-       sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1
+        echo "+ sudo umount -f ${DRIVE}1"
+        sudo umount -f ${DRIVE}1
+        echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1"
+        sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}1
 else
         if [ -b ${DRIVE}p1 ]; then
                 echo "+ sudo umount -f ${DRIVE}p1"
@@ -64,7 +73,7 @@ else
                 echo "+ sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p1"
                 sudo mkfs.vfat -F 16 -n "boot" ${DRIVE}p1
         else
-                echo "Cant find boot partition in /dev"
+                echo "+ Cant find boot partition in /dev"
         fi
 fi
 
@@ -80,7 +89,7 @@ else
                 echo "+ sudo mkfs.ext3 -L "rootfs" ${DRIVE}p2"
                 sudo mkfs.ext3 -L "rootfs" ${DRIVE}p2
         else
-                echo "Cant find rootfs partition in /dev"
+                echo "+ Cant find rootfs partition in /dev"
         fi
 fi
 

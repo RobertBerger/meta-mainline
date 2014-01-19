@@ -98,8 +98,8 @@ echo "+ sudo tar xvf ${KERNEL_MODULES_FILE} -C ${ROOTFS_PART}"
 sudo tar xvf ${KERNEL_MODULES_FILE} -C ${ROOTFS_PART}
 
 # uEnv.txt
-echo "+ cp uEnv-wandboard.txt ${BOOT_PART}/uEnv.txt"
-cp uEnv-wandboard.txt ${BOOT_PART}/uEnv.txt
+echo "+ cp mmc-uEnv-wandboard.txt ${BOOT_PART}/uEnv.txt"
+cp mmc-uEnv-wandboard.txt ${BOOT_PART}/uEnv.txt
 
 echo "+sync"
 sync
