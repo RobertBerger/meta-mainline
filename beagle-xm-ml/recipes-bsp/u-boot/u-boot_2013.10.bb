@@ -21,10 +21,10 @@ SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
 SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # extra scripts and readme 
-SRC_URI += "file://mkcard-beagle-xm.sh;md5=3f410089787acb9e89ec143de888046f"
-SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh;md5=ef966283293cc12fc2891723e6e0d8b2"
-SRC_URI += "file://mmc-uEnv-beagle-xm.txt;md5=c1944e3f907c704590dd494dda9c6e28"
-SRC_URI += "file://readme-beagle-xm.txt;md5=407a4a3f10581221c4e78bbdf7b5e70d"
+SRC_URI += "file://mkcard-beagle-xm.sh"
+SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh"
+SRC_URI += "file://mmc-uEnv-beagle-xm.txt"
+SRC_URI += "file://readme-beagle-xm.txt"
 
 S = "${WORKDIR}/git"
 
