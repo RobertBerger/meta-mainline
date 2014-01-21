@@ -18,13 +18,7 @@ PROVIDES += "u-boot"
 PV = "v2013.10"
 
 SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
-SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
-
-# extra scripts and readme 
-SRC_URI += "file://mkcard-beagle-xm.sh"
-SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh"
-SRC_URI += "file://mmc-uEnv-beagle-xm.txt"
-SRC_URI += "file://readme-beagle-xm.txt"
+SRC_URI += "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 S = "${WORKDIR}/git"
 

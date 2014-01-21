@@ -7,6 +7,12 @@ PKG_${PN} = "u-boot"
 PKG_${PN}-dev = "u-boot-dev"
 PKG_${PN}-dbg = "u-boot-dbg"
 
+# extra scripts and readme
+SRC_URI = "file://mkcard-beagle-xm.sh"
+SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh"
+SRC_URI += "file://mmc-uEnv-beagle-xm.txt"
+SRC_URI += "file://readme-beagle-xm.txt"
+
 S = "${WORKDIR}/git"
 
 UBOOT_SUFFIX = "img"
