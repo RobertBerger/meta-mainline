@@ -6,7 +6,7 @@ SPL_BINARY = "MLO"
 # To build u-boot for your machine, provide the following lines in
 # your machine config, replacing the assignments as appropriate for
 # your machine.
-# UBOOT_MACHINE = "omap3_beagle_config"
+# UBOOT_MACHINE = "am335x_evm_config"
 # UBOOT_ENTRYPOINT = "0x80008000"
 # UBOOT_LOADADDRESS = "0x80008000"
 
@@ -18,13 +18,7 @@ PROVIDES += "u-boot"
 PV = "v2013.10"
 
 SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
-SRC_URI = "git://git.denx.de/u-boot.git;branch=master;protocol=git"
-
-# extra scripts and readme 
-SRC_URI += "file://mkcard-beagle-bone-white.sh;md5=2bc338542d0133c05040564fedfb741e"
-SRC_URI += "file://mmc-core-image-minimal-dev-beagle-bone-white.sh;md5=64d290041bcb58d45b71481de788a08a"
-SRC_URI += "file://readme-beagle-bone-white.txt;md5=6fb75525e97c09c2eaff1fbd60511b0d"
-SRC_URI += "file://uEnv-beagle-bone-white.txt;md5=185f525626d87ae0405aa36ccba9b550"
+SRC_URI += "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 S = "${WORKDIR}/git"
 
