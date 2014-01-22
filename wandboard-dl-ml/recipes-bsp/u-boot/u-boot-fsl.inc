@@ -12,7 +12,7 @@ PKG_${PN}-dbg = "u-boot-dbg"
 # extra scripts and readme 
 SRC_URI = "file://mkcard-wandboard.sh"
 SRC_URI += "file://mmc-core-image-minimal-dev-wandboard.sh"
-SRC_URI += "file://mmc-Env-wandboard.txt"
+SRC_URI += "file://mmc-uEnv-wandboard.txt"
 SRC_URI += "file://readme-wandboard.txt"
 
 S = "${WORKDIR}/git"
