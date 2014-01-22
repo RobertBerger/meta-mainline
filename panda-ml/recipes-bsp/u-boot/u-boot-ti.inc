@@ -34,8 +34,8 @@ do_deploy_append () {
 # deploy scripts for sd card
     install ${WORKDIR}/mkcard-panda.sh ${DEPLOYDIR}
     install ${WORKDIR}/mmc-core-image-minimal-dev-panda.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-uEnv-panda.txt ${DEPLOYDIR}
     install ${WORKDIR}/readme-panda.txt ${DEPLOYDIR}
-    install ${WORKDIR}/uEnv-panda.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
