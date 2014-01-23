@@ -34,8 +34,8 @@ do_deploy_append () {
 # deploy scripts for sd card
     install ${WORKDIR}/mkcard-beagle-bone-white.sh ${DEPLOYDIR}
     install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-bone-white.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-uEnv-beagle-bone-white.txt ${DEPLOYDIR}
     install ${WORKDIR}/readme-beagle-bone-white.txt ${DEPLOYDIR}
-    install ${WORKDIR}/uEnv-beagle-bone-white.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
