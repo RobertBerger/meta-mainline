@@ -12,6 +12,7 @@ SRC_URI = "file://mkcard-beagle-xm.sh"
 SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh"
 SRC_URI += "file://mmc-uEnv-beagle-xm.txt"
 SRC_URI += "file://readme-beagle-xm.txt"
+SRC_URI += "file://tftp-nfs-uEnv-beagle-xm.txt"
 
 S = "${WORKDIR}/git"
 
@@ -36,6 +37,7 @@ do_deploy_append () {
     install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-xm.sh ${DEPLOYDIR}
     install ${WORKDIR}/mmc-uEnv-beagle-xm.txt ${DEPLOYDIR}
     install ${WORKDIR}/readme-beagle-xm.txt ${DEPLOYDIR}
+    install ${WORKDIR}/tftp-nfs-uEnv-beagle-xm.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
