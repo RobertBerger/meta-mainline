@@ -50,10 +50,10 @@ do_configure_prepend() {
         cp ${WORKDIR}/defconfig ${B}/.config
 }
 
-SRC_URI += "file://beagle-bone-white-ml.scc \
-            file://beagle-bone-white-ml.cfg \
-            file://beagle-bone-white-ml-user-config.cfg \
-            file://beagle-bone-white-ml-user-patches.scc \
+SRC_URI += "file://beagle-bone-black-ml.scc \
+            file://beagle-bone-black-ml.cfg \
+            file://beagle-bone-black-ml-user-config.cfg \
+            file://beagle-bone-black-ml-user-patches.scc \
            "
 
 KBRANCH = "3.13.y"
@@ -73,4 +73,4 @@ SRCREV="d8ec26d7f8287f5788a494f56e8814210f0e64be"
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
-COMPATIBLE_MACHINE_beagle-bone-white-ml = "beagle-bone-white-ml"
+COMPATIBLE_MACHINE_beagle-bone-black-ml = "beagle-bone-black-ml"
