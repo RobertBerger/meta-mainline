@@ -8,10 +8,10 @@ PKG_${PN}-dev = "u-boot-dev"
 PKG_${PN}-dbg = "u-boot-dbg"
 
 # extra scripts and readme
-SRC_URI = "file://mkcard-beagle-bone-white.sh"
-SRC_URI += "file://mmc-core-image-minimal-dev-beagle-bone-white.sh"
-SRC_URI += "file://mmc-uEnv-beagle-bone-white.txt"
-SRC_URI += "file://readme-beagle-bone-white.txt"
+SRC_URI = "file://mkcard-beagle-bone-black.sh"
+SRC_URI += "file://mmc-core-image-minimal-dev-beagle-bone-black.sh"
+SRC_URI += "file://mmc-uEnv-beagle-bone-black.txt"
+SRC_URI += "file://readme-beagle-bone-black.txt"
 
 S = "${WORKDIR}/git"
 
@@ -32,10 +32,10 @@ do_install_append () {
 
 do_deploy_append () {
 # deploy scripts for sd card
-    install ${WORKDIR}/mkcard-beagle-bone-white.sh ${DEPLOYDIR}
-    install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-bone-white.sh ${DEPLOYDIR}
-    install ${WORKDIR}/mmc-uEnv-beagle-bone-white.txt ${DEPLOYDIR}
-    install ${WORKDIR}/readme-beagle-bone-white.txt ${DEPLOYDIR}
+    install ${WORKDIR}/mkcard-beagle-bone-black.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-bone-black.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-uEnv-beagle-bone-black.txt ${DEPLOYDIR}
+    install ${WORKDIR}/readme-beagle-bone-black.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
