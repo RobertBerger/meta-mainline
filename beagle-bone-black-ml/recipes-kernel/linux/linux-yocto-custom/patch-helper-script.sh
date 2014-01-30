@@ -8,7 +8,7 @@ PATCHPATH="patches"
 # It is essential to apply the patches in the right order !
 PATCHSET="arm drivers imx_next omap_next omap_dt_dss imx omap_usb omap_video omap_clock dts bone imx_video_staging omap3_beagle_xm_rework omap_sprz319_erratum_v2.1 fixes vivante saucy"
 
-OUTPUT_FILE="proposed_beagle-bone-white-ml-user-patches.scc"
+OUTPUT_FILE="proposed_beagle-bone-black-ml-user-patches.scc"
 
 rm -f ${OUTPUT_FILE}
 
@@ -22,4 +22,4 @@ done
 
 echo
 echo
-echo ">>>>>> update your beagle-bone-white-ml-user-patches.scc file <<<<<<"
+echo ">>>>>> update your beagle-bone-black-ml-user-patches.scc file <<<<<<"
