@@ -1,6 +1,6 @@
 HERE=$(pwd)
 
-for BRANCH in master dora-armv7-multiplatform-v3.13.x
+for BRANCH in master dora-armv7-multiplatform-v3.13.x dora-armv7-multiplatform-v3.13.x-min
 do
   echo "+ ----->"
   echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
