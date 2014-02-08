@@ -1,4 +1,3 @@
-require recipes-bsp/u-boot/u-boot.inc
 require u-boot-fsl.inc
 
 DEPENDS += "elftosb-native"

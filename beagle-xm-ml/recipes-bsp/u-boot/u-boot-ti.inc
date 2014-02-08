@@ -1,9 +1,4 @@
-require recipes-bsp/u-boot/u-boot.inc
-
 FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot:"
-
-LICENSE = "GPLv2+"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1707d6db1d42237583f50183a5651ecb"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -11,6 +6,13 @@ PROVIDES += "u-boot"
 PKG_${PN} = "u-boot"
 PKG_${PN}-dev = "u-boot-dev"
 PKG_${PN}-dbg = "u-boot-dbg"
+
+# extra scripts and readme
+SRC_URI = "file://mkcard-beagle-xm.sh"
+SRC_URI += "file://mmc-core-image-minimal-dev-beagle-xm.sh"
+SRC_URI += "file://mmc-uEnv-beagle-xm.txt"
+SRC_URI += "file://readme-beagle-xm.txt"
+SRC_URI += "file://tftp-nfs-uEnv-beagle-xm.txt"
 
 S = "${WORKDIR}/git"
 
@@ -30,6 +32,12 @@ do_install_append () {
 }
 
 do_deploy_append () {
+# deploy scripts for sd card
+    install ${WORKDIR}/mkcard-beagle-xm.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-core-image-minimal-dev-beagle-xm.sh ${DEPLOYDIR}
+    install ${WORKDIR}/mmc-uEnv-beagle-xm.txt ${DEPLOYDIR}
+    install ${WORKDIR}/readme-beagle-xm.txt ${DEPLOYDIR}
+    install ${WORKDIR}/tftp-nfs-uEnv-beagle-xm.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
@@ -39,4 +47,3 @@ do_deploy_append () {
         ln -sf ${SPL_UART_IMAGE} ${DEPLOYDIR}/${SPL_UART_SYMLINK}
     fi
 }
-
