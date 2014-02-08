@@ -15,6 +15,8 @@ do
   git checkout ${BRANCH}
   echo "+ git pull ../meta-mainline-top/meta-mainline-test"
   git pull ../meta-mainline-top/meta-mainline-test
+  echo "+ git log --name-status HEAD^..HEAD"
+  git log --name-status HEAD^..HEAD
   echo "+ git checkout master"
   git checkout master
   echo "+ cd ${HERE}"
