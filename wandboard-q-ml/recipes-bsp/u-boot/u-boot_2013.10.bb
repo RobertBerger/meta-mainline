@@ -20,7 +20,7 @@ SRCREV = "183acb700378a8cfc5d50a01a65de93fb2c24586"
 SRC_URI += "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # u-boot patches
-SRC_URI += "file://0001-enable-uEnv.txt.patch"
+SRC_URI += "file://0001-enable-uEnv.txt_2013.10.patch"
 
 S = "${WORKDIR}/git"
 
