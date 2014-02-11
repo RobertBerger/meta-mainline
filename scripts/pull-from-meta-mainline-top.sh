@@ -31,6 +31,8 @@ do
   git checkout master
   echo "+ cd ${HERE}"
   cd ${HERE}
+  echo "+ press <ENTER> to go on"
+  read r
   echo "+ <-----"
 done
 
