@@ -1,0 +1,15 @@
+cd /home/rber/projects/meta-mainline-top/meta-mainline-test
+
+# create a new branch
+git co dora-armv7-multiplatform-v3.13.x
+git branch dora-rcn-linux-dev
+git branch -a
+
+# back to master
+git co master
+git branch -a
+
+# create the folder, which matched the branch
+cd /home/rber/projects/meta-mainline-top
+./meta-mainline-test/bin/create-branch-build.sh meta-mainline-test/ . dora-rcn-linux-dev
+
