@@ -3,6 +3,13 @@ HERE=$(pwd)
 echo "+  git checkout master"
 git checkout master
 
+echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
+cd ../../meta-mainline-top/meta-mainline-test/
+echo "+  git checkout master"
+git checkout ${BRANCH}
+
+echo "+ cd ${HERE}"
+
 for BRANCH in master dora-armv7-multiplatform-v3.13.x dora-armv7-multiplatform-v3.13.x-min dora-linux-dev-v3.13.x dora-training-v3.13.x
 do
   echo "+ ----->"
@@ -26,6 +33,16 @@ do
   cd ${HERE}
   echo "+ <-----"
 done
+
+echo "+  git checkout master"
+git checkout master
+
+echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
+cd ../../meta-mainline-top/meta-mainline-test/
+echo "+  git checkout master"
+git checkout ${BRANCH}
+
+echo "+ cd ${HERE}"
 
 echo "+ git status"
 git status
