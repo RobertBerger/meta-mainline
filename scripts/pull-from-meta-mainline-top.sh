@@ -23,3 +23,6 @@ do
   cd ${HERE}
   echo "+ <-----"
 done
+
+echo "+ git status"
+git status
