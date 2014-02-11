@@ -6,12 +6,12 @@ git checkout master
 echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
 cd ../../meta-mainline-top/meta-mainline-test/
 echo "+  git checkout master"
-git checkout ${BRANCH}
+git checkout master
 
 echo "+ cd ${HERE}"
 
 #for BRANCH in master dora-armv7-multiplatform-v3.13.x dora-armv7-multiplatform-v3.13.x-min dora-linux-dev-v3.13.x dora-training-v3.13.x
-for BRANCH in 
+for BRANCH in dora-armv7-multiplatform-v3.13.x
 do
   echo "+ ----->"
   echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
@@ -41,7 +41,7 @@ git checkout master
 echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
 cd ../../meta-mainline-top/meta-mainline-test/
 echo "+  git checkout master"
-git checkout ${BRANCH}
+git checkout master
 
 echo "+ cd ${HERE}"
 
