@@ -1,5 +1,8 @@
 HERE=$(pwd)
 
+echo "+  git checkout master"
+git checkout master
+
 for BRANCH in master dora-armv7-multiplatform-v3.13.x dora-armv7-multiplatform-v3.13.x-min dora-linux-dev-v3.13.x dora-training-v3.13.x
 do
   echo "+ ----->"
