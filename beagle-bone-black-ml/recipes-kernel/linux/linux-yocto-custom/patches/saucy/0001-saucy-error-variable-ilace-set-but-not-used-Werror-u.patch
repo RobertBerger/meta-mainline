@@ -1,4 +1,4 @@
-From 5480f5883acd78ca56b276831b73648375b9beab Mon Sep 17 00:00:00 2001
+From acbcfe5ac26b1f956e327943ed0ac0c0a8daa178 Mon Sep 17 00:00:00 2001
 From: Robert Nelson <robertcnelson@gmail.com>
 Date: Mon, 22 Jul 2013 10:51:46 -0500
 Subject: [PATCH] saucy: error: variable 'ilace' set but not used
@@ -6,14 +6,14 @@ Subject: [PATCH] saucy: error: variable 'ilace' set but not used
 
 Signed-off-by: Robert Nelson <robertcnelson@gmail.com>
 ---
- drivers/gpu/drm/omapdrm/omap_plane.c |    5 +++--
+ drivers/gpu/drm/omapdrm/omap_plane.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/omapdrm/omap_plane.c b/drivers/gpu/drm/omapdrm/omap_plane.c
-index 8d225d7..54fb89e 100644
+index 046d5e6..ef3ebe5d 100644
 --- a/drivers/gpu/drm/omapdrm/omap_plane.c
 +++ b/drivers/gpu/drm/omapdrm/omap_plane.c
-@@ -125,7 +125,8 @@ static void omap_plane_pre_apply(struct omap_drm_apply *apply)
+@@ -121,7 +121,8 @@ static void omap_plane_pre_apply(struct omap_drm_apply *apply)
  	struct drm_crtc *crtc = plane->crtc;
  	enum omap_channel channel;
  	bool enabled = omap_plane->enabled && crtc;
@@ -23,7 +23,7 @@ index 8d225d7..54fb89e 100644
  	int ret;
  
  	DBG("%s, enabled=%d", omap_plane->name, enabled);
-@@ -150,7 +151,7 @@ static void omap_plane_pre_apply(struct omap_drm_apply *apply)
+@@ -146,7 +147,7 @@ static void omap_plane_pre_apply(struct omap_drm_apply *apply)
  			info->paddr, info->p_uv_addr);
  
  	/* TODO: */
@@ -33,5 +33,5 @@ index 8d225d7..54fb89e 100644
  
  	/* and finally, update omapdss: */
 -- 
-1.7.10.4
+1.8.4.rc3
 

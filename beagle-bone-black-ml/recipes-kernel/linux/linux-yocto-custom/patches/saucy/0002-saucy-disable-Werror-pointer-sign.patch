@@ -1,7 +1,7 @@
-From d67ed9268c62437d07cf2d370a9f1acb732f119c Mon Sep 17 00:00:00 2001
+From eeeab18c6887de3be352ff25a06a24e4f669edf7 Mon Sep 17 00:00:00 2001
 From: Robert Nelson <robertcnelson@gmail.com>
 Date: Tue, 30 Jul 2013 07:05:35 -0500
-Subject: [PATCH 2/2] saucy: disable Werror=pointer-sign
+Subject: [PATCH 2/3] saucy: disable Werror=pointer-sign
 
 Signed-off-by: Robert Nelson <robertcnelson@gmail.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Robert Nelson <robertcnelson@gmail.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 8d0668f..3038a00 100644
+index 2ae108d..b5c297c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -373,7 +373,8 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \

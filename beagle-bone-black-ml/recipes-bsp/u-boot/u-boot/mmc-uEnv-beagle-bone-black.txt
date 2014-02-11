@@ -6,7 +6,7 @@ expand_bootfile=setenv bootfile ${hostname}/uImage
 expand_bootfile_sd=setenv bootfile_sd ${bootdir}/uImage-beagle-bone-black-ml.bin
 
 fdt_addr_r=0x815f0000
-expand_fdtfile_sd=setenv fdtfile_sd ${bootdir}/uImage-am335x-bone.dtb
+expand_fdtfile_sd=setenv fdtfile_sd ${bootdir}/uImage-am335x-boneblack.dtb
 
 # --> uImage from mmc
 kernel_mmcload=load mmc 0:2 ${kernel_addr_r} ${bootfile_sd}

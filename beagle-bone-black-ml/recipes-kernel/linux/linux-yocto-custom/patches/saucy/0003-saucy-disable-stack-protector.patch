@@ -1,4 +1,4 @@
-From dafda297ce15fe62550482374b071544f32e62c5 Mon Sep 17 00:00:00 2001
+From b2cbc4fdd16a31668084c97518b0934f10400cc7 Mon Sep 17 00:00:00 2001
 From: Robert Nelson <robertcnelson@gmail.com>
 Date: Mon, 5 Aug 2013 08:46:11 -0500
 Subject: [PATCH 3/3] saucy: disable stack protector

@@ -20,7 +20,7 @@ unplug/plug card to mount it or mount it
 ./mmc-core-image-minimal-dev-beagle-bone-black.sh <boot_part> <kernel_file> <fdt> <rootfs_part> <rootfs_file.tar.bz2> <kernel_modules_file.tar.gz>
 
 e.g.:
-./mmc-core-image-minimal-dev-beagle-bone-black.sh /media/boot uImage-beagle-bone-black-ml.bin uImage-am335x-bone.dtb /media/rootfs core-image-minimal-dev-beagle-bone-black-ml.tar.bz2 modules-beagle-bone-black-ml.tgz
+./mmc-core-image-minimal-dev-beagle-bone-black.sh /media/boot uImage-beagle-bone-black-ml.bin uImage-am335x-boneblack.dtb /media/rootfs core-image-minimal-dev-beagle-bone-black-ml.tar.bz2 modules-beagle-bone-black-ml.tgz
 
 == unmout SD card ==
 
