@@ -4,7 +4,7 @@ kernel_addr_r=0x80300000
 expand_bootfile=setenv bootfile ${hostname}/uImage
 
 fdt_addr_r=0x815f0000
-expand_fdtfile=setenv fdtfile ${hostname}/uImage-omap3-beagle-xm-c.dtb
+expand_fdtfile=setenv fdtfile ${hostname}/uImage-omap3-beagle-xm.dtb
 
 ipaddr=192.168.2.53
 serverip=192.168.2.33
@@ -35,7 +35,7 @@ bootargs=console=ttyO2,115200n8
 # <-- generic bootargs
 
 # --> rootfs from nfs
-nfsroot=/opt/eldk-5.3/armv7a/rootfs-sato-sdk
+nfsroot=/opt/poky/1.5.1/core-image-sato-sdk-beagle-xm-ml
 ips_to_bootargs=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:${netdev}:off
 nfs_to_bootargs=setenv bootargs ${bootargs} nfsroot=${serverip}:${nfsroot},v3,tcp
 default_to_bootargs=setenv bootargs ${bootargs} noinitrd nohlt panic=1
