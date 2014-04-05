@@ -50,6 +50,14 @@ do_configure_prepend() {
         cp ${WORKDIR}/defconfig ${B}/.config
 }
 
+# just copy omap3-beagle-xm.dts to omap3-beagle-xm-c.dts
+do_patch_append() {
+# ls ${WORKDIR}
+# ls ${B}
+# ls ${S}
+        cp ${S}/arch/arm/boot/dts/omap3-beagle-xm.dts ${S}/arch/arm/boot/dts/omap3-beagle-xm-c.dts
+}
+
 SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml.cfg \
             file://beagle-xm-ml-user-config.cfg \
