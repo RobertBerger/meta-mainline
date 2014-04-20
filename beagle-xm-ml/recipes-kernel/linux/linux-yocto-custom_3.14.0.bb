@@ -64,7 +64,7 @@ SRC_URI += "file://beagle-xm-ml.scc \
             file://beagle-xm-ml-user-patches.scc \
            "
 
-KBRANCH = "3.14.y"
+KBRANCH = "linux-3.14.y"
 
 LINUX_VERSION ?= "3.14.0"
 LINUX_VERSION_EXTENSION ?= "-custom"

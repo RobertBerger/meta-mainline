@@ -56,7 +56,7 @@ SRC_URI += "file://beagle-bone-black-ml.scc \
             file://beagle-bone-black-ml-user-patches.scc \
            "
 
-KBRANCH = "3.14.y"
+KBRANCH = "linux-3.14.y"
 
 LINUX_VERSION ?= "3.14.1"
 LINUX_VERSION_EXTENSION ?= "-custom"
