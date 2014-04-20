@@ -14,3 +14,5 @@ patch patches/static-capes/0002-Added-Argus-UPS-cape-support-BBW.patch
 # Ubuntu Saucy: so Ubuntu decided to enable almost every Warning -> Error option...
 patch patches/saucy/0001-saucy-disable-Werror-pointer-sign.patch
 patch patches/saucy/0002-saucy-error-variable-ilace-set-but-not-used-Werror-u.patch
+# PREEMPT-RT patchset - disabled by default
+#patch patches/rt/0001-rt-3.14-patchset.patch
