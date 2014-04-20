@@ -311,8 +311,8 @@ patch patches/imx_drm/0028-imx-drm-imx-drm-core-add-core-hotplug-connector-supp.
 patch patches/imx_drm/0029-imx-drm-imx-hdmi-add-hotplug-support-to-HDMI-compone.patch
 patch patches/imx_drm_dts/0001-ARM-dts-imx6qdl-sabresd-Add-HDMI-support.patch
 patch patches/imx_drm_dts/0002-arm-dts-wandboard-enable-hdmi-quad-has-to-force-edid.patch
-# Apply the modified sprz319 erratum for the v3.11-rc2 kernel
-#patch patches/omap_sprz319_erratum_v2.1/0001-hack-omap-clockk-dpll5-apply-sprz319e-2.1-erratum-co.patch
+# Apply the modified sprz319 erratum for the v3.15-rc1 kernel
+patch patches/omap_sprz319_erratum_v2.1/0001-hack-omap-clockk-dpll5-apply-sprz319e-2.1-erratum-co.patch
 patch patches/omap3_beagle_xm_rework/0001-ARM-dts-beagle-xm-make-sure-dvi-is-enabled.patch
 patch patches/omap3_beagle_xm_rework/0002-ARM-dts-omap3-beagle-xm-ab.dtb-copy-from-omap3-beagl.patch
 patch patches/omap3_beagle_xm_rework/0003-ARM-dts-omap3-beagle-xm-ab.dtb-build.patch
