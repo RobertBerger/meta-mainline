@@ -69,6 +69,8 @@ LINUX_VERSION_EXTENSION ?= "-custom"
 # Linux 3.14.1 v3.14.1 linux-3.14.y
 
 SRCREV="387df1bd3fc46bc695b317dda38b3254f4409036"
+# looks like we need to update SRCREV_machine not to get latest in the branch, but specific SRCREV 
+SRCREV_machine = "${SRCREV}"
 
 PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
