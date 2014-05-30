@@ -58,7 +58,7 @@ SRC_URI += "file://beagle-bone-black-ml.scc \
 
 KBRANCH = "linux-3.14.y"
 
-LINUX_VERSION ?= "3.14.1"
+LINUX_VERSION ?= "3.14.4"
 LINUX_VERSION_EXTENSION ?= "-custom"
 
 # author	Greg Kroah-Hartman <gregkh@linuxfoundation.org>	2014-05-13 11:33:14 (GMT)
