@@ -35,7 +35,7 @@ bootargs=console=ttyO2,115200n8
 # <-- generic bootargs
 
 # --> rootfs from nfs
-nfsroot=/opt/poky/1.5.1/core-image-sato-sdk-beagle-xm-ml
+nfsroot=/opt/poky/1.6/core-image-sato-sdk-beagle-xm-ml
 ips_to_bootargs=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:${netdev}:off
 nfs_to_bootargs=setenv bootargs ${bootargs} nfsroot=${serverip}:${nfsroot},v3,tcp
 default_to_bootargs=setenv bootargs ${bootargs} noinitrd nohlt panic=1

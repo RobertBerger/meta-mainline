@@ -44,7 +44,7 @@ now we could try over tftp and nfs:
 
 you need to create a nfs export of the rootfs 
 e.g.
-/opt/poky/1.5.1/core-image-sato-sdk-beagle-xm-ml
+/opt/poky/1.6/core-image-sato-sdk-beagle-xm-ml
 
 and a tftp export
 e.g.
@@ -74,8 +74,7 @@ usbethaddr=0:0:1:2:3:54
 
 and:
 
-nfsroot=/opt/poky/1.5.1/core-image-sato-sdk-beagle-xm-ml
-
+nfsroot=/opt/poky/1.6/core-image-sato-sdk-beagle-xm-ml
 
 now we need to replace uEnv.txt with the new one
 
@@ -87,4 +86,4 @@ umount /mnt/beag1
 
 plug the SD card into the board and give it a try
 
-
+assuming the board is accessible via network you could scp the stuff as well
