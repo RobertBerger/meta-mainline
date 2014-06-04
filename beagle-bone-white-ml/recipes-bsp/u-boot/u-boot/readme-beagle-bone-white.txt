@@ -38,19 +38,20 @@ e.g.
 
 and a tftp export
 e.g.
-/tftboot/beagle-xm
+/tftboot/beagle-bone-white
 
 mine looks like this:
 
-student@armv7a:/tftpboot/beagle-xm$ ls -lah
-total 3.9M
-drwxrwxr-x 2 student student 4.0K Feb 18 12:03 .
-drwxrwxrwx 4 root    nogroup 4.0K Feb 18 11:59 ..
-lrwxrwxrwx 1 student student   65 Feb 18 12:03 uImage -> uImage--3.13.2+git0+fd82174a69-r0-beagle-xm-ml-20140211155923.bin
--rw-r--r-- 1 student student 3.8M Feb 18 12:02 uImage--3.13.2+git0+fd82174a69-r0-beagle-xm-ml-20140211155923.bin
--rw-r--r-- 1 student student  18K Feb 18 12:02 uImage--3.13.2+git0+fd82174a69-r0-omap3-beagle-xm-ab-20140211155923.dtb
--rw-r--r-- 1 student student  18K Feb 18 12:02 uImage--3.13.2+git0+fd82174a69-r0-omap3-beagle-xm-c-20140211155923.dtb
-lrwxrwxrwx 1 student student   70 Feb 18 12:03 uImage-omap3-beagle-xm.dtb -> uImage--3.13.2+git0+fd82174a69-r0-omap3-beagle-xm-c-20140211155923.dtb
+
+student@bb-white-dev:/tftpboot/beagle-bone-white$ ls -lah
+total 3.7M
+drwxrwxr-x 2 student student 4.0K Jun  2 23:06 .
+drwxrwxrwx 4 root    nogroup 4.0K Jun  2 22:56 ..
+-rw-rw-r-- 1 student student 1.8K Jun  2 23:06 tftp-nfs-uEnv-beagle-bone-white.txt
+lrwxrwxrwx 1 student student   73 Jun  2 23:04 uImage -> uImage--3.14.4+git0+7261684765-r0-beagle-bone-white-ml-20140601185103.bin
+-rw-r--r-- 1 student student  30K Jun  2 23:01 uImage--3.14.4+git0+7261684765-r0-am335x-bone-20140601185103.dtb
+-rw-r--r-- 1 student student 3.7M Jun  2 23:02 uImage--3.14.4+git0+7261684765-r0-beagle-bone-white-ml-20140601185103.bin
+lrwxrwxrwx 1 student student   64 Jun  2 23:05 uImage-am335x-bone.dtb -> uImage--3.14.4+git0+7261684765-r0-am335x-bone-20140601185103.dtb
 
 also you will need to adjust a few things in tftp-nfs-uEnv-beagle-bone-white.txt:
 
@@ -69,10 +70,10 @@ nfsroot=/opt/poky/1.6/core-image-sato-sdk-beagle-bone-white-ml
 now we need to replace uEnv.txt with the new one
 
 e.g.
-mount /mnt/beag1
-cp /mnt/beag1/uEnv.txt /mnt/beag1/mmc-uEnv-beagle-xm.txt
-cp tftp-nfs-uEnv-beagle-xm.txt /mnt/beag1/uEnv.txt
-umount /mnt/beag1
+mount /mnt/boot
+cp /mnt/boot/uEnv.txt /mnt/beag1/mmc-uEnv-beagle-bone-white.txt
+cp tftp-nfs-uEnv-beagle-bone-white.txt /mnt/boot/uEnv.txt
+umount /mnt/boot
 
 plug the SD card into the board and give it a try
 
