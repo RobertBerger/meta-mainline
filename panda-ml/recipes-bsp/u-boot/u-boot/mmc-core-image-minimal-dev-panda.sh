@@ -53,8 +53,8 @@ echo "+ cp ${U_BOOT} ${BOOT_PART}/u-boot.img"
 cp ${U_BOOT} ${BOOT_PART}/u-boot.img
 
 # uEnv.txt
-echo "+ cp uEnv-panda.txt ${BOOT_PART}/uEnv.txt"
-cp uEnv-panda.txt ${BOOT_PART}/uEnv.txt
+echo "+ cp mmc-uEnv-panda.txt ${BOOT_PART}/uEnv.txt"
+cp mmc-uEnv-panda.txt ${BOOT_PART}/uEnv.txt
 
 # Let's see if the boot_part exists
 ROOTFS_PART=$4
