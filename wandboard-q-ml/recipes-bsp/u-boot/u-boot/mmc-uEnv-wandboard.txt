@@ -1,4 +1,4 @@
-hostname=wandboard-dl
+hostname=wandboard-q
 
 kernel_addr_r=0x12000000
 expand_bootfile=setenv bootfile ${hostname}/uImage
