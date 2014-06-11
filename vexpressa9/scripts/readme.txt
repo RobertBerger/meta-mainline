@@ -5,7 +5,11 @@ cd ~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build
 
 source oe-init-build-env
 
+with video console:
 ~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9
+
+without video console:
+~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9 nographic
 
 ----------
 
