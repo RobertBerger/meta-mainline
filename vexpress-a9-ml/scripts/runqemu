@@ -98,7 +98,7 @@ i=1
 while [ $i -le $# ]; do
     arg=${!i}
     case $arg in
-        "qemux86" | "qemux86-64" | "qemuarm" | "qemumips" | "qemuppc" | "beagleboard" | "vexpress-a9-ml")
+        "qemux86" | "qemux86-64" | "qemuarm" | "qemumips" | "qemuppc" | "beagleboard" | "vexpressa9")
             if [ -z "$MACHINE" ]; then
                 MACHINE=$arg
             else
@@ -262,8 +262,9 @@ QEMUARM_DEFAULT_FSTYPE=ext3
 BEAGLEBOARD_DEFAULT_KERNEL=uImage-beagleboard.bin
 BEAGLEBOARD_DEFAULT_FSTYPE=tar.bz2
 
-VEXPRESSA9_DEFAULT_KERNEL=zImage-vexpress-a9-ml.bin
-VEXPRESSA9_DEFAULT_FSTYPE=tar.bz2
+VEXPRESSA9_DEFAULT_KERNEL=zImage-vexpressa9.bin
+#VEXPRESSA9_DEFAULT_FSTYPE=tar.bz2
+VEXPRESSA9_DEFAULT_FSTYPE=ext3
 
 QEMUMIPS_DEFAULT_KERNEL=vmlinux-qemumips.bin
 QEMUMIPS_DEFAULT_FSTYPE=ext3

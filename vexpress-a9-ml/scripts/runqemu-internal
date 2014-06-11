@@ -63,7 +63,7 @@ else
         "beagleboard")
     	    mem_size=256
     	    ;;
-        "vexpress-a9-ml")
+        "vexpressa9")
     	    mem_size=1024
     	    ;;
         *)
@@ -247,7 +247,7 @@ case "$MACHINE" in
     "qemuppc") ;;
     "qemuarmv6") ;;
     "beagleboard") ;;
-    "vexpress-a9-ml") ;;
+    "vexpressa9") ;;
     "qemux86") ;;
     "qemux86-64") ;;
     "akita") ;;
@@ -417,7 +417,7 @@ if [ "$MACHINE" = "beagleboard" ]; then
     fi
 fi
 
-if [ "$MACHINE" = "vexpress-a9-ml" ]; then
+if [ "$MACHINE" = "vexpressa9" ]; then
     QEMU=qemu-system-arm
     MACHINE_SUBTYPE=vexpress-a9
     QEMU_UI_OPTIONS="$QEMU_UI_OPTIONS"
@@ -606,7 +606,7 @@ echo "Running $QEMU..."
 if [ "$MACHINE" = "beagleboard" ]; then
     echo $QEMUBIN $QEMUOPTIONS $SERIALOPTS $SCRIPT_QEMU_OPT $SCRIPT_QEMU_EXTRA_OPT
     LD_PRELOAD="$GL_LD_PRELOAD" $QEMUBIN $QEMUOPTIONS $SERIALOPTS $SCRIPT_QEMU_OPT $SCRIPT_QEMU_EXTRA_OPT
-elif [ "$MACHINE" = "vexpress-a9-ml" ]; then
+elif [ "$MACHINE" = "vexpressa9" ]; then
     echo $QEMUBIN -kernel $KERNEL $QEMUOPTIONS $SERIALOPTS -no-reboot $SCRIPT_QEMU_OPT $SCRIPT_QEMU_EXTRA_OPT --append '"'$KERNCMDLINE $SCRIPT_KERNEL_OPT'"'
     LD_PRELOAD="$GL_LD_PRELOAD" $QEMUBIN -kernel $KERNEL $QEMUOPTIONS $SERIALOPTS -no-reboot $SCRIPT_QEMU_OPT $SCRIPT_QEMU_EXTRA_OPT --append "$KERNCMDLINE $SCRIPT_KERNEL_OPT"
 else
