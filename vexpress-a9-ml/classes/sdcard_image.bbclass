@@ -36,7 +36,7 @@ IMAGE_ROOTFS_ALIGNMENT = "4096"
 SDIMG_ROOTFS_TYPE ?= "ext3"
 SDIMG_ROOTFS = "${IMAGE_NAME}.rootfs.${SDIMG_ROOTFS_TYPE}"
 
-IMAGE_DEPENDS_vexpress-a9-ml-sdimg = " \
+IMAGE_DEPENDS_vexpressa9-sdimg = " \
             parted-native \
             mtools-native \
             dosfstools-native \
@@ -44,11 +44,11 @@ IMAGE_DEPENDS_vexpress-a9-ml-sdimg = " \
             "
 
 # SD card image name
-SDIMG = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.vexpress-a9-ml-sdimg"
+SDIMG = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.vexpressa9-sdimg"
 
 IMAGEDATESTAMP = "${@time.strftime('%Y.%m.%d',time.gmtime())}"
 
-IMAGE_CMD_vexpress-a9-ml-sdimg () {
+IMAGE_CMD_vexpressa9-sdimg () {
     # Align partitions
     BOOT_SPACE_ALIGNED=$(expr ${BOOT_SPACE} + ${IMAGE_ROOTFS_ALIGNMENT} - 1)
     BOOT_SPACE_ALIGNED=$(expr ${BOOT_SPACE_ALIGNED} - ${BOOT_SPACE_ALIGNED} % ${IMAGE_ROOTFS_ALIGNMENT})

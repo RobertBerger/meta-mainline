@@ -6,7 +6,7 @@ SRC_URI_append_beagleboard = " \
 	file://beagle_qemu.cfg \
 	"
 
-SRC_URI_append_vexpress-a9-ml = " \
+SRC_URI_append_vexpressa9 = " \
 	file://vexpress_a9.cfg  \
 	"
 
@@ -18,6 +18,6 @@ SRC_URI_append_qemux86-64 = " \
 	file://qemux86_64.cfg  \
 	"
 
-KMACHINE_vexpress-a9-ml = "beagleboard"
-SRCREV_machine_vexpress-a9-ml ?= "${AUTOREV}"
-COMPATIBLE_MACHINE_vexpress-a9-ml = "vexpress-a9-ml"
+KMACHINE_vexpressa9 = "beagleboard"
+SRCREV_machine_vexpressa9 ?= "${AUTOREV}"
+COMPATIBLE_MACHINE_vexpressa9 = "vexpressa9"
