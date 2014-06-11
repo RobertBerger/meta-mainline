@@ -1,9 +1,14 @@
-bitbake qemu-helper-native
-bitbake meta-ide-support
 
 something like this worked:
 
- ~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9
+cd ~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build
+
+source oe-init-build-env
+
+~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9
+
+----------
+
 Assuming core-image-minimal really means /home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/deploy/images/core-image-minimal-vexpressa9.tar.bz2
 
 Continuing with the following parameters:
