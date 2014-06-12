@@ -33,3 +33,13 @@ Running qemu-system-arm...
 /home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/sysroots/x86_64-linux/usr/bin/qemu-system-arm -kernel /home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/deploy/images/vexpressa9/zImage-vexpressa9.bin -net nic,vlan=0 -net tap,vlan=0,ifname=tap0,script=no,downscript=no -M vexpress-a9 -cpu cortex-a9 -sd /home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/deploy/images/vexpressa9/core-image-minimal-vexpressa9.ext3 -no-reboot -m 1024 --append "root=/dev/mmcblk0 rw mem=1024M raid=noautodetect console=tty0 console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0 "
 Set 'tap0' nonpersistent
 Releasing lockfile of preconfigured tap device 'tap0'
+
+----------
+
+attempt with u-boot:
+
+/home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/sysroots/x86_64-linux/usr/bin/qemu-system-arm -M vexpress-a9 -cpu cortex-a9 -m 1024 -kernel u-boot -nographic
+
+Note that u-boot is the .elf file and not u-boot.bin
+
+----------
