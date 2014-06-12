@@ -11,6 +11,12 @@ with video console:
 without video console:
 ~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9 nographic
 
+with video console - sato sdk:
+~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-sato-sdk vexpressa9
+
+without video console - sato sdk:
+~/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/meta-mainline/vexpressa9/scripts/runqemu core-image-sato-sdk vexpressa9 nographic
+
 ----------
 
 Assuming core-image-minimal really means /home/genius/yocto-autobuilder/yocto-slave/custom-daisy-vexpressa9-sato-sdk-new/build/build/tmp/deploy/images/core-image-minimal-vexpressa9.tar.bz2
