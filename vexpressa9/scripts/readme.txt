@@ -43,3 +43,7 @@ attempt with u-boot:
 Note that u-boot is the .elf file and not u-boot.bin
 
 ----------
+
+see also:
+
+http://wiki.gumstix.org/index.php?title=Gumstix_Emulation_for_QEMU
