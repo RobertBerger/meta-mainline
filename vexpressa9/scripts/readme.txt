@@ -46,6 +46,7 @@ Note that u-boot is the .elf file and not u-boot.bin
 
 see also:
 
+http://files.meetup.com/1590495/debugging-with-qemu.pdf
 http://www.elinux.org/Virtual_Development_Board
 http://wiki.gumstix.org/index.php?title=Overo_qemu_script
 http://wiki.gumstix.org/index.php?title=Gumstix_Emulation_for_QEMU
@@ -56,6 +57,7 @@ http://www.ece.cmu.edu/~ee349/f-2012/lab2/
 http://wiki.qemu.org/Debugging_with_Valgrind
 http://www.hellion.org.uk/blog/posts/grub-on-uboot-on-qemu/
 http://emreboy.wordpress.com/2012/12/15/how-to-cross-compile-u-boot-and-work-it-on-qemu/
+http://user-mode-linux.sourceforge.net/old/debug-session.html
 ----------
 
 /home/genius/yocto-autobuil
