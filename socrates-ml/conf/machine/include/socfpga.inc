@@ -19,7 +19,11 @@ UBOOT_LOADADDRESS = "0x80008000"
 
 SERIAL_CONSOLE = "115200 ttyS0"
 
-KERNEL_IMAGETYPE = "zImage"
+# --> replaced this
+# I don't want a zImage, but a uImage
+# KERNEL_IMAGETYPE = "zImage"
+KERNEL_IMAGETYPE = "uImage"
+# <-- replaced this
 MACHINE_EXTRA_RRECOMMENDS = " kernel-modules"
 MACHINE_FEATURES = "kernel26"
 
