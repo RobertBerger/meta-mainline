@@ -29,5 +29,6 @@ MACHINE_FEATURES = "kernel26"
 
 # file system images required
 IMAGE_INSTALL += "gator"
-IMAGE_FSTYPES ?= "cpio ext3 tar.gz"
+#IMAGE_FSTYPES ?= "cpio ext3 tar.gz"
+IMAGE_FSTYPES ?= "tar.bz2"
 
