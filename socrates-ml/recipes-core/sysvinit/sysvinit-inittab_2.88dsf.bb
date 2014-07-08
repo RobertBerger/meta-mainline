@@ -78,5 +78,8 @@ CONFFILES_${PN} = "${sysconfdir}/inittab"
 USE_VT ?= "1"
 SYSVINIT_ENABLED_GETTYS ?= "1"
 
-
+# want runlevel 3 and not 5
+do_install_append() {
+       sed -i 's/^id:5:initdefault/id:3:initdefault/' ${D}${sysconfdir}/inittab
+}
 
