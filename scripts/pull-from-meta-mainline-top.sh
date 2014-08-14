@@ -53,9 +53,11 @@ git checkout master
 echo "+ git status"
 git status
 
+sleep 1
+
 echo "+ cd ${HERE}"
 cd ${HERE}
 
-git checkout master
-
+pwd 
+ls
 
