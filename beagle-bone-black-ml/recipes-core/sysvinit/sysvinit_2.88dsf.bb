@@ -1,4 +1,4 @@
-DESCRIPTION = "System-V like init."
+SUMMARY = "System-V like init"
 DESCRIPTION = "This package is required to boot in most configurations.  It provides the /sbin/init program.  This is the first process started on boot, and the last process terminated before the system halts."
 HOMEPAGE = "http://savannah.nongnu.org/projects/sysvinit/"
 SECTION = "base"
@@ -61,7 +61,7 @@ FILES_${PN} += "${base_sbindir}/* ${base_bindir}/*"
 FILES_sysvinit-pidof = "${base_bindir}/pidof.sysvinit ${base_sbindir}/killall5"
 FILES_sysvinit-sulogin = "${base_sbindir}/sulogin.sysvinit"
 
-RDEPENDS_${PN} += "sysvinit-pidof"
+RDEPENDS_${PN} += "sysvinit-pidof initscripts-functions"
 
 CFLAGS_prepend = "-D_GNU_SOURCE "
 export LCRYPT = "-lcrypt"
