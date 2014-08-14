@@ -6,7 +6,7 @@ export ECHO="$(which echo)"
 PATCHPATH="patches"
 
 # It is essential to apply the patches in the right order !
-PATCHSET="arm dts fixes usb sgx saucy"
+PATCHSET="dts fixes usb dts-bone dts-bone-capes static-capes saucy"
 
 OUTPUT_FILE="proposed_beagle-bone-black-ml-user-patches.scc"
 
