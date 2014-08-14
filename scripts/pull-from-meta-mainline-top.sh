@@ -53,11 +53,10 @@ git checkout master
 echo "+ git status"
 git status
 
-sleep 1
+sync
 
 echo "+ cd ${HERE}"
 cd ${HERE}
 
-pwd 
-ls
-
+cd ..
+cd scripts/
