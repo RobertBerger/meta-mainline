@@ -44,8 +44,11 @@ cd ../../meta-mainline-top/meta-mainline-test/
 echo "+  git checkout master"
 git checkout master
 
-echo "+ cd ${HERE}"
-cd ${HERE}
+#echo "+ cd ${HERE}"
+#cd ${HERE}
+
+cd ..
+cd scripts
 
 echo "+ git status"
 git status
