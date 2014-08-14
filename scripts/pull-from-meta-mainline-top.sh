@@ -55,8 +55,7 @@ git status
 
 sync
 
+cd $HOME
+
 echo "+ cd ${HERE}"
 cd ${HERE}
-
-cd ..
-cd scripts/
