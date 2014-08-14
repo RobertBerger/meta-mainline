@@ -45,6 +45,7 @@ echo "+  git checkout master"
 git checkout master
 
 echo "+ cd ${HERE}"
+cd ${HERE}
 
 echo "+ git status"
 git status
