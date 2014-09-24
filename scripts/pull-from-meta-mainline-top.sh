@@ -59,3 +59,5 @@ cd $HOME
 
 echo "+ cd ${HERE}"
 cd ${HERE}
+
+cd $(pwd)
