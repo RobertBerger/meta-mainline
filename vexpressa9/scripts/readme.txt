@@ -1,3 +1,68 @@
+------------------
+
+cd ~/test/yocto-autobuilder/yocto-worker/custom-daisy-vexpressa9-qemu-core-image-minimal/build
+
+source oe-init-build-env
+
+cd tmp/deploy/images/vexpressa9
+
+../../../../../meta-mainline/vexpressa9/scripts/runqemu core-image-minimal vexpressa9 nographic
+
+Poky (Yocto Project Reference Distro) 1.6.2 vexpressa9 /dev/ttyAMA0
+
+vexpressa9 login: root
+root@vexpressa9:~# cat /proc/cmdline 
+root=/dev/mmcblk0 rw mem=1024M raid=noautodetect console=tty0 console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0 
+root@vexpressa9:~# uname -a
+Linux vexpressa9 3.14.19-yocto-standard #1 SMP PREEMPT Fri Nov 21 11:16:51 UTC 2014 armv7l GNU/Linux
+root@vexpressa9:~# 
+
+--------------------
+
+nfs:
+
+cd ~/test/yocto-autobuilder/yocto-worker/custom-daisy-vexpressa9-qemu-core-image-minimal/build
+
+source oe-init-build-env
+
+cd tmp/deploy/images/vexpressa9
+
+mkdir -p core-image-minimal-vexpressa9-20141121110722.rootfs
+
+../../../../../scripts/runqemu-extract-sdk core-image-minimal-vexpressa9-20141121110722.rootfs.tar.bz2 core-image-minimal-vexpressa9-20141121110722.rootfs
+
+../../../../../meta-mainline/vexpressa9/scripts/runqemu core-image-minimal-vexpressa9-20141121110722.rootfs vexpressa9 nographic
+
+
+ssuming core-image-minimal-vexpressa9-20141121110722.rootfs is an nfs rootfs
+
+Continuing with the following parameters:
+KERNEL: [/home/genius/test/yocto-autobuilder/yocto-worker/custom-daisy-vexpressa9-qemu-core-image-minimal/build/build/tmp/deploy/images/vexpressa9/zImage-vexpressa9.bin]
+ROOTFS: [core-image-minimal-vexpressa9-20141121110722.rootfs]
+FSTYPE: [nfs]
+Setting up tap interface under sudo
+Acquiring lockfile for tap0...
+stat: missing operand
+Try 'stat --help' for more information.
+stat: missing operand
+Try 'stat --help' for more information.
+No need to create image.
+runqemu-export-rootfs restart core-image-minimal-vexpressa9-20141121110722.rootfs
+No PID file, not stopping rpc.nfsd
+Creating exports file...
+=======================================================
+Error: neither rpcbind nor portmap appear to be running
+Please install and start one of these services first
+=======================================================
+Tip: for recent Ubuntu hosts, run:
+  sudo apt-get install rpcbind
+Then add OPTIONS="-i -w"  to /etc/default/rpcbind and run
+  sudo service portmap restart
+Set 'tap0' nonpersistent
+Releasing lockfile of preconfigured tap device 'tap0'
+
+-----------------------------
+
 
 something like this worked:
 
