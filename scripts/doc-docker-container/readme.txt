@@ -16,9 +16,30 @@ git pull
 #git pull
 #git reset --hard origin/master
 #git clean -f -d
+
+---> fix master
+
+cd ~/test
+wget https://raw.githubusercontent.com/RobertBerger/meta-mainline/master/scripts/doc-docker-container/fix-master-branch.sh
+chmod +x fix-master-branch.sh
+./fix-master-branch.sh 
+
+<--- fix master
+
+---> latest stuff
+
+cd /home/genius/test/meta-mainline
+
+git st 
+
+git co master
+git pull
+
 git st
 git branch -a
-git co remotes/origin/dizzy-training-v3.14.x
+git co origin/dizzy-training-v3.14.x
 git checkout -b dizzy-training-v3.14.x_LOCAL 
 git branch --set-upstream-to=origin/dizzy-training-v3.14.x dizzy-training-v3.14.x_LOCAL
 git pull
+
+<--- latest stuff
