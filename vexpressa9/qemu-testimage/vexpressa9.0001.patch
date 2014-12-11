@@ -1,0 +1,94 @@
+diff --git a/scripts/runqemu b/scripts/runqemu
+index ff64a1d..f31836a 100755
+--- a/scripts/runqemu
++++ b/scripts/runqemu
+@@ -109,7 +109,7 @@ while true; do
+     arg=${1}
+     case "$arg" in
+         "qemux86" | "qemux86-64" | "qemuarm" | "qemumips" | "qemumipsel" | \
+-        "qemumips64" | "qemush4"  | "qemuppc" | "qemumicroblaze" | "qemuzynq")
++        "qemumips64" | "qemush4"  | "qemuppc" | "qemumicroblaze" | "qemuzynq" | "vexpressa9")
+             [ -z "$MACHINE" ] && MACHINE=$arg || \
+                 error "conflicting MACHINE types [$MACHINE] and [$arg]"
+             ;;
+@@ -328,6 +328,9 @@ AKITA_DEFAULT_FSTYPE=jffs2
+ SPITZ_DEFAULT_KERNEL=zImage-spitz.bin
+ SPITZ_DEFAULT_FSTYPE=ext3
+ 
++VEXPRESSA9_DEFAULT_KERNEL=zImage-vexpressa9.bin
++VEXPRESSA9_DEFAULT_FSTYPE=ext3
++
+ setup_path_vars() {
+     if [ -z "$OE_TMPDIR" ] ; then
+         PATHS_REQUIRED=true
+diff --git a/scripts/runqemu-internal b/scripts/runqemu-internal
+index 38745dd..3c61203 100755
+--- a/scripts/runqemu-internal
++++ b/scripts/runqemu-internal
+@@ -65,6 +65,9 @@ else
+         "qemuzynq")
+             mem_size=1024
+             ;;
++        "vexpressa9")
++            mem_size=1024
++            ;;
+         *)
+             mem_size=64
+             ;;
+@@ -287,6 +290,7 @@ case "$MACHINE" in
+     "qemuzynq") ;;
+     "akita") ;;
+     "spitz") ;;
++    "vexpressa9") ;;
+     *)
+         echo "Error: Unsupported machine type $MACHINE"
+         return 1
+@@ -335,9 +339,16 @@ if [ "$FSTYPE" = "nfs" ]; then
+     NFSRUNNING="true"
+ fi
+ 
+-if [ "$MACHINE" = "qemuarm" -o "$MACHINE" = "qemuarmv6" -o "$MACHINE" = "qemuarmv7" ]; then
++if [ "$MACHINE" = "qemuarm" -o "$MACHINE" = "qemuarmv6" -o "$MACHINE" = "qemuarmv7" -o "$MACHINE" = "vexpressa9" ]; then
+     QEMU=qemu-system-arm
+-    MACHINE_SUBTYPE=versatilepb
++    #MACHINE_SUBTYPE=versatilepb
++    case "$MACHINE" in
++        "qemuarmv7")
++            MACHINE_SUBTYPE=vexpress-a9
++            ;;
++        *)
++            MACHINE_SUBTYPE=versatilepb
++    esac
+     export QEMU_AUDIO_DRV="none"
+     QEMU_UI_OPTIONS="$QEMU_UI_OPTIONS"
+     # QEMU_UI_OPTIONS="$QEMU_UI_OPTIONS -force-pointer"
+@@ -360,6 +371,29 @@ if [ "$MACHINE" = "qemuarm" -o "$MACHINE" = "qemuarmv6" -o "$MACHINE" = "qemuarm
+     if [ "$MACHINE" = "qemuarmv7" ]; then
+         QEMUOPTIONS="$QEMUOPTIONS -cpu cortex-a8"
+     fi
++
++    if [ "$MACHINE" = "vexpressa9" ]; then
++        QEMU=qemu-system-arm
++        MACHINE_SUBTYPE=vexpress-a9
++
++        # for now I disabled the rest of the UI stuff
++        #QEMU_UI_OPTIONS="$QEMU_UI_OPTIONS"
++        #QEMU_UI_OPTIONS="-show-cursor -usb -usbdevice wacom-tablet"
++        QEMU_UI_OPTIONS="-show-cursor "
++
++        export QEMU_AUDIO_DRV="none"
++        #SCRIPT_QEMU_OPT="$SCRIPT_QEMU_OPT -serial stdio "
++
++        if [ "$FSTYPE" = "ext3" ]; then
++            #KERNCMDLINE="root=/dev/mmcblk0 rw mem=1024M raid=noautodetect console=tty0 console=ttyAMA0,38400n8 rootwait vmalloc=256MB devtmpfs.mount=0"
++            #QEMUOPTIONS="$QEMU_NETWORK_CMD -M $MACHINE_SUBTYPE -cpu cortex-a9 -sd $IMGNAME"
++            KERNCMDLINE="root=/dev/mmcblk0 rw console=ttyAMA0,115200 console=tty rootwait $KERNEL_NETWORK_CMD mem=$QEMU_MEMORY highres=off"
++            QEMUOPTIONS="$QEMU_NETWORK_CMD -M vexpress-a9 -sd $ROOTFS -no-reboot $QEMU_UI_OPTIONS -cpu cortex-a9"
++            # Add
++            # -serial stdio
++            # To redirect serial to stdio
++        fi
++    fi
+ fi
+ 
+ if [ "$MACHINE" = "qemux86" ]; then

@@ -1,0 +1,12 @@
+diff --git a/meta/lib/oeqa/utils/qemurunner.py b/meta/lib/oeqa/utils/qemurunner.py
+index f1a7e24..89b2ec4 100644
+--- a/meta/lib/oeqa/utils/qemurunner.py
++++ b/meta/lib/oeqa/utils/qemurunner.py
+@@ -91,6 +91,7 @@ class QemuRunner:
+             self.qemuparams = self.qemuparams[:-1] + " " + qemuparams + " " + '\"'
+ 
+         launch_cmd = 'runqemu %s %s %s' % (self.machine, self.rootfs, self.qemuparams)
++        bb.note('runqemu %s %s %s' % (self.machine, self.rootfs, self.qemuparams))
+         self.runqemu = subprocess.Popen(launch_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,preexec_fn=os.setpgrp)
+ 
+         bb.note("runqemu started, pid is %s" % self.runqemu.pid)
