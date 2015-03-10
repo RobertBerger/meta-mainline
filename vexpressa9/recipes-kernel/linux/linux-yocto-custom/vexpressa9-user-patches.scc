@@ -1,0 +1,2 @@
+# PREEMPT-RT patchset - disabled by default
+#patch patches/rt/0001-rt-3.14-patchset.patch
