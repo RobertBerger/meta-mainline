@@ -1,18 +1,18 @@
-patch patches/dts/0001-arm-dts-am335x-boneblack-lcdc-add-panel-info.patch
-patch patches/dts/0002-arm-dts-am335x-boneblack-add-cpu0-opp-points.patch
-patch patches/dts/0003-arm-dts-am335x-bone-common-enable-and-use-i2c2.patch
-patch patches/dts/0004-arm-dts-am335x-bone-common-setup-default-pinmux-http.patch
-patch patches/fixes/0001-pinctrl-pinctrl-single-must-be-initialized-early.patch
-patch patches/usb/0001-usb-musb-musb_host-Enable-ISOCH-IN-handling-for-AM33.patch
-patch patches/usb/0002-usb-musb-musb_cppi41-Make-CPPI-aware-of-high-bandwid.patch
-patch patches/usb/0003-usb-musb-musb_cppi41-Handle-ISOCH-differently-and-no.patch
-patch patches/dts-bone/0001-arm-dts-am335x-bone-common-add-uart2_pins-uart4_pins.patch
-patch patches/dts-bone-capes/0001-capes-ttyO1-ttyO2-ttyO4.patch
-patch patches/dts-bone-capes/0002-capes-Makefile.patch
-patch patches/static-capes/0001-Added-Argus-UPS-cape-support.patch
-patch patches/static-capes/0002-Added-Argus-UPS-cape-support-BBW.patch
+#patch patches/dts/0001-arm-dts-am335x-boneblack-lcdc-add-panel-info.patch
+#patch patches/dts/0002-arm-dts-am335x-boneblack-add-cpu0-opp-points.patch
+#patch patches/dts/0003-arm-dts-am335x-bone-common-enable-and-use-i2c2.patch
+#patch patches/dts/0004-arm-dts-am335x-bone-common-setup-default-pinmux-http.patch
+#patch patches/fixes/0001-pinctrl-pinctrl-single-must-be-initialized-early.patch
+#patch patches/usb/0001-usb-musb-musb_host-Enable-ISOCH-IN-handling-for-AM33.patch
+#patch patches/usb/0002-usb-musb-musb_cppi41-Make-CPPI-aware-of-high-bandwid.patch
+#patch patches/usb/0003-usb-musb-musb_cppi41-Handle-ISOCH-differently-and-no.patch
+#patch patches/dts-bone/0001-arm-dts-am335x-bone-common-add-uart2_pins-uart4_pins.patch
+#patch patches/dts-bone-capes/0001-capes-ttyO1-ttyO2-ttyO4.patch
+#patch patches/dts-bone-capes/0002-capes-Makefile.patch
+#patch patches/static-capes/0001-Added-Argus-UPS-cape-support.patch
+#patch patches/static-capes/0002-Added-Argus-UPS-cape-support-BBW.patch
 # Ubuntu Saucy: so Ubuntu decided to enable almost every Warning -> Error option...
-patch patches/saucy/0001-saucy-disable-Werror-pointer-sign.patch
-patch patches/saucy/0002-saucy-error-variable-ilace-set-but-not-used-Werror-u.patch
+#patch patches/saucy/0001-saucy-disable-Werror-pointer-sign.patch
+#patch patches/saucy/0002-saucy-error-variable-ilace-set-but-not-used-Werror-u.patch
 # PREEMPT-RT patchset - disabled by default
 #patch patches/rt/0001-rt-3.14-patchset.patch
