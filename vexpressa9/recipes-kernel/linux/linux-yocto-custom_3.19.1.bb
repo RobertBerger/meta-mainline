@@ -76,3 +76,32 @@ PR = "r0"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
 COMPATIBLE_MACHINE_vexpressa9 = "vexpressa9"
+
+# --> dtb symlink for qemu: 
+
+do_deploy_append() {
+        if test -n "${KERNEL_DEVICETREE}"; then
+                for DTB in ${KERNEL_DEVICETREE}; do
+                        if echo ${DTB} | grep -q '/dts/'; then
+                                bbwarn "${DTB} contains the full path to the the dts file, but only the dtb name should be used."
+                                DTB=`basename ${DTB} | sed 's,\.dts$,.dtb,g'`
+                        fi
+                        DTB_BASE_NAME=`basename ${DTB} .dtb`
+                        DTB_NAME=`echo ${KERNEL_IMAGE_BASE_NAME} | sed "s/${MACHINE}/${DTB_BASE_NAME}/g"`
+                        #DTB_SYMLINK_NAME=`echo ${KERNEL_IMAGE_SYMLINK_NAME} | sed "s/${MACHINE}/${DTB_BASE_NAME}/g"`
+                        DTB_PATH="${B}/arch/${ARCH}/boot/dts/${DTB}"
+                        if [ ! -e "${DTB_PATH}" ]; then
+                                DTB_PATH="${B}/arch/${ARCH}/boot/${DTB}"
+                        fi
+                        install -d ${DEPLOYDIR}
+                        install -m 0644 ${DTB_PATH} ${DEPLOYDIR}/${DTB_NAME}.dtb
+                        cd ${DEPLOYDIR}
+                        # qemu wants the dtb file with this symlink:
+                        ln -sf ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
+                        cd -
+                done
+        fi
+}
+
+# <-- dtb symlink for qemu
+
