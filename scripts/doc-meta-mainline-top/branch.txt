@@ -1,8 +1,8 @@
 cd /home/rber/projects/meta-mainline-top/meta-mainline-test
 
 # create a new branch
-git co dora-armv7-multiplatform-v3.13.x
-git branch dora-linux-dev-v3.13.x
+git co dizzy-training-v3.19.x
+git branch fido-training-v3.19.x
 git branch -a
 
 # back to master
@@ -11,14 +11,14 @@ git branch -a
 
 # create the folder, which matches the branch
 cd /home/rber/projects/meta-mainline-top
-./meta-mainline-test/bin/create-branch-build.sh meta-mainline-test/ . dora-linux-dev-v3.13.x
+./meta-mainline-test/bin/create-branch-build.sh meta-mainline-test/ . fido-training-v3.19.x
 
 # in order to be able to pull it over from meta-mainline-test you also need to create a branch 
 # . with the same name in meta-mainline
 
 cd /home/rber/projects/meta-mainline/
-git co dora-armv7-multiplatform-v3.13.x
-git branch dora-linux-dev-v3.13.x
+git co fido-training-v3.19.x
+git branch fido-training-v3.19.x
 git branch -a
 git co master
 git branch 
