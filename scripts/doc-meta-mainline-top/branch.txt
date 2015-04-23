@@ -17,7 +17,7 @@ cd /home/rber/projects/meta-mainline-top
 # . with the same name in meta-mainline
 
 cd /home/rber/projects/meta-mainline/
-git co fido-training-v3.19.x
+git co dizzy-training-v3.19.x
 git branch fido-training-v3.19.x
 git branch -a
 git co master
