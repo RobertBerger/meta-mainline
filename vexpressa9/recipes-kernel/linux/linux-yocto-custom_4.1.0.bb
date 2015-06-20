@@ -58,7 +58,7 @@ SRC_URI += "file://vexpressa9.scc \
 
 KBRANCH = "master"
 
-LINUX_VERSION ?= "4.1"
+LINUX_VERSION ?= "4.1.0"
 LINUX_VERSION_EXTENSION ?= "-rc8"
 
 
