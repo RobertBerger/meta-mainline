@@ -56,20 +56,19 @@ SRC_URI += "file://vexpressa9.scc \
             file://vexpressa9-user-patches.scc \
            "
 
-KBRANCH = "master"
+KBRANCH = "linux-4.1.y"
 
 LINUX_VERSION ?= "4.1.0"
-LINUX_VERSION_EXTENSION ?= "-rc8"
+LINUX_VERSION_EXTENSION ?= ""
 
+# author	Linus Torvalds <torvalds@linux-foundation.org>	2015-06-22 05:05:43 (GMT)
+# committer	Linus Torvalds <torvalds@linux-foundation.org>	2015-06-22 05:05:43 (GMT)
+# commit	b953c0d234bc72e8489d3bf51a276c5c4ec85345 (patch)
+# tree		862523724661a2344bbbce7812081bf29950c371
+# parent	d2228e4310612a1289c343bcf819831a74ae0366 (diff)
+# Linux 4.1 HEAD v4.1 master linux-4.1.y
 
-# author	Linus Torvalds <torvalds@linux-foundation.org>	2015-06-15 01:51:10 (GMT)
-# committer	Linus Torvalds <torvalds@linux-foundation.org>	2015-06-15 01:51:10 (GMT)
-# commit	0f57d86787d8b1076ea8f9cbdddda2a46d534a27 (patch)
-# tree		c03cb795255578ce7787a09ab9deb93d70d6e345
-# parent	b86a7563ca617aa49dfd6b836da4dd0351fe2acc (diff)
-# Linux 4.1-rc8 HEADv4.1-rc8 master
-
-SRCREV="0f57d86787d8b1076ea8f9cbdddda2a46d534a27"
+SRCREV="b953c0d234bc72e8489d3bf51a276c5c4ec85345"
 # looks like we need to update SRCREV_machine not to get latest in the branch, but specific SRCREV 
 SRCREV_machine = "${SRCREV}"
 
