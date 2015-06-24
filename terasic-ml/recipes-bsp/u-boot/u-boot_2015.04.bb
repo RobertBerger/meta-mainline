@@ -1,7 +1,7 @@
 require recipes-bsp/u-boot/u-boot.inc
 require u-boot-ti.inc
 
-SPL_BINARY = "MLO"
+SPL_BINARY = ""
 
 # To build u-boot for your machine, provide the following lines in
 # your machine config, replacing the assignments as appropriate for
