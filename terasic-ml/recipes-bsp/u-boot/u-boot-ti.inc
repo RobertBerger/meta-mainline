@@ -15,6 +15,8 @@ SRC_URI += "file://readme-terasic.txt"
 
 S = "${WORKDIR}/git"
 
+EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}" V=1'
+
 UBOOT_SUFFIX = "img"
 
 # SPL (Second Program Loader) to be loaded over UART
