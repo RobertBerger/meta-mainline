@@ -1,0 +1,2 @@
+patch patches/dts/0001-ARM-dts-Add-support-for-phyCORE-AM335x-SoM.patch  
+patch patches/dts/0002-ARM-dts-Add-phyBOARD-WEGA-AM335x-rdk.patch
