@@ -78,7 +78,7 @@ PV = "${LINUX_VERSION}+git${SRCPV}"
 
 COMPATIBLE_MACHINE_vexpressa9 = "vexpressa9"
 
-# --> dtb symlink for qemu: 
+# --> dtb symlink for qemu, fix for Y-AB 
 
 do_deploy_append() {
         if test -n "${KERNEL_DEVICETREE}"; then
@@ -96,15 +96,19 @@ do_deploy_append() {
                         fi
                         install -d ${DEPLOYDIR}
                         install -m 0644 ${DTB_PATH} ${DEPLOYDIR}/${DTB_NAME}.dtb
+                        # --> to make autobuilder happy "Publishing Artifacts"
+                        install -m 0644 ${DTB_PATH} ${DEPLOYDIR}/${DTB_NAME}-${COMPATIBLE_MACHINE}.dtb
+                        # <-- to make autobuilder happy "Publishing Artifacts"
                         cd ${DEPLOYDIR}
                         # qemu wants the dtb file with this symlink:
-                        # ln -sf ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
-                        # autobuilder wants this to be a real file and not a symlink for "Publishing Artifacts"
-                        cp ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb ${DTB_NAME}.dtb
+                        ln -sf ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
+                        # --> to make autobuilder happy "Publishing Artifacts"
+                        ln -sf ${DTB_NAME}-${COMPATIBLE_MACHINE}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.dtb
+                        # <-- to make autobuilder happy "Publishing Artifacts"
                         cd -
                 done
         fi
 }
 
-# <-- dtb symlink for qemu
+# <-- dtb symlink for qemu, fix for Y-AB
 
