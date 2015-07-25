@@ -100,7 +100,7 @@ do_deploy_append() {
                         # qemu wants the dtb file with this symlink:
                         # ln -sf ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
                         # autobuilder wants this to be a real file and not a symlink for "Publishing Artifacts"
-                        cp ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
+                        cp ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb ${DTB_NAME}.dtb
                         cd -
                 done
         fi
