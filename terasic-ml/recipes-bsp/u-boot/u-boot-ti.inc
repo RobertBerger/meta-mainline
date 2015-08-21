@@ -2,11 +2,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot:"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PROVIDES += "u-boot"
-PKG_${PN} = "u-boot"
-PKG_${PN}-dev = "u-boot-dev"
-PKG_${PN}-dbg = "u-boot-dbg"
-
 # extra scripts and readme
 SRC_URI = "file://mkcard-terasic.sh"
 SRC_URI += "file://mmc-core-image-minimal-dev-terasic.sh"
@@ -24,12 +19,30 @@ SPL_UART_BINARY ?= ""
 SPL_UART_IMAGE ?= "${SPL_UART_BINARY}-${MACHINE}-${PV}-${PR}"
 SPL_UART_SYMLINK ?= "${SPL_UART_BINARY}-${MACHINE}"
 
+
+# Altera preloader generator
+PRELOADER_BINARY = "preloader-mkpimage"
+PRELOADER_SUFFIX = "bin"
+PRELOADER_IMAGE = "${PRELOADER_BINARY}-${MACHINE}-${PV}-${PR}.${PRELOADER_SUFFIX}"
+PRELOADER_SYMLINK = "${PRELOADER_BINARY}-${MACHINE}.${PRELOADER_SUFFIX}"
+
+do_compile_append () {
+    /development/tools/altera/15.0/embedded/host_tools/altera/mkpimage/mkpimage \
+        --header-version 0 \
+        -o ${PRELOADER_IMAGE} \
+        ${S}/spl/u-boot-spl.bin ${S}/spl/u-boot-spl.bin ${S}/spl/u-boot-spl.bin ${S}/spl/u-boot-spl.bin
+}
+
 do_install_append () {
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
         install ${S}/spl/${SPL_UART_BINARY} ${D}/boot/${SPL_UART_IMAGE}
         ln -sf ${SPL_UART_IMAGE} ${D}/boot/${SPL_UART_BINARY}
     fi
+
+    install ${S}/${PRELOADER_IMAGE} ${D}/boot/${PRELOADER_IMAGE}
+    ln -sf ${PRELOADER_IMAGE} ${D}/boot/${PRELOADER_SYMLINK}
+
 }
 
 do_deploy_append () {
@@ -46,4 +59,8 @@ do_deploy_append () {
         ln -sf ${SPL_UART_IMAGE} ${DEPLOYDIR}/${SPL_UART_BINARY}
         ln -sf ${SPL_UART_IMAGE} ${DEPLOYDIR}/${SPL_UART_SYMLINK}
     fi
+
+    install ${S}/${PRELOADER_IMAGE} ${DEPLOYDIR}/${PRELOADER_IMAGE}
+    ln -sf ${PRELOADER_IMAGE} ${DEPLOYDIR}/${PRELOADER_SYMLINK}
+
 }
