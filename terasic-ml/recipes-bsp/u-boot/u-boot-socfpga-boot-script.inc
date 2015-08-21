@@ -5,7 +5,7 @@
 SRC_URI += "file://aux-boot-script.txt"
 
 # Destination to be used by Build system
-UBOOT_ENV = "u-boot-altera"
+UBOOT_ENV = "u-boot"
 UBOOT_ENV_SUFFIX = "scr"
 ###########################################################
 
