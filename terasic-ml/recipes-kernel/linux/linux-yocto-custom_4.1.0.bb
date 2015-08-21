@@ -98,6 +98,8 @@ do_deploy_append() {
                         cd ${DEPLOYDIR}
                         # qemu wants the dtb file with this symlink:
                         ln -sf ${DTB_NAME}.dtb ${KERNEL_IMAGETYPE}-${COMPATIBLE_MACHINE}.bin-${COMPATIBLE_MACHINE}.dtb
+			# and image generation script wants this:
+                        ln -sf ${DTB_NAME}.dtb socfpga.dtb
                         cd -
                 done
         fi
