@@ -14,4 +14,5 @@ kconf hardware multi-v7-ml.cfg
 # Don't remove if you plan on using yocto-kernel with this BSP.
 
 kconf hardware multi-v7-ml-user-config.cfg
-include multi-v7-ml-user-patches.scc
+# if I include it here as well patching fails, since it's done twize
+#include multi-v7-ml-user-patches.scc
