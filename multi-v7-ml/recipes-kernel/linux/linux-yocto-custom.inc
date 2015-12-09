@@ -35,14 +35,19 @@ require recipes-kernel/linux/linux-yocto.inc
 # Jethro wants it this way:
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;branch=${KBRANCH}"
 
-SRC_URI += " \
-        file://defconfig \
-        "
+#SRC_URI += " \
+#        file://defconfig \
+#        "
 SRC_URI += "file://multi-v7-ml.scc \
             file://multi-v7-ml.cfg \
             file://multi-v7-ml-user-config.cfg \
             file://multi-v7-ml-user-patches.scc \
            "
+
+# Let's try an in-tree defconfig:
+KERNEL_DEFCONFIG_multi-v7-ml ?= "multi_v7_defconfig"
+KBUILD_DEFCONFIG_multi-v7-ml ?= "multi_v7_defconfig"
+KCONFIG_MODE="--alldefconfig"
 
 LINUX_VERSION_EXTENSION_append = "-custom"
 
