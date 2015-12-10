@@ -43,6 +43,10 @@ SRC_URI += "file://multi-v7-ml.scc \
             file://multi-v7-ml-user-config.cfg \
             file://multi-v7-ml-user-patches.scc \
            "
+#SRC_URI += "file://ikconfig.cfg \
+#           "
+
+require recipes-kernel/linux/cfg.inc
 
 # Let's try an in-tree defconfig:
 KERNEL_DEFCONFIG_multi-v7-ml ?= "multi_v7_defconfig"
