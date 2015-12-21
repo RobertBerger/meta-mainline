@@ -28,37 +28,34 @@
 #            SRC_URI += "file://feature.scc"
 #
 
-inherit kernel
-require recipes-kernel/linux/linux-yocto.inc
+# This version extension should match CONFIG_LOCALVERSION in defconfig
+LINUX_VERSION_EXTENSION ?= "-custom-ml-${KTYPE}"
+PV = "${LINUX_VERSION}${LINUX_VERSION_EXTENSION}+git${SRCPV}"
 
-# SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;bareclone=1;branch=${KBRANCH}"
-# Jethro wants it this way:
-SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;branch=${KBRANCH}"
+# Sources, by default allow for the use of SRCREV pointing to orphaned tags/commits
+#SRCBRANCH ?= ""
+#SRCBRANCHARG = "${@['nobranch=1', 'branch=${SRCBRANCH}'][d.getVar('SRCBRANCH', True) != '']}"
 
 #SRC_URI += " \
-#        file://defconfig \
-#        "
-SRC_URI += "file://multi-v7-ml.scc \
-            file://multi-v7-ml.cfg \
-            file://multi-v7-ml-user-config.cfg \
-            file://multi-v7-ml-user-patches.scc \
-           "
-#SRC_URI += "file://ikconfig.cfg \
+#             git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;branch=${KBRANCH};${SRCBRANCHARG} \
+#             file://multi-v7-ml-common;type=kmeta;destsuffix=multi-v7-ml-common \
 #           "
 
-require recipes-kernel/linux/cfg.inc
+SRC_URI += "\
+           git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;protocol=git;branch=${KBRANCH} \
+           file://multi-v7-ml-common;type=kmeta;destsuffix=multi-v7-ml-common \
+           "
+
+SRCREV_machine ?= "${SRCREV}"
+
+require recipes-kernel/linux/linux-yocto.inc
+
+DESCRIPTION = "Mainline kernel"
+
+require linux-ml-configs.inc
+require linux-ml-machines.inc
 
 # Let's try an in-tree defconfig:
 KERNEL_DEFCONFIG_multi-v7-ml ?= "multi_v7_defconfig"
 KBUILD_DEFCONFIG_multi-v7-ml ?= "multi_v7_defconfig"
 KCONFIG_MODE="--alldefconfig"
-
-LINUX_VERSION_EXTENSION_append = "-custom"
-
-# looks like we need to update SRCREV_machine not to get latest in the branch, but specific SRCREV 
-SRCREV_machine = "${SRCREV}"
-
-#PR = "r0"
-PV = "${LINUX_VERSION}+git${SRCPV}"
-
-COMPATIBLE_MACHINE_multi-v7-ml = "multi-v7-ml"

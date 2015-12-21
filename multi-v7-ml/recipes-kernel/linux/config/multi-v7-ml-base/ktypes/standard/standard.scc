@@ -1,0 +1,7 @@
+# Standard multi-v7-ml base configuration
+
+kconf non-hardware standard.cfg
+
+# Add the features/configs below which you want
+# to include in the "standard" kernel
+include features/ikconfig/ikconfig.scc
