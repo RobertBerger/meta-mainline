@@ -1,8 +1,8 @@
 define KMACHINE multi-v7-ml
-define KTYPE debug
+define KTYPE not-smp-deb
 define KARCH arm
 
-include ktypes/debug/debug.scc
+include ktypes/not-smp-deb/not-smp-deb.scc
 
 #include bsp/xilinx/soc/zynq.scc
 

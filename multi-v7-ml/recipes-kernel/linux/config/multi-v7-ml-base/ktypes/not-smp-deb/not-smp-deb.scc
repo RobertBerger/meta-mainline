@@ -1,0 +1,9 @@
+# Not smp Debug multi-v7-ml base configuration
+
+kconf non-hardware not-smp-deb.cfg
+
+# Add the features/configs below which you want
+# to include in the "not smp debug" kernel
+# --> in not smp debug kernel
+include features/latencytop/latencytop.scc
+# <-- in not smp debug kernel
