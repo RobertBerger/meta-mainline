@@ -10,4 +10,5 @@ include features/posix-mqueue/posix-mqueue.scc
 # <-- also in standard kernel
 # --> in debug kernel
 include features/oprofile/oprofile.scc
+include features/bootchart/bootchart.scc
 # <-- in debug kernel
