@@ -6,4 +6,5 @@ RRECOMMENDS_${PN}_append = "\
 
 PROFILETOOLS_append = "\
     oprofile \
+    bootchart2 \
     "
