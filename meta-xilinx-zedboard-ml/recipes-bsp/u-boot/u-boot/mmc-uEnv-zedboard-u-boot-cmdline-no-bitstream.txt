@@ -1,0 +1,37 @@
+---> no bitstream
+setenv hostname zedboard
+
+setenv kernel_addr_r 0x3000000
+setenv expand_bootfile_sd 'setenv bootfile_sd uImage'
+
+setenv fdt_addr_r 0x2a00000
+setenv expand_fdtfile_sd 'setenv fdtfile_sd zedboard-zynq7.dtb'
+
+setenv kernel_mmcload 'load mmc 0:1 ${kernel_addr_r} ${bootfile_sd}'
+
+setenv fdt_mmcload 'load mmc 0:1 ${fdt_addr_r} ${fdtfile_sd}'
+
+setenv bootargs 'console=ttyPS0,115200'
+
+setenv mmcroot '/dev/mmcblk0p2 rw'
+setenv mmcrootfstype 'rootfstype=ext4 rootwait earlyprintk'
+#setenv mmcrootfstype 'rootwait earlyprintk'
+setenv mmc_to_bootargs 'setenv bootargs ${bootargs} root=${mmcroot} ${mmcrootfstype}'
+
+setenv mmcboot 'echo Booting from mmc...; run mmc_to_bootargs'
+
+setenv compose_mmcboot 'run mmcboot'
+
+setenv mmcload 'run kernel_mmcload fdt_mmcload'
+
+#setenv compose_default 'run expand_bistream_sd; echo bitstream_sd: ${bitstream_sd}; run expand_bootfile_sd; echo bootfile_sd: ${bootfile_sd}; run expand_fdtfile_sd; echo fdtfile: ${fdtfile_sd}'
+
+setenv compose_default 'run expand_bootfile_sd; echo bootfile_sd: ${bootfile_sd}; run expand_fdtfile_sd; echo fdtfile: ${fdtfile_sd}'
+
+#setenv uenvcmd 'run compose_default; run bitstream_mmcload_fpgaload; run mmcload; run compose_mmcboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}'
+setenv uenvcmd 'run compose_default; run mmcload; run compose_mmcboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}'
+
+run uenvcmd
+
+<--- no bitstream
+

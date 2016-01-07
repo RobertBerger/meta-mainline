@@ -3,13 +3,15 @@ hostname=zedboard
 kernel_addr_r=0x3000000
 expand_bootfile_sd=setenv bootfile_sd uImage
 
-fdt_addr_r=0x2A00000
+fdt_addr_r=0x2a00000
 expand_fdtfile_sd=setenv fdtfile_sd zedboard-zynq7.dtb
 
 # this needs to be loaded from mmc and into fpga before the kernel, 
 # .since I use the same address with the kernel
-bitstream_addr_r=0x3000000
-expand_bistream_sd=setenv bitstream_sd gpio.bin
+# .try also: 0x100000
+#bitstream_addr_r=0x3000000
+bitstream_addr_r=0x100000
+expand_bistream_sd=setenv bitstream_sd fpga.bin
 
 # --> uImage from mmc
 kernel_mmcload=load mmc 0:1 ${kernel_addr_r} ${bootfile_sd}
@@ -20,7 +22,7 @@ fdt_mmcload=load mmc 0:1 ${fdt_addr_r} ${fdtfile_sd}
 # <-- fdt from mmc
 
 # --> bistream from mmc
-bitstream_mmcload_fpgaload=load mmc 0:1 ${bitstream_addr_r} ${bitstream_sd}; fpga load 0 ${bitstream_addr_r} ${filesize}
+bitstream_mmcload_fpgaload=if load mmc 0:1 ${bitstream_addr_r} ${bitstream_sd}; then fpga load 0 ${bitstream_addr_r} ${filesize}
 # <-- bitstream from mmc
 
 # --> generic bootargs
@@ -30,7 +32,7 @@ bootargs=console=ttyPS0,115200
 
 # --> rootfs from mmcblk0p2
 mmcroot=/dev/mmcblk0p2 rw
-mmcrootfstype=ext3 rootwait earlyprintk
+mmcrootfstype=ext4 rootwait earlyprintk
 mmc_to_bootargs=setenv bootargs ${bootargs} root=${mmcroot} rootfstype=${mmcrootfstype}
 
 mmcboot=echo Booting from mmc...; run mmc_to_bootargs
