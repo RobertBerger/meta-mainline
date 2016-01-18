@@ -3,18 +3,18 @@
 
 require recipes-kernel/linux/linux-yocto-custom.inc
 
-KBRANCH = "master"
+KBRANCH = "linux-4.4.y"
 
-LINUX_VERSION = "4.4-rc5"
+LINUX_VERSION = "4.4"
 
-# author        Linus Torvalds <torvalds@linux-foundation.org>  2015-12-14 01:42:58 (GMT)
-# committer     Linus Torvalds <torvalds@linux-foundation.org>  2015-12-14 01:42:58 (GMT)
-# commit        9f9499ae8e6415cefc4fe0a96ad0e27864353c89 (patch)
-# tree          79c89eb2e0d05f5be3140571cd79ba44606b165d
-# parent        dfd01f026058a59a513f8a365b439a0681b803af (diff)
-# Linux 4.4-rc5 HEAD v4.4-rc5 master
+# author	Linus Torvalds <torvalds@linux-foundation.org>	2016-01-10 23:01:32 (GMT)
+# committer	Linus Torvalds <torvalds@linux-foundation.org>	2016-01-10 23:01:32 (GMT)
+# commit	afd2ff9b7e1b367172f18ba7f693dfb62bdcb2dc (patch)
+# tree		0cba53f59f487c0de2b1a0d9fb1b11ae27de96ec
+# parent	eac6f76ac72c0a7e6f6d4f1640be751a526b5de2 (diff)
+# Linux 4.4 HEAD v4.4 master linux-4.4.y
 
-SRCREV ?= "9f9499ae8e6415cefc4fe0a96ad0e27864353c89"
+SRCREV ?= "afd2ff9b7e1b367172f18ba7f693dfb62bdcb2dc"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/patch/4.4.x:"
 
