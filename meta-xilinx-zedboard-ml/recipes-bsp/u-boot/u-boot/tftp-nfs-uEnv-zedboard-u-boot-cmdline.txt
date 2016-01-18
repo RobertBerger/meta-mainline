@@ -65,3 +65,11 @@ setenv uenvcmd 'run compose_default; run netload; run compose_nfsboot; printe bo
 run uenvcmd
 
 ---------
+
+to make it permanent:
+
+setenv bootcmd 'run uenvcmd'
+saveenv
+boot
+
+---------
