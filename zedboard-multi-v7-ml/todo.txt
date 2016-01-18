@@ -1,0 +1,20 @@
+packagegroup debug:
+  add procrank
+
+packagegroup profile:
+ add ktap
+
+packagegroup-nativesdk? 
+ add bootchart2-native
+
+----
+
+xenomai kernel 
+xenomai user space
+
+----
+
+preempt-rt kernel
+
+----
+

@@ -1,0 +1,13 @@
+# --> Phyboard WEGA dts patches (are mainline in 4.4.x)
+# patch patches/phyBOARD-WEGA/dts/0001-ARM-dts-Add-support-for-phyCORE-AM335x-SoM.patch
+# patch patches/phyBOARD-WEGA/dts/0002-ARM-dts-Add-phyBOARD-WEGA-AM335x-rdk.patch
+# <-- Phyboard WEGA dts patches (are mainline in 4.4.x)
+# --> Sunxi A20: clocksource hstimer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns:
+#patch patches/sun7i-a20/dts/0001-Update-ahb-clocks-for-sun7i-a20.patch
+# <---Sunxi A20: clocksource hstimer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns:
+# --> zedboard-zynq7
+patch patches/zedboard-zynq7/dts/0001-zedboard-zynq-zynq7-base.dtsi.patch
+patch patches/zedboard-zynq7/dts/0002-zedboard-zynq-zedboard-zynq7-board.dtsi.patch
+patch patches/zedboard-zynq7/dts/0003-zedboard-zynq-zedboard-zynq7.dts.patch
+patch patches/zedboard-zynq7/dts/0004-attempt-with-fdt-leds.patch
+# <-- zedboard-zynq7

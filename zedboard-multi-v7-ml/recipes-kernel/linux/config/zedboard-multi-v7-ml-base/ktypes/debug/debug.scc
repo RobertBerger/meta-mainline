@@ -1,0 +1,14 @@
+# Debug zedboard-multi-v7-ml base configuration
+
+kconf non-hardware debug.cfg
+
+# Add the features/configs below which you want
+# to include in the "debug" kernel
+# --> also in standard kernel
+include features/ikconfig/ikconfig.scc
+include features/posix-mqueue/posix-mqueue.scc
+# <-- also in standard kernel
+# --> in debug kernel
+include features/oprofile/oprofile.scc
+include features/bootchart/bootchart.scc
+# <-- in debug kernel

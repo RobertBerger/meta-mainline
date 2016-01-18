@@ -1,0 +1,8 @@
+# Preempt-rt zedboard-multi-v7-ml base configuration
+
+kconf non-hardware preempt-rt.cfg
+
+# Add the features/configs below which you want
+# to include in the "preempt-rt" kernel
+include features/ikconfig/ikconfig.scc
+include features/posix-mqueue/posix-mqueue.scc
