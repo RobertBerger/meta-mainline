@@ -1,0 +1,26 @@
+From 55d438f2b6ce2aab075fe7903cf43e3851840d2d Mon Sep 17 00:00:00 2001
+From: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+Date: Mon, 18 Jan 2016 12:29:32 +0200
+Subject: [PATCH] enable QSPI
+
+Signed-off-by: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+---
+ include/configs/zynq-common.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/zynq-common.h b/include/configs/zynq-common.h
+index 0ab6083..a844062 100644
+--- a/include/configs/zynq-common.h
++++ b/include/configs/zynq-common.h
+@@ -199,6 +199,8 @@
+ #ifndef CONFIG_ENV_IS_NOWHERE
+ # ifndef CONFIG_SYS_NO_FLASH
+ #  define CONFIG_ENV_IS_IN_FLASH
++# elif defined(CONFIG_ZYNQ_QSPI)
++#  define CONFIG_ENV_IS_IN_SPI_FLASH
+ # elif defined(CONFIG_SYS_NO_FLASH)
+ #  define CONFIG_ENV_IS_NOWHERE
+ # endif
+-- 
+1.9.1
+
