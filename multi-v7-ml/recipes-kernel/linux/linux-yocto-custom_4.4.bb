@@ -16,12 +16,14 @@ LINUX_VERSION = "4.4"
 
 SRCREV ?= "afd2ff9b7e1b367172f18ba7f693dfb62bdcb2dc"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/patch/4.4.x:"
+PATCHPATH="${THISDIR}/patch/4.4.x"
+
+FILESEXTRAPATHS_prepend := "${PATCHPATH}:"
 
 SRC_URI += "\
            file://multi-v7-ml-user-patches.scc \
            "
 SRC_URI_append += " \
-                file://patches;type=kmeta;destsuffix=patches \
+                file://${PATCHPATH}/patches;type=kmeta;destsuffix=patches \
                 "
 
