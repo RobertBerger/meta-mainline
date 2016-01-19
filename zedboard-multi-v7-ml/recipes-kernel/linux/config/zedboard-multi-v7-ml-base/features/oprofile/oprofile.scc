@@ -1,4 +1,0 @@
-define KFEATURE_DESCRIPTION "Enable oprofile support"
-define KFEATURE_COMPATIBILITY all
-
-kconf non-hardware oprofile.cfg

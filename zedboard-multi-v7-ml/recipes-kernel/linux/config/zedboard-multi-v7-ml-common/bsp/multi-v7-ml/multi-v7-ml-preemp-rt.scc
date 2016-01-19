@@ -1,5 +1,0 @@
-define KMACHINE zedboard-multi-v7-ml
-define KTYPE preempt-rt
-define KARCH arm
-
-include ktypes/preempt-rt/preempt-rt.scc

@@ -1,4 +1,0 @@
-define KFEATURE_DESCRIPTION "Enable bootchart support"
-define KFEATURE_COMPATIBILITY all
-
-kconf non-hardware bootchart.cfg
