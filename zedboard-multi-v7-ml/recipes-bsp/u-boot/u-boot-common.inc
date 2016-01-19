@@ -1,6 +1,8 @@
 require recipes-bsp/u-boot/u-boot.inc
 require u-boot-zynq.inc
 
+DEPENDS += "dtc-native"
+
 SPL_BINARY = "boot.bin"
 
 # To build u-boot for your machine, provide the following lines in
