@@ -3,7 +3,7 @@ require u-boot-ti.inc
 
 DEPENDS += "dtc-native"
 
-SPL_BINARY = "boot.bin"
+SPL_BINARY = "MLO"
 
 PROVIDES += "u-boot"
 
