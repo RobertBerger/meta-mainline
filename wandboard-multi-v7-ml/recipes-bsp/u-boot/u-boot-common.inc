@@ -10,7 +10,7 @@ PROVIDES += "u-boot"
 SRC_URI += "git://git.denx.de/u-boot.git;branch=master;protocol=git"
 
 # u-boot patches
-SRC_URI += "file://0001-enable-uEnv.txt_2016.01.patch"
+#SRC_URI += "file://0001-enable-uEnv.txt_2016.01.patch"
 
 S = "${WORKDIR}/git"
 
