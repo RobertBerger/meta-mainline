@@ -15,7 +15,7 @@ SRC_URI += "file://readme-wandboard.txt"
 
 S = "${WORKDIR}/git"
 
-#UBOOT_SUFFIX = "img"
+UBOOT_SUFFIX = "img"
 
 do_deploy_append () {
 # deploy scripts for sd card

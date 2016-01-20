@@ -3,7 +3,7 @@ require u-boot-fsl.inc
 
 DEPENDS += "dtc-native"
 
-#SPL_BINARY = "MLO"
+SPL_BINARY = "SPL"
 
 PROVIDES += "u-boot"
 
