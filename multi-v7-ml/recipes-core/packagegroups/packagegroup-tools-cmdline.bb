@@ -14,4 +14,5 @@ RDEPENDS_packagegroup-tools-cmdline = "\
     pv \
     tree \
     vim \
+    timelimit \
     "
