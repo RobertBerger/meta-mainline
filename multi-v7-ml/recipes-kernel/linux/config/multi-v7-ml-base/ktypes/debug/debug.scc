@@ -12,4 +12,7 @@ include features/posix-mqueue/posix-mqueue.scc
 include features/oprofile/oprofile.scc
 include features/bootchart/bootchart.scc
 include features/ftrace/ftrace.scc
+include features/kprobes/kprobes.scc
+include features/dyndebug/dyndebug.scc
+include features/lockdeb/lockdeb.scc
 # <-- in debug kernel
