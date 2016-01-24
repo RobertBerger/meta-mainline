@@ -15,4 +15,5 @@ include features/ftrace/ftrace.scc
 include features/kprobes/kprobes.scc
 include features/dyndebug/dyndebug.scc
 include features/lockdeb/lockdeb.scc
+include features/debinfo/debinfo.scc
 # <-- in debug kernel
