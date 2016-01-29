@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Enable ramdisk support"
+define KFEATURE_COMPATIBILITY all
+
+kconf non-hardware ramdisk.cfg

@@ -6,3 +6,4 @@ kconf non-hardware standard.cfg
 # to include in the "standard" kernel
 include features/ikconfig/ikconfig.scc
 include features/posix-mqueue/posix-mqueue.scc
+include features/ramdisk/ramdisk.scc

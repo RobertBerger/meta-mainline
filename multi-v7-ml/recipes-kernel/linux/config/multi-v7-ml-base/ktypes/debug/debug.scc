@@ -7,6 +7,7 @@ kconf non-hardware debug.cfg
 # --> also in standard kernel
 include features/ikconfig/ikconfig.scc
 include features/posix-mqueue/posix-mqueue.scc
+include features/ramdisk/ramdisk.scc
 # <-- also in standard kernel
 # --> in debug kernel
 include features/oprofile/oprofile.scc
