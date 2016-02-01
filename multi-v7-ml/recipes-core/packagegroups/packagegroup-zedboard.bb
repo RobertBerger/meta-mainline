@@ -12,4 +12,5 @@ PACKAGES = "\
 
 RDEPENDS_packagegroup-zedboard = "\
     force-usb-power \
+    xilinx-dma \
     "
