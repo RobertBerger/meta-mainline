@@ -10,5 +10,5 @@ SRCREV = "fa85e826c16b9ce1ad302a57e9c4b24db0d8b930"
 FILESEXTRAPATHS_prepend := "${THISDIR}/patch/2016.01:"
 
 SRC_URI += "\
-           file://zedboard/0001-enable-QSPI.patch \
+           file://zedboard/0001-QSPI-uEnv.txt-from-SD-card.patch \
            "

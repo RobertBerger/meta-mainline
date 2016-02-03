@@ -1,0 +1,69 @@
+From 1602b49c827fb1a44950317c4e177683c9000843 Mon Sep 17 00:00:00 2001
+From: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+Date: Wed, 3 Feb 2016 21:58:05 +0200
+Subject: [PATCH] QSPI uEnv.txt from SD card
+
+Signed-off-by: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+---
+ include/configs/zynq-common.h | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/include/configs/zynq-common.h b/include/configs/zynq-common.h
+index 0ab6083..391850c 100644
+--- a/include/configs/zynq-common.h
++++ b/include/configs/zynq-common.h
+@@ -199,6 +199,8 @@
+ #ifndef CONFIG_ENV_IS_NOWHERE
+ # ifndef CONFIG_SYS_NO_FLASH
+ #  define CONFIG_ENV_IS_IN_FLASH
++# elif defined(CONFIG_ZYNQ_QSPI)
++#  define CONFIG_ENV_IS_IN_SPI_FLASH
+ # elif defined(CONFIG_SYS_NO_FLASH)
+ #  define CONFIG_ENV_IS_NOWHERE
+ # endif
+@@ -207,6 +209,11 @@
+ # define CONFIG_ENV_OFFSET		0xE0000
+ #endif
+ 
++/* When this option is #defined, the existence of the
++   environment variable "preboot" will be checked...
++*/
++#define CONFIG_PREBOOT                  /* enable preboot variable      */
++
+ /* Default environment */
+ #define CONFIG_EXTRA_ENV_SETTINGS	\
+ 	"fit_image=fit.itb\0"		\
+@@ -230,6 +237,30 @@
+ 			"load usb 0 ${load_addr} ${fit_image} && " \
+ 			"bootm ${load_addr}\0" \
+ 		"fi\0" \
++        "loadbootenv_addr=0x2000000\0" \
++        "bootenv=uEnv.txt\0" \
++	"loadbootenv=load mmc 0 ${loadbootenv_addr} ${bootenv}\0" \
++	"importbootenv=echo Importing environment from SD ...; " \
++		"env import -t ${loadbootenv_addr} $filesize\0" \
++	"sd_uEnvtxt_existence_test=test -e mmc 0 /uEnv.txt\0" \
++	"preboot=if test $modeboot = sdboot && env run sd_uEnvtxt_existence_test; " \
++			"then if env run loadbootenv; " \
++				"then env run importbootenv; " \
++			"fi; " \
++                        "if test -n $uenvcmd; then " \
++                        "echo Running uenvcmd ...; " \
++                        "run uenvcmd; " \
++                        "fi; " \
++		"fi; \0" \
++        "uenvboot=" \
++		"if run loadbootenv; then " \
++			"echo Loaded environment from ${bootenv}; " \
++			"run importbootenv; " \
++		"fi; " \
++		"if test -n $uenvcmd; then " \
++			"echo Running uenvcmd ...; " \
++			"run uenvcmd; " \
++		"fi\0" \
+ 		DFU_ALT_INFO
+ 
+ #define CONFIG_BOOTCOMMAND		"run $modeboot"
+-- 
+1.9.1
+
