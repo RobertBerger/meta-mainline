@@ -1,15 +1,15 @@
-From 1602b49c827fb1a44950317c4e177683c9000843 Mon Sep 17 00:00:00 2001
+From 5f5e1445073f1644033a9730490c82f7f4ff18af Mon Sep 17 00:00:00 2001
 From: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
-Date: Wed, 3 Feb 2016 21:58:05 +0200
-Subject: [PATCH] QSPI uEnv.txt from SD card
+Date: Wed, 3 Feb 2016 23:39:26 +0200
+Subject: [PATCH] QSPI, uEnv.txt from SD card
 
 Signed-off-by: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
 ---
- include/configs/zynq-common.h | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ include/configs/zynq-common.h | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
 diff --git a/include/configs/zynq-common.h b/include/configs/zynq-common.h
-index 0ab6083..391850c 100644
+index 0ab6083..211d4a3 100644
 --- a/include/configs/zynq-common.h
 +++ b/include/configs/zynq-common.h
 @@ -199,6 +199,8 @@
@@ -21,19 +21,17 @@ index 0ab6083..391850c 100644
  # elif defined(CONFIG_SYS_NO_FLASH)
  #  define CONFIG_ENV_IS_NOWHERE
  # endif
-@@ -207,6 +209,11 @@
+@@ -207,6 +209,9 @@
  # define CONFIG_ENV_OFFSET		0xE0000
  #endif
  
-+/* When this option is #defined, the existence of the
-+   environment variable "preboot" will be checked...
-+*/
-+#define CONFIG_PREBOOT                  /* enable preboot variable      */
++/* RES custom stuff! */
++#define CONFIG_CMD_ZYNQ_UENVBOOT        /* if $modeboot SD card + uEnv.txt on SD card */
 +
  /* Default environment */
  #define CONFIG_EXTRA_ENV_SETTINGS	\
  	"fit_image=fit.itb\0"		\
-@@ -230,6 +237,30 @@
+@@ -230,9 +235,31 @@
  			"load usb 0 ${load_addr} ${fit_image} && " \
  			"bootm ${load_addr}\0" \
  		"fi\0" \
@@ -42,28 +40,30 @@ index 0ab6083..391850c 100644
 +	"loadbootenv=load mmc 0 ${loadbootenv_addr} ${bootenv}\0" \
 +	"importbootenv=echo Importing environment from SD ...; " \
 +		"env import -t ${loadbootenv_addr} $filesize\0" \
-+	"sd_uEnvtxt_existence_test=test -e mmc 0 /uEnv.txt\0" \
-+	"preboot=if test $modeboot = sdboot && env run sd_uEnvtxt_existence_test; " \
++ 	"sd_uEnvtxt_existence_test=test -e mmc 0 /uEnv.txt\0" \
++        "uenvboot=if test $modeboot = sdboot && env run sd_uEnvtxt_existence_test; " \
 +			"then if env run loadbootenv; " \
 +				"then env run importbootenv; " \
 +			"fi; " \
 +                        "if test -n $uenvcmd; then " \
-+                        "echo Running uenvcmd ...; " \
-+                        "run uenvcmd; " \
-+                        "fi; " \
++                                "echo Running uenvcmd ...; " \
++                                "run uenvcmd; " \
++                        "fi; "\
 +		"fi; \0" \
-+        "uenvboot=" \
-+		"if run loadbootenv; then " \
-+			"echo Loaded environment from ${bootenv}; " \
-+			"run importbootenv; " \
-+		"fi; " \
-+		"if test -n $uenvcmd; then " \
-+			"echo Running uenvcmd ...; " \
-+			"run uenvcmd; " \
-+		"fi\0" \
  		DFU_ALT_INFO
  
- #define CONFIG_BOOTCOMMAND		"run $modeboot"
+-#define CONFIG_BOOTCOMMAND		"run $modeboot"
++
++/* default boot is according to the bootmode switch settings or SD card + uEnv.txt */
++#if defined(CONFIG_CMD_ZYNQ_UENVBOOT)
++#define CONFIG_BOOTCOMMAND              "run uenvboot"
++#else
++#define CONFIG_BOOTCOMMAND              "run $modeboot"
++#endif
++
+ #define CONFIG_BOOTDELAY		3 /* -1 to Disable autoboot */
+ #define CONFIG_SYS_LOAD_ADDR		0 /* default? */
+ 
 -- 
 1.9.1
 
