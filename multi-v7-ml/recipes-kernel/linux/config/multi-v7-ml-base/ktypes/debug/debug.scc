@@ -17,4 +17,6 @@ include features/kprobes/kprobes.scc
 include features/dyndebug/dyndebug.scc
 include features/lockdeb/lockdeb.scc
 include features/debinfo/debinfo.scc
+include features/kgdb-kdb/kgdb-kdb.scc
+include features/debug-user/debug-user.scc
 # <-- in debug kernel
