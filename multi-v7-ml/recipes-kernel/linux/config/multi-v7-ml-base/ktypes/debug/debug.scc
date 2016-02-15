@@ -8,6 +8,9 @@ kconf non-hardware debug.cfg
 include features/ikconfig/ikconfig.scc
 include features/posix-mqueue/posix-mqueue.scc
 include features/ramdisk/ramdisk.scc
+include features/mtd/mtd.scc
+# zynq-qspi requires a non-mainline patch!
+include features/zynq-qspi/zynq-qspi.scc
 # <-- also in standard kernel
 # --> in debug kernel
 include features/oprofile/oprofile.scc

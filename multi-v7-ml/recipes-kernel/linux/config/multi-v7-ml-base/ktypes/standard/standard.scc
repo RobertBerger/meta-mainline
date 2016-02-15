@@ -7,3 +7,6 @@ kconf non-hardware standard.cfg
 include features/ikconfig/ikconfig.scc
 include features/posix-mqueue/posix-mqueue.scc
 include features/ramdisk/ramdisk.scc
+include features/mtd/mtd.scc
+# zynq-qspi requires a non-mainline patch!
+include features/zynq-qspi/zynq-qspi.scc
