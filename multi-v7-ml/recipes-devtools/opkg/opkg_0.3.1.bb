@@ -19,6 +19,7 @@ PE = "1"
 SRC_URI = "http://git.yoctoproject.org/cgit/cgit.cgi/${BPN}/snapshot/${BPN}-${PV}.tar.gz \
            file://opkg-configure.service \
            file://opkg.conf \
+           file://0001-opkg_conf-create-opkg.lock-in-run-instead-of-var-run.patch \
 "
 
 SRC_URI[md5sum] = "43735e5dc1ebf46bd6ce56a7cdfdc720"
