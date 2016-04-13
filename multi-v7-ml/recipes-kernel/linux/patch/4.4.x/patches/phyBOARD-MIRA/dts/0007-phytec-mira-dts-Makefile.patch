@@ -1,0 +1,25 @@
+From c7480932153ce605af3565740d1984a7397185e5 Mon Sep 17 00:00:00 2001
+From: genius user <genius@ReliableEmbeddedSystems.com>
+Date: Wed, 13 Apr 2016 12:24:52 +0000
+Subject: [PATCH] phytec-mira: dts/Makefile
+
+Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+---
+ arch/arm/boot/dts/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index 30bbc37..a26055b 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -339,6 +339,7 @@ dtb-$(CONFIG_SOC_IMX6Q) += \
+ 	imx6q-tx6q-1110.dtb \
+ 	imx6q-udoo.dtb \
+ 	imx6q-wandboard.dtb \
++	imx6q-phytec-mira-rdk-nand.dtb \
+ 	imx6q-wandboard-revb1.dtb
+ dtb-$(CONFIG_SOC_IMX6SL) += \
+ 	imx6sl-evk.dtb \
+-- 
+1.9.1
+
