@@ -18,3 +18,34 @@ preempt-rt kernel
 
 ----
 
+
+BBB usb:
+
+>
+> Reported-and-suggested-by: hiims <h at 101.org.il>
+> Signed-off-by: Kevin Hao <kexin.hao at windriver.com>
+> ---
+>  bsp/beaglebone/beaglebone.cfg | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/bsp/beaglebone/beaglebone.cfg b/bsp/beaglebone/beaglebone.cfg
+> index 66a6361..a6fe6d3 100644
+> --- a/bsp/beaglebone/beaglebone.cfg
+> +++ b/bsp/beaglebone/beaglebone.cfg
+> @@ -314,10 +314,10 @@ CONFIG_USB_SUPPORT=y
+>  CONFIG_USB_EHCI_HCD=y
+>  CONFIG_USB_EHCI_TT_NEWSCHED=y
+>  CONFIG_USB_EHCI_HCD_OMAP=y
+> -CONFIG_USB_MUSB_HDRC=m
+> -CONFIG_USB_MUSB_OMAP2PLUS=m
+> -CONFIG_USB_MUSB_DSPS=m
+> -CONFIG_USB_MUSB_AM335X_CHILD=m
+> +CONFIG_USB_MUSB_HDRC=y
+> +CONFIG_USB_MUSB_OMAP2PLUS=y
+> +CONFIG_USB_MUSB_DSPS=y
+> +CONFIG_USB_MUSB_AM335X_CHILD=y
+>  CONFIG_USB_TI_CPPI41_DMA=y
+>
+>  #
+>
+
