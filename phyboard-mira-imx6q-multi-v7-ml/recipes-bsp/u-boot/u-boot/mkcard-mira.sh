@@ -1,6 +1,7 @@
 #! /bin/sh
 # mkcard.sh v0.6
 # History: 
+#         2016-07-11 sfdisk from util-linux 2.27.1 - different syntax from old version
 #         2016-06-21 mira support
 #         2014-01-13 wandboard support
 #         2013-08-18 beagle-xm from tftp/nfs (just boot partition necessary)
@@ -71,16 +72,24 @@ sync
 
 # partitioning/formatting
 
-echo "+ {"
-echo "+ 1,,L,*"
-echo "+ } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}"
+#echo "+ {"
+#echo "+ 1,,L,*"
+#echo "+ } | sudo sfdisk --in-order --Linux --unit M ${DRIVE}"
 #echo "+ } | sudo sfdisk --unit M ${DRIVE}"
 
-{
-echo 1,,L,*
-} | sudo sfdisk --in-order --Linux --unit M ${DRIVE}
+# old sfdisk:
+#{
+#echo 1,,L,*
+#} | sudo sfdisk --in-order --Linux --unit M ${DRIVE}
 
-#} | sudo sfdisk --unit M ${DRIVE}
+# new sfdisk:
+echo "+ {"
+echo "+ echo 1M,,L,*:"
+echo "+ } | sudo sfdisk ${DRIVE}"
+
+{
+echo 1M,,L,*
+} | sudo sfdisk ${DRIVE}
 
 echo "+ sync"
 sync
