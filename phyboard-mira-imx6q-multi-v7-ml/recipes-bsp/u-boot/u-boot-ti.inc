@@ -8,10 +8,10 @@ PKG_${PN}-dev = "u-boot-dev"
 PKG_${PN}-dbg = "u-boot-dbg"
 
 # extra scripts and readme
-SRC_URI = "file://mkcard-phyboard-mira-imx6q.sh"
-SRC_URI += "file://mmc-core-image-minimal-dev-phyboard-mira-imx6q.sh"
-SRC_URI += "file://mmc-uEnv-phyboard-mira-imx6q.txt"
-SRC_URI += "file://readme-phyboard-mira-imx6q.txt"
+#SRC_URI = "file://mkcard-phyboard-mira-imx6q.sh"
+#SRC_URI += "file://mmc-core-image-minimal-dev-phyboard-mira-imx6q.sh"
+#SRC_URI += "file://mmc-uEnv-phyboard-mira-imx6q.txt"
+#SRC_URI += "file://readme-phyboard-mira-imx6q.txt"
 
 S = "${WORKDIR}/git"
 
@@ -32,10 +32,10 @@ do_install_append () {
 
 do_deploy_append () {
 # deploy scripts for sd card
-    install ${WORKDIR}/mkcard-phyboard-mira-imx6q.sh ${DEPLOYDIR}
-    install ${WORKDIR}/mmc-core-image-minimal-dev-phyboard-mira-imx6q.sh ${DEPLOYDIR}
-    install ${WORKDIR}/mmc-uEnv-phyboard-mira-imx6q.txt ${DEPLOYDIR}
-    install ${WORKDIR}/readme-phyboard-mira-imx6q.txt ${DEPLOYDIR}
+#    install ${WORKDIR}/mkcard-phyboard-mira-imx6q.sh ${DEPLOYDIR}
+#    install ${WORKDIR}/mmc-core-image-minimal-dev-phyboard-mira-imx6q.sh ${DEPLOYDIR}
+#    install ${WORKDIR}/mmc-uEnv-phyboard-mira-imx6q.txt ${DEPLOYDIR}
+#    install ${WORKDIR}/readme-phyboard-mira-imx6q.txt ${DEPLOYDIR}
     cd ${DEPLOYDIR}
     if [ "x${SPL_UART_BINARY}" != "x" ]
     then
