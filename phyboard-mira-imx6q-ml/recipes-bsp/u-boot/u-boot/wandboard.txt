@@ -1,0 +1,9 @@
+wandboard:
+bootargs=console=ttymxc0,115200n8 ip=192.168.2.230:192.168.2.217:192.168.2.1:255.255.255.0:wandboard-q:eth0:off nfsroot=192.168.2.217:/opt/wand-q-rootfs,v3,tcp noinitrd n
+ohlt panic=1
+
+mira:
+bootargs=console=ttymxc1,115200n8 ip=192.168.42.12:192.168.42.1:192.168.42.1:255.255.255.0:mira-q::off nfsroot=192.168.42.1:/opt/poky/imx6q-phytec-mira-rdk-nand-rootfs,v3,tcp noinitrd nohlt panic=1
+
+mira from barebox:
+consoleblank=0 console=ttymxc1,115200n8  root=ubi0:root ubi.mtd=root rootfstype=ubifs rootwait ro fsck.repair=yes
