@@ -92,6 +92,11 @@ index 0000000..a91f540
 +	status = "okay";
 +};
 +
++ /* turn on serial console */
++&uart2 {
++       status = "okay";
++};
+
 +&uart3 {
 +	status = "okay";
 +};
