@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
  
-GIT_NEW_WORKDIR=~/bin/git-new-workdir
+#GIT_NEW_WORKDIR=~/bin/git-new-workdir
+GIT_NEW_WORKDIR="$(pwd)/meta-mainline-test/bin/git-new-workdir"
 REPOS=clone
  
 print_help() {
