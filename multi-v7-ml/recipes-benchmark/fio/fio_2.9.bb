@@ -19,11 +19,14 @@ PACKAGECONFIG_NUMA_arm = ""
 PACKAGECONFIG ??= "${PACKAGECONFIG_NUMA}"
 PACKAGECONFIG[numa] = ",--disable-numa,numactl"
 
-# rev for v2.2.6
-SRCREV = "f52c9691bc8c285f3445235c69acdfd6de7f9b82"
+# rev for v2.9
+SRCREV = "fe8d0f4c54f0c308c9a02a4e3c2f5084e8bf5461"
 SRC_URI = "git://git.kernel.dk/fio.git"
 
 S = "${WORKDIR}/git"
+
+# avoids build breaks when using no-static-libs.inc
+DISABLE_STATIC = ""
 
 EXTRA_OEMAKE = "CC='${CC}' LDFLAGS='${LDFLAGS}'"
 
@@ -34,5 +37,5 @@ do_configure() {
 do_install() {
     oe_runmake install DESTDIR=${D} prefix=${prefix} mandir=${mandir}
     install -d ${D}/${docdir}/${PN}
-    cp -a ${S}/examples ${D}/${docdir}/${PN}/
+    cp -R --no-dereference --preserve=mode,links -v ${S}/examples ${D}/${docdir}/${PN}/
 }

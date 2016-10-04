@@ -18,6 +18,7 @@ SRC_URI = "${SOURCEFORGE_MIRROR}/lmbench/lmbench-${PV}.tgz \
            file://use-base_libdir-instead-of-hardcoded-lib.patch \
            file://lmbench_result_html_report.patch \
            file://fix-lmbench-memory-check-failure.patch \
+           file://0001-avoid-gcc-optimize-away-the-loops.patch \
 "
 SRC_URI[md5sum] = "b3351a3294db66a72e2864a199d37cbf"
 SRC_URI[sha256sum] = "cbd5777d15f44eab7666dcac418054c3c09df99826961a397d9acf43d8a2a551"
@@ -31,7 +32,9 @@ do_configure() {
 }
 
 do_compile () {
-    . ${CONFIG_SITE}
+    for CONFIG_SITE_ITEM in $CONFIG_SITE; do
+        . $CONFIG_SITE_ITEM
+    done
     if [ X"$ac_cv_uint" = X"yes" ]; then
         CFLAGS="${CFLAGS} -DHAVE_uint"
     fi
@@ -46,7 +49,7 @@ do_install () {
 
     echo "d root root 0755 ${localstatedir}/run/${BPN} none" \
            > ${D}${sysconfdir}/default/volatiles/99_lmbench
-    if ${@base_contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -d ${D}${sysconfdir}/tmpfiles.d
         echo "d /run/${BPN} - - - -" \
               > ${D}${sysconfdir}/tmpfiles.d/lmbench.conf
