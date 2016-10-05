@@ -15,3 +15,6 @@ do_install () {
     oe_runmake DESTDIR=${D} install
 }
 
+# Quick and dirt fix for
+# QA Issue: No GNU_HASH in the elf binary
+INSANE_SKIP_${PN} = "ldflags"
