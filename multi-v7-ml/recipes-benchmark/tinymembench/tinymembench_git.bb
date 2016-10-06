@@ -25,3 +25,6 @@ do_install() {
 #| {standard input}:82: Error: selected processor does not support Thumb mode `mla r3,r4,r3,r5'
 #| {standard input}:82: Error: unshifted register required -- `and r8,r7,r3,lsr#16'
 ARM_INSTRUCTION_SET = "arm"
+
+# fix ERROR: QA Issue: No GNU_HASH in the elf binary
+INSANE_SKIP_${PN} = "ldflags"
