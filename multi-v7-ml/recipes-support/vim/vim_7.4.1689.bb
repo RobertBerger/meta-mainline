@@ -3,8 +3,11 @@ SECTION = "console/utils"
 DEPENDS = "ncurses gettext-native"
 # vimdiff doesn't like busybox diff
 RSUGGESTS_${PN} = "diffutils"
-LICENSE = "vim"
+LICENSE = "uganda.txt"
 LIC_FILES_CHKSUM = "file://../runtime/doc/uganda.txt;md5=c74ec0ada9a68354f9461e81d3596f61"
+
+# add to LICENSE_PATH to avoid warning
+LICENSE_PATH += "${WORKDIR}/git/runtime/doc/"
 
 SRC_URI = "git://github.com/vim/vim.git \
            file://disable_acl_header_check.patch;patchdir=.. \
