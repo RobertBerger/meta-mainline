@@ -1,3 +1,11 @@
+
+add powerdebug from here?
+
+http://git.linaro.org/openembedded/meta-linaro.git/tree/master:/meta-linaro/recipes-extra
+
+maybe also more tools?
+
+----
 packagegroup debug:
   add procrank
 
@@ -6,7 +14,6 @@ packagegroup profile:
 
 packagegroup-nativesdk? 
  add bootchart2-native
-
 ----
 
 xenomai kernel 
