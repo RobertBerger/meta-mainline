@@ -15,4 +15,5 @@ RDEPENDS_packagegroup-tools-cmdline = "\
     tree \
     vim \
     timelimit \
+    lsof \
     "
