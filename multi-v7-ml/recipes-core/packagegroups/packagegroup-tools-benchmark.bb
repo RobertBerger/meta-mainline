@@ -20,6 +20,7 @@ RDEPENDS_packagegroup-tools-benchmark = "\
     nbench-byte \
     tinymembench \
     stress \
+    phoronix-test-suite \
     "
 
 # add those if you need them:
