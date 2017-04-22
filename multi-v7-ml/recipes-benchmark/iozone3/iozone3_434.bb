@@ -11,6 +11,12 @@ SRC_URI = "http://www.iozone.org/src/current/${BPN}_${PV}.tar \
 SRC_URI[md5sum] = "3e8f4213581407225065b91774e970ed"
 SRC_URI[sha256sum] = "2c388d9db393a5505b31eca38951883744c69745f687f3c7df5185b4681d462a"
 
+# --> get rid of License warning
+# check also conf/layer.conf for LICENSE_DIR
+LIC_FILES_CHKSUM += " file://${THISDIR}/../../custom-licenses/iozone3;md5=38b7874447023eaf8d8c422775336ee6"
+SRC_URI += " file://${THISDIR}/../../custom-licenses/iozone3"
+# <-- get rid of license warning
+
 S = "${WORKDIR}/${BPN}_${PV}/src/current/"
 
 #
