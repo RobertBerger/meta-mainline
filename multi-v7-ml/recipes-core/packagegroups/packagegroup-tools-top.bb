@@ -15,4 +15,5 @@ RDEPENDS_packagegroup-tools-top = "\
     iotop \
     latencytop \
     powertop \
+    powerdebug \
     "
