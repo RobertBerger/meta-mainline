@@ -1,0 +1,27 @@
+From 6c4c828aa209eff7d3c6b3e820b9e716fbe75793 Mon Sep 17 00:00:00 2001
+From: genius user <genius@ReliableEmbeddedSystems.com>
+Date: Wed, 26 Apr 2017 07:52:50 +0000
+Subject: [PATCH] we never build as root - remove check to avoid sh: id:
+ command not found
+
+Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+---
+ Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5496523..9bba574 100644
+--- a/Makefile
++++ b/Makefile
+@@ -560,8 +560,6 @@ VERSION=
+ RELEASE=0
+ 
+ release: make_configure
+-	@if [ "`id --user`" != "0" ]; then \
+-		echo "make release: must be super-user"; exit 1; fi
+ 	@./configure -P "RPMPKG=${RPMPKG}" -u -g
+ 	@make --no-print-directory release_configure
+ 	@echo 
+-- 
+2.7.4
+
