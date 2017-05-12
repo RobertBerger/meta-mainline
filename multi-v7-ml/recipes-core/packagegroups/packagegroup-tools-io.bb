@@ -18,4 +18,5 @@ RDEPENDS_packagegroup-tools-io = "\
     evtest \
     libsoc \
     spitools \
+    zlog \
     "
