@@ -17,4 +17,5 @@ RDEPENDS_packagegroup-tools-top = "\
     powertop \
     powerdebug \
     tiptop \
+    atop \
     "
