@@ -1,4 +1,4 @@
-require linux-libc-headers.inc
+require recipes-kernel/linux-libc-headers/linux-libc-headers.inc
 
 SRC_URI_append_libc-musl = "\
     file://0001-libc-compat.h-fix-some-issues-arising-from-in6.h.patch \
