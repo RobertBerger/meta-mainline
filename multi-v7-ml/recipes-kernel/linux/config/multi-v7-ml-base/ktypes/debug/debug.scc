@@ -11,6 +11,8 @@ include features/ramdisk/ramdisk.scc
 include features/mtd/mtd.scc
 # wdt is not enabled by default for i.mx6 - reboot does not work without it
 include features/imx2-wdt/imx2-wdt.scc
+# gpmi-nand support - NAND flash on i.mx6 is not visible without it
+include features/gpmi-nand/gpmi-nand.scc
 # u-boot turns on wdt for cyclone v - this will turn it off in Linux
 include features/cyclonev-wdt/cyclonev-wdt.scc
 # zynq-qspi requires a non-mainline patch!
