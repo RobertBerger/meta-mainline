@@ -1,9 +1,9 @@
-From 7e86db040473d650aa9831046148019e89e2d772 Mon Sep 17 00:00:00 2001
-From: genius user <genius@ReliableEmbeddedSystems.com>
-Date: Wed, 13 Apr 2016 11:47:08 +0000
-Subject: [PATCH] phytec-mira: imx6qdl-phytec-peb-wlbt-01.dtsi
+From 0ea03ac8ba213236044931f254294c3f067a5b60 Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Sat, 13 May 2017 19:01:00 +0200
+Subject: [PATCH 1/7] phytec-mira: imx6qdl-phytec-peb-wlbt-01.dtsi
 
-Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
 ---
  arch/arm/boot/dts/imx6qdl-phytec-peb-wlbt-01.dtsi | 75 +++++++++++++++++++++++
  1 file changed, 75 insertions(+)
@@ -91,5 +91,5 @@ index 0000000..56f694a
 +	};
 +};
 -- 
-1.9.1
+2.7.4
 

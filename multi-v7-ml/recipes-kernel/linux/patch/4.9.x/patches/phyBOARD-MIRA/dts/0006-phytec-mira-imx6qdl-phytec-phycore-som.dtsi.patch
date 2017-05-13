@@ -1,20 +1,20 @@
-From 4822ecc12513bdf371902b29c2f845dcb2acf0f7 Mon Sep 17 00:00:00 2001
-From: genius user <genius@ReliableEmbeddedSystems.com>
-Date: Wed, 13 Apr 2016 12:23:04 +0000
-Subject: [PATCH] phytec-mira: imx6qdl-phytec-phycore-som.dtsi
+From bf90b83ab3701b1c67c020fca5db77ababb76508 Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Sat, 13 May 2017 19:04:13 +0200
+Subject: [PATCH 5/7] phytec-mira: imx6qdl-phytec-phycore-som.dtsi
 
-Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
 ---
- arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi | 341 ++++++++++++++++++++++
- 1 file changed, 341 insertions(+)
+ arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi | 347 ++++++++++++++++++++++
+ 1 file changed, 347 insertions(+)
  create mode 100644 arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
 
 diff --git a/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi b/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
 new file mode 100644
-index 0000000..49b2122
+index 0000000..82a2a86
 --- /dev/null
 +++ b/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
-@@ -0,0 +1,341 @@
+@@ -0,0 +1,347 @@
 +/*
 + * Copyright (C) 2015 PHYTEC Messtechnik
 + * Author: Christian Hemp <c.hemp@phytec.de>
@@ -40,7 +40,12 @@ index 0000000..49b2122
 +	};
 +
 +	memory {
-+		reg = <0x0 0x0>; /* will be filled by bootloader */
++		/*
++		 * Set the minimum memory size here and
++		 * let the bootloader set the real size.
++		 */
++		device_type = "memory";
++		reg = <0x10000000 0x8000000>; /* 128 MiB memory */
 +	};
 +
 +	gpio_leds_som: somleds {
@@ -127,7 +132,7 @@ index 0000000..49b2122
 +	clock-frequency = <400000>;
 +	status = "okay";
 +
-+	eeprom@50 {
++	eeprom: eeprom@50 {
 +		compatible = "cat,24c32";
 +		reg = <0x50>;
 +	};
@@ -145,7 +150,7 @@ index 0000000..49b2122
 +			compatible = "dlg,da9062-rtc";
 +		};
 +
-+		da9062_wtd: watchdog {
++		da9062_wdt: watchdog {
 +			compatible = "dlg,da9062-watchdog";
 +		};
 +
@@ -154,6 +159,7 @@ index 0000000..49b2122
 +				regulator-name = "vdd_arm";
 +				regulator-min-microvolt = <730000>;
 +				regulator-max-microvolt = <1380000>;
++				regulator-initial-mode = <2>;
 +				regulator-always-on;
 +			};
 +
@@ -161,6 +167,7 @@ index 0000000..49b2122
 +				regulator-name = "vdd_soc";
 +				regulator-min-microvolt = <730000>;
 +				regulator-max-microvolt = <1380000>;
++				regulator-initial-mode = <2>;
 +				regulator-always-on;
 +			};
 +
@@ -168,6 +175,7 @@ index 0000000..49b2122
 +				regulator-name = "vdd_ddr3";
 +				regulator-min-microvolt = <1500000>;
 +				regulator-max-microvolt = <1500000>;
++				regulator-initial-mode = <2>;
 +				regulator-always-on;
 +			};
 +
@@ -175,6 +183,7 @@ index 0000000..49b2122
 +				regulator-name = "vdd_eth";
 +				regulator-min-microvolt = <1200000>;
 +				regulator-max-microvolt = <1200000>;
++				regulator-initial-mode = <2>;
 +				regulator-always-on;
 +			};
 +
@@ -226,20 +235,9 @@ index 0000000..49b2122
 +	};
 +
 +	partition@2 {
-+		label = "oftree";
-+		reg = <0x500000 0x100000>;
-+	};
-+
-+	partition@3 {
-+		label = "kernel";
-+		reg = <0x600000 0x800000>;
-+	};
-+
-+	partition@4 {
 +		label = "root";
-+		reg = <0xe00000 0x0>;
++		reg = <0x500000 0x0>;
 +	};
-+
 +};
 +
 +&iomuxc {
@@ -356,6 +354,14 @@ index 0000000..49b2122
 +	vmmc-supply = <&vdd_emmc_1p8>;
 +	status = "disabled";
 +};
++
++&wdog1 {
++	/*
++	 * Rely on PMIC watchdog and reboot handler. Internal i.MX6 watchdog
++	 * does not reset all external PMIC voltages on reset.
++	 */
++	status = "disabled";
++};
 -- 
-1.9.1
+2.7.4
 

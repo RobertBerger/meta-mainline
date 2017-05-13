@@ -1,23 +1,23 @@
-From 125add1c7e2700d6e3431660b3197b060412de15 Mon Sep 17 00:00:00 2001
-From: genius user <genius@ReliableEmbeddedSystems.com>
-Date: Wed, 13 Apr 2016 12:18:36 +0000
-Subject: [PATCH] phytec-mira: imx6qdl-phytec-mira-peb-av-02.dtsi
+From f641708fcdfcf1bf0f92125509f085ec06038699 Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Sat, 13 May 2017 19:02:09 +0200
+Subject: [PATCH 2/7] phytec-mira: imx6qdl-phytec-mira-peb-av-02.dtsi
 
-Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
 ---
- .../boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi    | 177 +++++++++++++++++++++
- 1 file changed, 177 insertions(+)
+ .../boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi    | 195 +++++++++++++++++++++
+ 1 file changed, 195 insertions(+)
  create mode 100644 arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
 
 diff --git a/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi b/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
 new file mode 100644
-index 0000000..17ff8b0
+index 0000000..95e450c
 --- /dev/null
 +++ b/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
-@@ -0,0 +1,177 @@
+@@ -0,0 +1,195 @@
 +/*
 + * Copyright (C) 2015 PHYTEC Messtechnik
-+ * Author: Christian Hemp <c.hemp@phytec.de> 
++ * Author: Christian Hemp <c.hemp@phytec.de>
 + *
 + * The code contained herein is licensed under the GNU General Public
 + * License. You may obtain a copy of the GNU General Public License
@@ -54,7 +54,21 @@ index 0000000..17ff8b0
 +
 +		display-timings {
 +			native-mode = <&timing1>;
-+			timing1: ET0700 {
++			/*       ETM0700G0BDH6 - compatible to ETM0700G0EDH6 */
++			timing1: ETM0700G0EDH6 {
++				clock-frequency = <33264000>;
++				hactive = <800>;
++				vactive = <480>;
++				hback-porch = <88>;
++				hsync-len = <128>;
++				hfront-porch = <40>;
++				vback-porch = <33>;
++				vsync-len = <2>;
++				vfront-porch = <10>;
++				de-active = <1>;
++				pixelclk-active = <1>;
++			};
++			timing2: ETM0700G0DH6 {
 +				clock-frequency = <33264000>;
 +				hactive = <800>;
 +				vactive = <480>;
@@ -69,7 +83,7 @@ index 0000000..17ff8b0
 +				de-active = <1>;
 +				pixelclk-active = <0>;
 +			};
-+			timing2: ETMV570G2DHU {
++			timing3: ETMV570G2DHU {
 +				clock-frequency	= <25175000>;
 +				hactive = <640>;
 +				vactive = <480>;
@@ -79,10 +93,10 @@ index 0000000..17ff8b0
 +				vback-porch = <35>;
 +				vfront-porch = <10>;
 +				vsync-len = <3>;
-+				hsync-active = <1>;
-+				vsync-active = <1>;
++				de-active = <1>;
++				pixelclk-active = <0>;
 +			};
-+			timing3: ETM0430G0DH6 {
++			timing4: ETM0430G0DH6 {
 +				clock-frequency	= <9000000>;
 +				hactive = <480>;
 +				vactive = <272>;
@@ -92,10 +106,12 @@ index 0000000..17ff8b0
 +				vback-porch = <2>;
 +				vfront-porch = <2>;
 +				vsync-len = <10>;
-+				hsync-active = <1>;
-+				vsync-active = <1>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				de-active = <1>;
++				pixelclk-active = <0>;
 +			};
-+			timing4: ETM0350G0DH6 {
++			timing5: ETM0350G0DH6 {
 +				clock-frequency = <6520000>;
 +				hactive = <320>;
 +				vactive = <240>;
@@ -105,8 +121,10 @@ index 0000000..17ff8b0
 +				vfront-porch = <4>;
 +				vback-porch = <18>;
 +				vsync-len = <22>;
-+				hsync-active = <1>;
-+				vsync-active = <1>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				de-active = <1>;
++				pixelclk-active = <0>;
 +			};
 +		};
 +	};
@@ -149,9 +167,9 @@ index 0000000..17ff8b0
 +				MX6QDL_PAD_DI0_DISP_CLK__IPU1_DI0_DISP_CLK 0x10
 +				MX6QDL_PAD_DI0_PIN2__IPU1_DI0_PIN02        0x10
 +				MX6QDL_PAD_DI0_PIN3__IPU1_DI0_PIN03        0x10
-+/*				MX6QDL_PAD_DI0_PIN4__IPU1_DI0_PIN04	0x10*/
-+				MX6QDL_PAD_DI0_PIN4__GPIO4_IO20            0x80000000
-+				MX6QDL_PAD_DI0_PIN15__GPIO4_IO17           0x80000000
++
++				MX6QDL_PAD_DI0_PIN15__IPU1_DI0_PIN15  0x1b080
++
 +				MX6QDL_PAD_DISP0_DAT0__IPU1_DISP0_DATA00   0x10
 +				MX6QDL_PAD_DISP0_DAT1__IPU1_DISP0_DATA01   0x10
 +				MX6QDL_PAD_DISP0_DAT2__IPU1_DISP0_DATA02   0x10
@@ -193,5 +211,5 @@ index 0000000..17ff8b0
 +	remote-endpoint = <&display0_in>;
 +};
 -- 
-1.9.1
+2.7.4
 
