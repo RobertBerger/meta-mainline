@@ -17,7 +17,7 @@ index 0000000..e1e548b
 @@ -0,0 +1,79 @@
 +/*
 + * Copyright (C) 2015 PHYTEC Messtechnik
-+ * Author: Christian Hemp <c.hemp@phytec.de> 
++ * Author: Christian Hemp <c.hemp@phytec.de>
 + *
 + * The code contained herein is licensed under the GNU General Public
 + * License. You may obtain a copy of the GNU General Public License
@@ -73,7 +73,7 @@ index 0000000..e1e548b
 +			linux,default-trigger = "gpio";
 +			default-state = "on";
 +		};
-+	};	
++	};
 +};
 +
 +&iomuxc {
