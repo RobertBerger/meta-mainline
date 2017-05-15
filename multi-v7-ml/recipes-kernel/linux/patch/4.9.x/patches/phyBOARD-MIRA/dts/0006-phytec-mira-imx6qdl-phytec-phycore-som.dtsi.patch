@@ -1,20 +1,20 @@
-From bf90b83ab3701b1c67c020fca5db77ababb76508 Mon Sep 17 00:00:00 2001
+From 469a4f2671463de3dc8f26cef26469f74c38c98f Mon Sep 17 00:00:00 2001
 From: student <student@ReliableEmbeddedSystems.com>
-Date: Sat, 13 May 2017 19:04:13 +0200
-Subject: [PATCH 5/7] phytec-mira: imx6qdl-phytec-phycore-som.dtsi
+Date: Mon, 15 May 2017 17:24:25 +0200
+Subject: [PATCH] mira: imx6qdl-phytec-phycore-som.dtsi rtc
 
 Signed-off-by: student <student@ReliableEmbeddedSystems.com>
 ---
- arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi | 347 ++++++++++++++++++++++
- 1 file changed, 347 insertions(+)
+ arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi | 352 ++++++++++++++++++++++
+ 1 file changed, 352 insertions(+)
  create mode 100644 arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
 
 diff --git a/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi b/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
 new file mode 100644
-index 0000000..82a2a86
+index 0000000..330fd37
 --- /dev/null
 +++ b/arch/arm/boot/dts/imx6qdl-phytec-phycore-som.dtsi
-@@ -0,0 +1,347 @@
+@@ -0,0 +1,352 @@
 +/*
 + * Copyright (C) 2015 PHYTEC Messtechnik
 + * Author: Christian Hemp <c.hemp@phytec.de>
@@ -35,8 +35,13 @@ index 0000000..82a2a86
 +
 +	aliases {
 +		ipu0 = &ipu1;
-+		rtc1 = &da9062_rtc;
-+		rtc2 = &snvs_rtc;
++                /*
++                 * For Poky to pick to the rtc automatically
++                 * it needs to be /dev/rtc0
++                 * so I changed here rtc1->rct0, rtc2->rtc1
++                 */
++		rtc0 = &da9062_rtc;
++		rtc1 = &snvs_rtc;
 +	};
 +
 +	memory {
