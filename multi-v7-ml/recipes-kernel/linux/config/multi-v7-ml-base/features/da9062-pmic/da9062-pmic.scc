@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Enable da9062 pmic (regulator, rtc, wdt) support"
+define KFEATURE_COMPATIBILITY all
+
+kconf non-hardware da9062-pmic.cfg

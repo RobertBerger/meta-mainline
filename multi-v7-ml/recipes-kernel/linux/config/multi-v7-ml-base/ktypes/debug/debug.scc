@@ -9,10 +9,16 @@ include features/ikconfig/ikconfig.scc
 include features/posix-mqueue/posix-mqueue.scc
 include features/ramdisk/ramdisk.scc
 include features/mtd/mtd.scc
+# --> i.mx6 mira
 # wdt is not enabled by default for i.mx6 - reboot does not work without it
 include features/imx2-wdt/imx2-wdt.scc
 # gpmi-nand support - NAND flash on i.mx6 is not visible without it
 include features/gpmi-nand/gpmi-nand.scc
+# Enable da9062 pmic (regulator, rtc, wdt) support
+include features/da9062-pmic/da9062-pmic.scc
+# Enable Secure Non-Volatile Storage (SNVS) Low Power (LP) RTC support
+include features/snvs-rtc/snvs-rtc.scc
+# <-- i.mx6 mira
 # u-boot turns on wdt for cyclone v - this will turn it off in Linux
 include features/cyclonev-wdt/cyclonev-wdt.scc
 # zynq-qspi requires a non-mainline patch!

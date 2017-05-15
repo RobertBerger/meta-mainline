@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Enable Secure Non-Volatile Storage (SNVS) Low Power (LP) RTC support"
+define KFEATURE_COMPATIBILITY all
+
+kconf non-hardware snvs-rtc.cfg
