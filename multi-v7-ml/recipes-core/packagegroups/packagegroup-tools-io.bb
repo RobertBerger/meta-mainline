@@ -19,4 +19,5 @@ RDEPENDS_packagegroup-tools-io = "\
     libsoc \
     spitools \
     zlog \
+    libgpiod \
     "
