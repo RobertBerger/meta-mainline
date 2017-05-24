@@ -9,6 +9,8 @@ DEPENDS = "zlib bzip2 libxml2 virtual/libiconv php-native lemon-native \
            openssl libmcrypt"
 DEPENDS_class-native = "zlib-native libxml2-native"
 
+PHP_MAJOR_VERSION = "${@d.getVar('PV', True).split('.')[0]}"
+
 SRC_URI = "http://php.net/distributions/php-${PV}.tar.bz2 \
            file://acinclude-xml2-config.patch \
            file://0001-php-don-t-use-broken-wrapper-for-mkdir.patch \
@@ -24,7 +26,7 @@ SRC_URI_append_class-target = " \
             file://php-fpm.conf \
             file://php-fpm-apache.conf \
             file://configure.patch \
-            file://70_mod_php5.conf \
+            file://70_mod_php${PHP_MAJOR_VERSION}.conf \
             file://php-fpm.service \
           "
 S = "${WORKDIR}/php-${PV}"
@@ -36,7 +38,7 @@ inherit autotools pkgconfig pythonnative gettext
 SSTATE_SCAN_FILES += "phpize"
 SSTATE_SCAN_FILES += "build-defs.h"
 
-PHP_LIBDIR = "${libdir}/php5"
+PHP_LIBDIR = "${libdir}/php${PHP_MAJOR_VERSION}"
 
 # Common EXTRA_OECONF
 COMMON_EXTRA_OECONF = "--enable-sockets \
@@ -57,7 +59,7 @@ EXTRA_OECONF = "--enable-mbstring \
                 --with-iconv=${STAGING_LIBDIR}/.. \
                 --with-mcrypt=${STAGING_DIR_TARGET}${exec_prefix} \
                 --with-bz2=${STAGING_DIR_TARGET}${exec_prefix} \
-                --with-config-file-path=${sysconfdir}/php/apache2-php5 \
+                --with-config-file-path=${sysconfdir}/php/apache2-php${PHP_MAJOR_VERSION} \
                 ${@base_conditional('SITEINFO_ENDIANNESS', 'le', 'ac_cv_c_bigendian_php=no', 'ac_cv_c_bigendian_php=yes', d)} \
                 ${@bb.utils.contains('PACKAGECONFIG', 'pam', '', 'ac_cv_lib_pam_pam_start=no', d)} \
                 ${COMMON_EXTRA_OECONF} \
@@ -175,13 +177,13 @@ do_install_append_class-target() {
     if ${@bb.utils.contains('PACKAGECONFIG', 'apache2', 'true', 'false', d)}; then
         install -d ${D}${libdir}/apache2/modules
         install -d ${D}${sysconfdir}/apache2/modules.d
-        install -d ${D}${sysconfdir}/php/apache2-php5
-        install -m 755  libs/libphp5.so ${D}${libdir}/apache2/modules
-        install -m 644  ${WORKDIR}/70_mod_php5.conf ${D}${sysconfdir}/apache2/modules.d
-        sed -i s,lib/,${libdir}/, ${D}${sysconfdir}/apache2/modules.d/70_mod_php5.conf
+        install -d ${D}${sysconfdir}/php/apache2-php${PHP_MAJOR_VERSION}
+        install -m 755  libs/libphp${PHP_MAJOR_VERSION}.so ${D}${libdir}/apache2/modules
+        install -m 644  ${WORKDIR}/70_mod_php${PHP_MAJOR_VERSION}.conf ${D}${sysconfdir}/apache2/modules.d
+        sed -i s,lib/,${libdir}/, ${D}${sysconfdir}/apache2/modules.d/70_mod_php${PHP_MAJOR_VERSION}.conf
         cat ${S}/php.ini-production | \
             sed -e 's,extension_dir = \"\./\",extension_dir = \"/usr/lib/extensions\",' \
-            > ${D}${sysconfdir}/php/apache2-php5/php.ini
+            > ${D}${sysconfdir}/php/apache2-php${PHP_MAJOR_VERSION}/php.ini
         rm -f ${D}${sysconfdir}/apache2/httpd.conf*
     fi
 }
@@ -252,16 +254,29 @@ do_install_append_class-native() {
 
 SSTATEPOSTINSTFUNCS_append_class-native = " php_sstate_postinst "
 
+# replaced this:
+#php_sstate_postinst() {
+#    if [ "${BB_CURRENTTASK}" = "populate_sysroot_setscene" ]
+#    then
+#        head -n1 ${sysconfdir}/pear.conf > ${sysconfdir}/pear.tmp.conf
+#        for p in `tail -n1  ${sysconfdir}/pear.conf | sed -s 's/;/ /g'`; do
+#            echo $p | awk -F: 'BEGIN {OFS = ":"; ORS = ";"}{if(NF==3){print $1, length($3)-2*match($3, /^"/), $3} else {print $0}}';
+#        done >> ${sysconfdir}/pear.tmp.conf
+#        mv -f ${sysconfdir}/pear.tmp.conf ${sysconfdir}/pear.conf
+#    fi
+#}
+# with this:
 php_sstate_postinst() {
     if [ "${BB_CURRENTTASK}" = "populate_sysroot_setscene" ]
     then
-        head -n1 ${sysconfdir}/pear.conf > ${sysconfdir}/pear.tmp.conf
-        for p in `tail -n1  ${sysconfdir}/pear.conf | sed -s 's/;/ /g'`; do
+       head -n1 ${SYSROOT_DESTDIR}${sysconfdir}/pear.conf > ${SYSROOT_DESTDIR}${sysconfdir}/pear.tmp.conf
+       for p in `tail -n1  ${SYSROOT_DESTDIR}${sysconfdir}/pear.conf | sed -s 's/;/ /g'`; do
             echo $p | awk -F: 'BEGIN {OFS = ":"; ORS = ";"}{if(NF==3){print $1, length($3)-2*match($3, /^"/), $3} else {print $0}}';
-        done >> ${sysconfdir}/pear.tmp.conf
-        mv -f ${sysconfdir}/pear.tmp.conf ${sysconfdir}/pear.conf
+        done >> ${SYSROOT_DESTDIR}${sysconfdir}/pear.tmp.conf
+        mv -f ${SYSROOT_DESTDIR}${sysconfdir}/pear.tmp.conf ${SYSROOT_DESTDIR}/${sysconfdir}/pear.conf
     fi
 }
+
 
 # Fails to build with thumb-1 (qemuarm)
 # | {standard input}: Assembler messages:
