@@ -1,0 +1,26 @@
+From 37b0666b2df52ec7e667d240e86f981e147a7464 Mon Sep 17 00:00:00 2001
+From: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+Date: Tue, 30 Aug 2016 23:56:32 +0300
+Subject: [PATCH] read env from ext4
+
+Signed-off-by: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+---
+ include/configs/pcm051.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/pcm051.h b/include/configs/pcm051.h
+index 45c140d..cc4e97b 100644
+--- a/include/configs/pcm051.h
++++ b/include/configs/pcm051.h
+@@ -48,7 +48,7 @@
+ 	"loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr\0" \
+ 	"bootscript=echo Running bootscript from mmc${mmcdev} ...; " \
+ 		"source ${loadaddr}\0" \
+-	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}\0" \
++	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv} || ext4load mmc ${mmcdev} ${loadaddr} ${bootenv}\0" \
+ 	"importbootenv=echo Importing environment from mmc ...; " \
+ 		"env import -t $loadaddr $filesize\0" \
+ 	"ramargs=setenv bootargs console=${console} " \
+-- 
+2.7.4
+

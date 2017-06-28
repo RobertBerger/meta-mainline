@@ -1,0 +1,45 @@
+# short-description: Create SD card image with a boot partition
+# long-description:
+# Create an image that can be written onto a SD card using dd for use
+# with am335x-phytec-wega.
+# It uses SPL and u-boot
+#
+# The disk layout used is:
+#  ----- --------- --------------
+# | MLO | u-boot  |    rootfs    |
+#  ----- --------- --------------
+# ^     ^         ^              ^
+# |     |         |              |
+# 128K  384K      4MiB + rootfs + IMAGE_EXTRA_SPACE (default 10MiB)
+#
+part SPL --source rawcopy --sourceparams="file=SPL" --ondisk mmcblk --no-table --align 1
+# u-boot.img and uEnv.txt go on SD card ext4 partition
+# u-boot.img part u-boot --source rawcopy --sourceparams="file=u-boot.img" --ondisk mmcblk --no-table --align 384
+part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 384
+
+# -->
+# wic create ../u-boot-wic-bsp/wic/imx6q-phytec-mira-rdk-nand-sd-card.wks -e core-image-minimal
+#
+# INFO: Creating image(s)...
+#
+# WARNING: bootloader config not specified, using defaults
+# 
+# INFO: The new image(s) can be found here:
+#  ./imx6q-phytec-mira-rdk-nand-sd-card-201706151649-mmcblk.direct
+#
+# The following build artifacts were used to create the image(s):
+#  ROOTFS_DIR:                   /tmp/yocto-autobuilder/yocto-autobuilder/yocto-worker/poky-custom-pyro-multi-v7-core-image-minimal-u-boot-wic/build/tmp/work/imx6q_phytec_mira_rdk_nand-poky-linux-gnueabi/core-image-minimal/1.0-r0/rootfs
+#  BOOTIMG_DIR:                  /tmp/yocto-autobuilder/yocto-autobuilder/yocto-worker/poky-custom-pyro-multi-v7-core-image-minimal-u-boot-wic/build/tmp/work/imx6q_phytec_mira_rdk_nand-poky-linux-gnueabi/core-image-minimal/1.0-r0/recipe-sysroot/usr/share
+#  KERNEL_DIR:                   /tmp/yocto-autobuilder/yocto-autobuilder/yocto-worker/poky-custom-pyro-multi-v7-core-image-minimal-u-boot-wic/build/tmp/deploy/images/imx6q-phytec-mira-rdk-nand
+#  NATIVE_SYSROOT:               /tmp/yocto-autobuilder/yocto-autobuilder/yocto-worker/poky-custom-pyro-multi-v7-core-image-minimal-u-boot-wic/build/tmp/work/imx6q_phytec_mira_rdk_nand-poky-linux-gnueabi/core-image-minimal/1.0-r0/recipe-sysroot-native
+#
+#INFO: The image(s) were created using OE kickstart file:
+#  ../u-boot-wic-bsp/wic/imx6q-phytec-mira-rdk-nand-sd-card.wks
+# <--
+
+# Notes: (hacked together manually for now and made it work)
+# Those things need to be integrated into Yocto:
+# 1) we need a patched version of u-boot which also searches for uEnv.txt on ext4 or so partition and not only fat
+# 2) we need to add uEnv.txt to / of the rootfs [OK]
+# 3) the generated file to be flashed with etcher needs to be ending with .raw or so
+# 4) create a bitbake wks target automativally
