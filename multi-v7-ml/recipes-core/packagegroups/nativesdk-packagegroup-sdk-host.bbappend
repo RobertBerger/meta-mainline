@@ -2,8 +2,8 @@
 
 RDEPENDS_${PN} += " \
     nativesdk-u-boot-mkimage \
+    nativesdk-dtc \
 "
-
 #
 #RDEPENDS_${PN} += " \
 #    nativesdk-elftosb \
