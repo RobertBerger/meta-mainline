@@ -18,6 +18,7 @@ IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 SERIAL_CONSOLES="115200;console"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
+PREFERRED_VERSION_u-boot ?= "2017.01"
 
 # kernel version
 KERNEL_VERSION_PATCHLEVEL="4.9"
