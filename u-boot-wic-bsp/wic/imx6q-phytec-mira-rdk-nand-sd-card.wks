@@ -18,6 +18,19 @@ part SPL --source rawcopy --sourceparams="file=SPL" --ondisk mmcblk --no-table -
 part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 384
 
 # -->
+###############################
+#
+# Y-AB:
+# 
+# source oe-init-build-env
+#
+# vim conf/auto.conf
+#   MACHINE = "imx6q-phytec-mira-rdk-nand"
+#
+# wic create ../meta-mainline/u-boot-wic-bsp/wic/imx6q-phytec-mira-rdk-nand-sd-card.wks -e core-image-minimal
+#
+##############################
+#
 # wic create ../u-boot-wic-bsp/wic/imx6q-phytec-mira-rdk-nand-sd-card.wks -e core-image-minimal
 #
 # INFO: Creating image(s)...

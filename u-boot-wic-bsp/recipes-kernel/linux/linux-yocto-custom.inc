@@ -25,3 +25,4 @@ KCONFIG_MODE="--alldefconfig"
 
 COMPATIBLE_MACHINE_am335x-phytec-wega = "am335x-phytec-wega"
 COMPATIBLE_MACHINE_imx6q-phytec-mira-rdk-nand = "imx6q-phytec-mira-rdk-nand"
+COMPATIBLE_MACHINE_beagle-bone-black = "beagle-bone-black"

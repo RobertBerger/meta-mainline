@@ -1,0 +1,26 @@
+From d62ad13fbc6d0ba4b6f6cbbc2a57c045a9af0f98 Mon Sep 17 00:00:00 2001
+From: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+Date: Tue, 7 Mar 2017 23:20:28 +0100
+Subject: [PATCH] read env from ext4
+
+Signed-off-by: student-bbbio <student-bbbio@ReliableEmbeddedSystems.com>
+---
+ include/configs/ti_armv7_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/ti_armv7_common.h b/include/configs/ti_armv7_common.h
+index dbe494a..838b64a 100644
+--- a/include/configs/ti_armv7_common.h
++++ b/include/configs/ti_armv7_common.h
+@@ -71,7 +71,7 @@
+ 	"bootenvfile=uEnv.txt\0" \
+ 	"importbootenv=echo Importing environment from mmc${mmcdev} ...; " \
+ 		"env import -t ${loadaddr} ${filesize}\0" \
+-	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
++	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile} || ext4load mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
+ 	"loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}\0" \
+ 	"loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}\0" \
+ 	"envboot=mmc dev ${mmcdev}; " \
+-- 
+2.7.4
+
