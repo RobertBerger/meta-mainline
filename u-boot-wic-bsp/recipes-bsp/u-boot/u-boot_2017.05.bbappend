@@ -8,4 +8,6 @@ SRC_URI_append_am335x-phytec-wega = " \
 
 SRC_URI_append_beagle-bone-black = " \
         file://0001-read-env-from-ext4.patch \
+        file://0002-default-AUTOBOOT_PROMPT-for-LAVA.patch \
+	file://0003-SYS_PROMPT-LAVA-compatible.patch \
 "
