@@ -47,7 +47,7 @@ SPL_BINARY = "${SPL_BINARYNAME}"
 UBOOT_SUFFIX = "img"
 UBOOT_MACHINE_am335x-phytec-wega = "pcm051_rev3_defconfig"
 UBOOT_MACHINE_imx6q-phytec-mira-rdk-nand = "pcm058_defconfig"
-UBOOT_MACHINE_beagle-bone-black = "am335x_evm_defconfig"
+UBOOT_MACHINE_beagle-bone-black = "am335x_boneblack_defconfig"
 UBOOT_ENTRYPOINT = "0x0"
 UBOOT_LOADADDRESS = "0x0"
 
