@@ -18,11 +18,12 @@ IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 SERIAL_CONSOLES="115200;console"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
-#PREFERRED_VERSION_u-boot ?= "2017.01"
+# 2017.07 needs some more investigation
+# does not work out of the box on phytec am335x
 
 # kernel version
 KERNEL_VERSION_PATCHLEVEL="4.9"
-KERNEL_SUBLEVEL="34"
+KERNEL_SUBLEVEL="44"
 PREFERRED_VERSION_linux-yocto-custom = "${KERNEL_VERSION_PATCHLEVEL}.${KERNEL_SUBLEVEL}%"
 
 # use instead of "default" version of linux libc headers this version
