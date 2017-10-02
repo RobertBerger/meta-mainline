@@ -11,7 +11,7 @@ git checkout master
 echo "+ cd ${HERE}"
 
 #for BRANCH in master dora-armv7-multiplatform-v3.13.x dora-armv7-multiplatform-v3.13.x-min dora-linux-dev-v3.13.x dora-training-v3.13.x dora-training-v3.14.x daisy-training-v3.14.x daisy-training-v3.15.x daisy-training-v3.16.x dizzy-training-v3.14.x dizzy-training-v3.19.x fido-training-v3.19.x fido-training-v4.1.x jethro-training-v4.1.x jethro-training-v4.4.x fido-training-v4.1.x jethro-training-v4.1.x
-for BRANCH in master jethro-training-v4.4.x morty-training-v4.4.x pyro-training-v4.4.x pyro-training-v4.9.x
+for BRANCH in master jethro-training-v4.4.x morty-training-v4.4.x pyro-training-v4.4.x pyro-training-v4.9.x rocko-training-v4.9.x
 do
   echo "+ ----->"
   echo "+ cd ../../meta-mainline-top/meta-mainline-test/"
