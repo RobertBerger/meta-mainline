@@ -13,9 +13,8 @@ IMAGE_INSTALL_append = " u-boot-uenv-helper"
 DEFAULTTUNE = "armv7a-neon"
 include conf/machine/include/arm/arch-armv7a.inc
 
-#for rocko I remove wic.bmap since it's currently broken
-#IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
-IMAGE_FSTYPES += "tar.bz2 wic"
+IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
+#IMAGE_FSTYPES += "tar.bz2 wic"
 
 SERIAL_CONSOLES="115200;console"
 
