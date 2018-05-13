@@ -12,4 +12,6 @@ RDEPENDS_${PN} = "\
     mosquitto \
     paho-mqtt-c \
     rabbitmq-c \
+    python3-pip \
+    mysql-python \
     "
