@@ -9,10 +9,12 @@ PACKAGES = "\
 RDEPENDS_packagegroup-tools-top = "\
     htop \
     iotop \
-    latencytop \
     powertop \
     powerdebug \
     tiptop \
     atop \
     iftop \
     "
+
+# sumo removed this
+# latencytop
