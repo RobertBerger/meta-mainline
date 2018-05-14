@@ -16,6 +16,7 @@ RDEPENDS_packagegroup-tools-benchmark = "\
     nbench-byte \
     tinymembench \
     stress \
+    phoronix-test-suite \
     "
 
 # add those if you need them:
@@ -26,5 +27,3 @@ RDEPENDS_packagegroup-tools-benchmark = "\
 #    glmark2 
 #    lmbench 
 #    tiobench 
-#    phoronix-test-suite
-# removed phoronix for now for sumo due to php
