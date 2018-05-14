@@ -1,10 +1,17 @@
-[PATCH] config.m4: change AC_TRY_RUN to AC_TRY_LINK
+From 5f49987e88dfcbdb84be6e0c9025432fbd998709 Mon Sep 17 00:00:00 2001
+From: Roy Li <rongqing.li@windriver.com>
+Date: Thu, 20 Aug 2015 16:29:35 +0800
+Subject: [PATCH] config.m4: change AC_TRY_RUN to AC_TRY_LINK
 
 Upstream-Status: Pending
 
 AC_TRY_RUN is not suitable for cross-compile
 
 Signed-off-by: Roy Li <rongqing.li@windriver.com>
+
+%% original patch: change-AC_TRY_RUN-to-AC_TRY_LINK.patch
+
+%% original patch: php5-change-AC_TRY_RUN-to-AC_TRY_LINK.patch
 ---
  ext/fileinfo/config.m4 | 31 ++++++-------------------------
  1 file changed, 6 insertions(+), 25 deletions(-)
@@ -52,5 +59,5 @@ index 7e98d62..8a8ea0e 100644
      dnl using the platform implementation
      AC_MSG_RESULT(yes)
 -- 
-1.9.1
+2.7.4
 
