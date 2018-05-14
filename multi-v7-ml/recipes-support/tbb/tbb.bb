@@ -4,23 +4,25 @@ DESCRIPTION = "Parallelism library for C++ - runtime files \
     higher-level, task-based parallelism that abstracts platform details \
     and threading mechanism for performance and scalability."
 HOMEPAGE = "http://threadingbuildingblocks.org/"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://COPYING;md5=2c7f2caf277a3933e3acdf7f89d54cc1"
-PRDATE = "20130314"
-PR = "r${PRDATE}"
-
-SRC_URI = "http://threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb41_${PRDATE}oss_src.tgz \
+LICENSE = "Apache-2.0"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
+PRDATE = "20170412"
+BRANCH = "tbb_2017"
+SRCREV = "a2cfdfe946933cbe38bffe1d8086ae36f06691a3"
+PV = "${PRDATE}+${SRCPV}"
+SRC_URI = "git://github.com/01org/tbb;branch=${BRANCH} \
            file://cross-compile.patch \
-           file://allow-to-build-for-older-arm-cores.patch \
-           file://tbb.pc"
+           file://0001-mallinfo-is-glibc-specific-API-mark-it-so.patch \
+           file://tbb.pc \
+"
 
-S = "${WORKDIR}/tbb41_${PRDATE}oss/"
+S = "${WORKDIR}/git"
 
-SRC_URI[md5sum] = "ed4af7ccfa122f16cf9920b241633a3a"
-SRC_URI[sha256sum] = "32fd5979971b772caa96d40646cee585ed0070516ba2dbbcb1f9b6033d08a92d"
+COMPILER ?= "gcc"
+COMPILER_toolchain-clang = "clang"
 
 do_compile() {
-    oe_runmake compiler=gcc arch=${HOST_ARCH} runtime=cc4
+    oe_runmake compiler=${COMPILER} arch=${HOST_ARCH} runtime=cc4
 }
 
 do_install() {
@@ -38,3 +40,5 @@ do_install() {
 # ...
 # | make[1]: *** [concurrent_queue.o] Error 1
 ARM_INSTRUCTION_SET = "arm"
+SECURITY_CFLAGS_append = " -fPIC"
+
