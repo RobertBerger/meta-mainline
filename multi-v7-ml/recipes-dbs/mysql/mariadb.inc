@@ -4,7 +4,7 @@ SECTION = "libs"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=751419260aa954499f7abaabaa882bbe"
 
-SRC_URI = "http://archive.mariadb.org/mariadb-${PV}/source/mariadb-${PV}.tar.gz \
+SRC_URI = "https://downloads.mariadb.org/f/${BP}/source/${BP}.tar.gz \
            file://fix-cmake-module-path.patch \
            file://remove-bad-path.patch \
            file://fix-mysqlclient-r-version.patch \
@@ -16,10 +16,11 @@ SRC_URI = "http://archive.mariadb.org/mariadb-${PV}/source/mariadb-${PV}.tar.gz 
            file://configure.cmake-fix-valgrind.patch \
            file://fix-a-building-failure.patch \
            file://change-cc-to-cc-version.patch \
-           file://0001-mariadb-fix-gcc7-compile.patch \
+           file://0001-disable-ucontext-on-musl.patch \
           "
-SRC_URI[md5sum] = "fca86f1eaed2163b4bdce4f98f472324"
-SRC_URI[sha256sum] = "e142f9459507b97c5848042863b313ce70750118446bb4e35e5c07fe66007293"
+
+SRC_URI[md5sum] = "3cec4afc06b468687ef576c90148d10d"
+SRC_URI[sha256sum] = "c3269ce20b45b177239fd1e3d6d9428a94131711f12758ebf5f65222278bb110"
 
 S = "${WORKDIR}/mariadb-${PV}"
 
@@ -49,7 +50,7 @@ FILES_${PN}-setupdb = "${sysconfdir}/init.d/install_db"
 
 EXTRA_OEMAKE = "'GEN_LEX_HASH=${STAGING_BINDIR_NATIVE}/gen_lex_hash'"
 
-PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'pam', 'pam', '', d)} setupdb"
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'pam', d)} setupdb"
 PACKAGECONFIG_class-native = ""
 PACKAGECONFIG[pam] = ",-DWITHOUT_AUTH_PAM=TRUE,libpam"
 PACKAGECONFIG[valgrind] = "-DWITH_VALGRIND=TRUE,-DWITH_VALGRIND=FALSE,valgrind"
@@ -80,6 +81,13 @@ EXTRA_OECMAKE = "-DWITH_EMBEDDED_SERVER=ON \
                  -DMYSQL_DATADIR:PATH=/var/mysql \
                  -DCAT_EXECUTABLE=`which cat` \
                  -DCMAKE_AR:FILEPATH=${AR}"
+
+# With Ninja it fails with:
+# make: *** No rule to make target `install'.  Stop.
+OECMAKE_GENERATOR = "Unix Makefiles"
+
+ARM_INSTRUCTION_SET_armv4 = "arm"
+ARM_INSTRUCTION_SET_armv5 = "arm"
 
 do_configure_append() {
     # handle distros with different values of ${libexecdir}
@@ -254,6 +262,7 @@ FILES_${PN}-server = "\
     ${bindir}/mysqlbinlog \
     ${bindir}/mysqld_multi \
     ${bindir}/mysqld_safe \
+    ${bindir}/mysqld_safe_helper \
     ${bindir}/mysqlhotcopy \
     ${bindir}/mysqltest \
     ${bindir}/ndb_delete_all \
