@@ -14,4 +14,5 @@ RDEPENDS_${PN} = "\
     rabbitmq-c \
     python3-pip \
     mysql-python \
+    python-pyzmq \
     "
