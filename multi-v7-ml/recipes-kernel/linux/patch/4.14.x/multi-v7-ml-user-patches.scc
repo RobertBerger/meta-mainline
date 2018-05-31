@@ -15,12 +15,12 @@
 ## <-- zedboard-zynq7
 ## --> Phyboard MIRA
 ## this is mainline the meantime:
-## patch patches/phyBOARD-MIRA/dts/0001-ARM-dts-imx-add-cpu0-alias.patch
-#patch patches/phyBOARD-MIRA/dts/0002-phytec-mira-imx6qdl-phytec-peb-wlbt-01.dtsi.patch
-#patch patches/phyBOARD-MIRA/dts/0003-phytec-mira-imx6qdl-phytec-mira-peb-av-02.dtsi.patch
-#patch patches/phyBOARD-MIRA/dts/0004-phytec-mira-imx6qdl-phytec-mira-peb-eval-01.dtsi.patch
-#patch patches/phyBOARD-MIRA/dts/0005-phytec-mira-imx6qdl-phytec-mira.dtsi.patch
-#patch patches/phyBOARD-MIRA/dts/0006-phytec-mira-imx6qdl-phytec-phycore-som.dtsi.patch
-#patch patches/phyBOARD-MIRA/dts/0007-phytec-mira-dts-Makefile.patch
-#patch patches/phyBOARD-MIRA/dts/0008-phytec-mira-imx6q-phytec-mira-rdk-nand.dts.patch
+patch patches/phyBOARD-MIRA/dts/0002-phytec-mira-imx6qdl-phytec-peb-wlbt-01.dtsi.patch
+patch patches/phyBOARD-MIRA/dts/0003-phytec-mira-imx6qdl-phytec-mira-peb-av-02.dtsi.patch
+patch patches/phyBOARD-MIRA/dts/0004-phytec-mira-imx6qdl-phytec-mira-peb-eval-01.dtsi.patch
+patch patches/phyBOARD-MIRA/dts/0005-phytec-mira-imx6qdl-phytec-mira.dtsi.patch
+patch patches/phyBOARD-MIRA/dts/0006-phytec-mira-imx6qdl-phytec-phycore-som.dtsi.patch
+patch patches/phyBOARD-MIRA/dts/0007-phytec-mira-dts-Makefile.patch
+patch patches/phyBOARD-MIRA/dts/0008-phytec-mira-imx6q-phytec-mira-rdk-nand.dts.patch
+patch patches/phyBOARD-MIRA/patches-multi-v7-defconfig/0001-revert-patch-e7e73b10d690c5352cb11b1941a09e4f3dc4c8c.patch
 # <-- Phyboard MIRA
