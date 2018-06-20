@@ -10,7 +10,6 @@ RDEPENDS_${PN} = "\
     mraa \
     upm \
     mosquitto \
-    mosquitto-clients \
     paho-mqtt-c \
     rabbitmq-c \
     python3-pip \
