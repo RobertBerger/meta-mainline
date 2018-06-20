@@ -1,8 +1,18 @@
 # those should end up in the nativesdk
 
+
 RDEPENDS_${PN} += " \
-    nativesdk-u-boot-mkimage \
     nativesdk-dtc \
+    nativesdk-e2fsprogs \
+    nativesdk-elfutils \
+    nativesdk-git \
+    nativesdk-lzop \
+    nativesdk-make \
+    nativesdk-mtd-utils \
+    nativesdk-squashfs-tools \
+    nativesdk-u-boot-mkimage \
+    nativesdk-wget \
+    nativesdk-xz \
 "
 #
 #RDEPENDS_${PN} += " \
