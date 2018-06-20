@@ -3,4 +3,6 @@ RDEPENDS_${PN}_append = "\
     crash \
     valgrind \
     procrank-linux \
+    makedumpfile \
+    minicoredumper \
     "
