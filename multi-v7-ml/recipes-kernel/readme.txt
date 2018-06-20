@@ -1,4 +1,4 @@
 I removed those for now:
 linux-libc-headers
-lttng
+lttng (same version in sumo)
 systemtap
