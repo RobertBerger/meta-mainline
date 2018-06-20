@@ -2,6 +2,7 @@
 
 
 RDEPENDS_${PN} += " \
+    nativesdk-agent-proxy \
     nativesdk-dtc \
     nativesdk-e2fsprogs \
     nativesdk-elfutils \
