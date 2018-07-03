@@ -4,5 +4,7 @@ RDEPENDS_${PN}_append = "\
     valgrind \
     procrank-linux \
     makedumpfile \
-    minicoredumper \
     "
+
+# removed:
+# minicoredumper
