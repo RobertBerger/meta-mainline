@@ -1,7 +1,0 @@
-# partition table of /dev/mmcblk0
-unit: sectors
-
-/dev/mmcblk0p1 : start=     8192, size= 31108096, Id= c
-/dev/mmcblk0p2 : start=        0, size=        0, Id= 0
-/dev/mmcblk0p3 : start=        0, size=        0, Id= 0
-/dev/mmcblk0p4 : start=        0, size=        0, Id= 0
