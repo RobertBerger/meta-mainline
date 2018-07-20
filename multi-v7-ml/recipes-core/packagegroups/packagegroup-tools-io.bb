@@ -16,4 +16,5 @@ RDEPENDS_packagegroup-tools-io = "\
     spitools \
     zlog \
     libgpiod \
+    libiio \
     "
