@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8.10)
+project(lsiio)
+add_executable(lsiio iio_utils.c lsiio.c)
+install(TARGETS lsiio DESTINATION bin)
+#install(TARGETS lsii RUNTIME DESTINATION bin)
