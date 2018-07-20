@@ -17,4 +17,7 @@ RDEPENDS_packagegroup-tools-io = "\
     zlog \
     libgpiod \
     libiio \
+    lsiio \
+    iio-event-monitor \
+    iio-generic-buffer \
     "
