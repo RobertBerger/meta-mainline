@@ -20,4 +20,6 @@ RDEPENDS_packagegroup-tools-io = "\
     lsiio \
     iio-event-monitor \
     iio-generic-buffer \
+    lmsensors \
+    lmsensors-config \
     "
