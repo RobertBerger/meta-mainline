@@ -3,7 +3,6 @@
 
 #@DESCRIPTION: Machine configuration for u-boot-wic systems
 
-
 MACHINE_EXTRA_RDEPENDS = " kernel-modules kernel-devicetree"
 
 EXTRA_IMAGEDEPENDS += "u-boot wic-tools"
@@ -18,18 +17,18 @@ IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 
 SERIAL_CONSOLES="115200;console"
 
+PREFERRED_VERSION_u-boot ?= "v2018.07%"
+
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
-# 2017.07 needs some more investigation
-# does not work out of the box on phytec am335x
 
 # kernel version
-KERNEL_VERSION_PATCHLEVEL="4.9"
-KERNEL_SUBLEVEL="44"
+KERNEL_VERSION_PATCHLEVEL="4.14"
+KERNEL_SUBLEVEL="47"
 PREFERRED_VERSION_linux-yocto-custom = "${KERNEL_VERSION_PATCHLEVEL}.${KERNEL_SUBLEVEL}%"
 
-# use instead of "default" version of linux libc headers this version
+# don't use instead of "default" version of linux libc headers this version
 # which is an exact fit to the kernel version
-LINUXLIBCVERSION ?= "${KERNEL_VERSION_PATCHLEVEL}"
+# LINUXLIBCVERSION ?= "${KERNEL_VERSION_PATCHLEVEL}"
 
 WKS_FILE_am335x-phytec-wega = "am335x-phytec-wega-sd-card.wks"
 WKS_FILE_imx6q-phytec-mira-rdk-nand = "imx6q-phytec-mira-rdk-nand-sd-card.wks"
