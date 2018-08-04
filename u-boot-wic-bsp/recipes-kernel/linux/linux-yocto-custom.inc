@@ -19,8 +19,8 @@ LINUX_VERSION_EXTENSION ?= "-custom"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
 # Let's try an in-tree defconfig:
-KERNEL_DEFCONFIG_am335x-phytec-wega ?= "multi_v7_defconfig"
-KBUILD_DEFCONFIG_am335x-phytec-wega ?= "multi_v7_defconfig"
+KERNEL_DEFCONFIG ?= "multi_v7_defconfig"
+KBUILD_DEFCONFIG ?= "multi_v7_defconfig"
 KCONFIG_MODE="--alldefconfig"
 
 COMPATIBLE_MACHINE_am335x-phytec-wega = "am335x-phytec-wega"
