@@ -1,0 +1,25 @@
+From 5da14199cc77a67538bfde5abe72319db1fd645d Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Sat, 13 May 2017 19:04:54 +0200
+Subject: [PATCH 6/7] phytec-mira: dts/Makefile
+
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
+---
+ arch/arm/boot/dts/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index 7037201..a8beca2 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -358,6 +358,7 @@ dtb-$(CONFIG_SOC_IMX6Q) += \
+ 	imx6dl-tx6u-81xx-mb7.dtb \
+ 	imx6dl-udoo.dtb \
+ 	imx6dl-wandboard.dtb \
++	imx6q-phytec-mira-rdk-nand.dtb \
+ 	imx6dl-wandboard-revb1.dtb \
+ 	imx6q-apalis-ixora.dtb \
+ 	imx6q-apf6dev.dtb \
+-- 
+2.7.4
+
