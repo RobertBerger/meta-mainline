@@ -15,7 +15,14 @@ include conf/machine/include/arm/arch-armv7a.inc
 IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 #IMAGE_FSTYPES += "tar.bz2 wic"
 
-SERIAL_CONSOLES="115200;console"
+# zedboard:  ttyPS0
+# sitara:    ttyO0
+# i.mx6:     ttymxc1
+# i.mx6 wand:ttymxc0
+# cyclone-v: ttyS0
+
+SERIAL_CONSOLES = "115200;ttyPS0 115200;ttyO0 115200;ttymxc1 115200;ttymxc0 115200;ttyS0"
+SERIAL_CONSOLES_CHECK = "${SERIAL_CONSOLES}"
 
 PREFERRED_VERSION_u-boot ?= "v2018.07%"
 
