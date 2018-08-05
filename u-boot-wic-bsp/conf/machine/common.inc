@@ -24,7 +24,7 @@ IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 SERIAL_CONSOLES = "115200;ttyPS0 115200;ttyO0 115200;ttymxc1 115200;ttymxc0 115200;ttyS0"
 SERIAL_CONSOLES_CHECK = "${SERIAL_CONSOLES}"
 
-PREFERRED_VERSION_u-boot ?= "v2018.07%"
+PREFERRED_VERSION_u-boot ?= "2018.07%"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
 
