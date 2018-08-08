@@ -61,7 +61,7 @@ ips_to_bootargs=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip
 nfs_to_bootargs=setenv bootargs ${bootargs} nfsroot=${serverip}:${nfsroot},v3,tcp
 default_to_bootargs=setenv bootargs ${bootargs} noinitrd nohlt panic=1
 compose_nfs_bootargs=run ips_to_bootargs; run nfs_to_bootargs; run default_to_bootargs
-nfsboot=echo Booting from nfs...; run compose_nfs_bootargs
+nfsboot=echo Booting from nfs uEnv.txt from ext4...; run compose_nfs_bootargs
 
 # --> bring up network
 #netup=dcache off; usb start
