@@ -9,7 +9,7 @@ PACKAGES = "\
 RDEPENDS_packagegroup-tools-benchmark = "\
     cpuburn-neon \
     iozone3 \
-    iperf \
+    iperf2 \
     iperf3 \
     libhugetlbfs \
     memtester \
