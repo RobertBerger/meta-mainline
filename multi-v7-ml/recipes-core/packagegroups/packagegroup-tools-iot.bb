@@ -16,4 +16,5 @@ RDEPENDS_${PN} = "\
     python3-pip \
     mysql-python \
     python-pyzmq \
+    softethervpn \
     "
