@@ -17,4 +17,5 @@ RDEPENDS_${PN} = "\
     mysql-python \
     python-pyzmq \
     softethervpn \
+    busybox-ntpd \
     "
