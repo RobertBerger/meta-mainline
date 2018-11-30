@@ -32,8 +32,9 @@ do_compile () {
 do_install () {
 	# Specify install commands here
 	install -d ${D}/${bindir}
-        install -m 0555 ${S}/vpnclient ${D}/${bindir}/vpnclient
-        install -m 0555 ${S}/vpncmd    ${D}/${bindir}/vpncmd
+        install -m 0555 ${S}/vpnclient   ${D}/${bindir}/vpnclient
+        install -m 0555 ${S}/vpncmd      ${D}/${bindir}/vpncmd
+        install -m 0444 ${S}/hamcore.se2 ${D}/${bindir}/hamcore.se2
 }
 
 # to igore:
