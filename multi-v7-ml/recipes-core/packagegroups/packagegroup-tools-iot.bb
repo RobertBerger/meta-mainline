@@ -18,4 +18,5 @@ RDEPENDS_${PN} = "\
     python-pyzmq \
     softethervpn \
     busybox-ntpd \
+    haveged \
     "
