@@ -1,0 +1,215 @@
+From f641708fcdfcf1bf0f92125509f085ec06038699 Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Sat, 13 May 2017 19:02:09 +0200
+Subject: [PATCH 2/7] phytec-mira: imx6qdl-phytec-mira-peb-av-02.dtsi
+
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
+---
+ .../boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi    | 195 +++++++++++++++++++++
+ 1 file changed, 195 insertions(+)
+ create mode 100644 arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
+
+diff --git a/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi b/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
+new file mode 100644
+index 0000000..95e450c
+--- /dev/null
++++ b/arch/arm/boot/dts/imx6qdl-phytec-mira-peb-av-02.dtsi
+@@ -0,0 +1,195 @@
++/*
++ * Copyright (C) 2015 PHYTEC Messtechnik
++ * Author: Christian Hemp <c.hemp@phytec.de>
++ *
++ * The code contained herein is licensed under the GNU General Public
++ * License. You may obtain a copy of the GNU General Public License
++ * Version 2 or later at the following locations:
++ *
++ * http://www.opensource.org/licenses/gpl-license.html
++ * http://www.gnu.org/copyleft/gpl.html
++ */
++
++/ {
++
++	backlight_peb: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <0 4 8 16 32 64 128 255>;
++		default-brightness-level = <7>;
++		power-supply = <&reg_display>;
++		pwms = <&pwm1 0 5000000>;
++		enable-gpios = <&gpio2 28 GPIO_ACTIVE_LOW>;
++		status = "disabled";
++	};
++
++	display: display@di0 {
++		compatible = "fsl,imx-parallel-display";
++		interface-pix-fmt = "rgb24";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_disp0_1>;
++		status = "disabled";
++
++		port {
++			display0_in: endpoint {
++				remote-endpoint = <&ipu1_di0_disp0>;
++			};
++		};
++
++		display-timings {
++			native-mode = <&timing1>;
++			/*       ETM0700G0BDH6 - compatible to ETM0700G0EDH6 */
++			timing1: ETM0700G0EDH6 {
++				clock-frequency = <33264000>;
++				hactive = <800>;
++				vactive = <480>;
++				hback-porch = <88>;
++				hsync-len = <128>;
++				hfront-porch = <40>;
++				vback-porch = <33>;
++				vsync-len = <2>;
++				vfront-porch = <10>;
++				de-active = <1>;
++				pixelclk-active = <1>;
++			};
++			timing2: ETM0700G0DH6 {
++				clock-frequency = <33264000>;
++				hactive = <800>;
++				vactive = <480>;
++				hback-porch = <88>;
++				hsync-len = <128>;
++				hfront-porch = <40>;
++				vback-porch = <33>;
++				vsync-len = <2>;
++				vfront-porch = <10>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				de-active = <1>;
++				pixelclk-active = <0>;
++			};
++			timing3: ETMV570G2DHU {
++				clock-frequency	= <25175000>;
++				hactive = <640>;
++				vactive = <480>;
++				hfront-porch = <16>;
++				hback-porch = <114>;
++				hsync-len = <30>;
++				vback-porch = <35>;
++				vfront-porch = <10>;
++				vsync-len = <3>;
++				de-active = <1>;
++				pixelclk-active = <0>;
++			};
++			timing4: ETM0430G0DH6 {
++				clock-frequency	= <9000000>;
++				hactive = <480>;
++				vactive = <272>;
++				hfront-porch = <2>;
++				hback-porch = <2>;
++				hsync-len = <41>;
++				vback-porch = <2>;
++				vfront-porch = <2>;
++				vsync-len = <10>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				de-active = <1>;
++				pixelclk-active = <0>;
++			};
++			timing5: ETM0350G0DH6 {
++				clock-frequency = <6520000>;
++				hactive = <320>;
++				vactive = <240>;
++				hfront-porch = <20>;
++				hback-porch = <68>;
++				hsync-len = <88>;
++				vfront-porch = <4>;
++				vback-porch = <18>;
++				vsync-len = <22>;
++				hsync-active = <0>;
++				vsync-active = <0>;
++				de-active = <1>;
++				pixelclk-active = <0>;
++			};
++		};
++	};
++
++	regulator {
++		compatible = "simple-bus";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		reg_display: regulator@5 {
++			compatible = "regulator-fixed";
++			enable-active-high;
++			gpio = <&gpio3 22 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&pinctrl_disp0_pwr>;
++			regulator-name = "display";
++			regulator-min-microvolt = <3300000>;
++			regulator-max-microvolt = <3300000>;
++		};
++
++	};
++};
++
++&i2c1 {
++	polytouch: edt-ft5x06@38 {
++		compatible = "edt,edt-ft5406", "edt,edt-ft5x06";
++		reg = <0x38>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pinctrl_edt_ft5x06>;
++		interrupt-parent = <&gpio3>;
++		interrupts = <2 0>;
++		status = "disabled";
++        };
++};
++
++&iomuxc {
++	imx6qdl-phytec-mira-pebav02 {
++		pinctrl_disp0_1: disp0grp-1 {
++			fsl,pins = <
++				MX6QDL_PAD_DI0_DISP_CLK__IPU1_DI0_DISP_CLK 0x10
++				MX6QDL_PAD_DI0_PIN2__IPU1_DI0_PIN02        0x10
++				MX6QDL_PAD_DI0_PIN3__IPU1_DI0_PIN03        0x10
++
++				MX6QDL_PAD_DI0_PIN15__IPU1_DI0_PIN15  0x1b080
++
++				MX6QDL_PAD_DISP0_DAT0__IPU1_DISP0_DATA00   0x10
++				MX6QDL_PAD_DISP0_DAT1__IPU1_DISP0_DATA01   0x10
++				MX6QDL_PAD_DISP0_DAT2__IPU1_DISP0_DATA02   0x10
++				MX6QDL_PAD_DISP0_DAT3__IPU1_DISP0_DATA03   0x10
++				MX6QDL_PAD_DISP0_DAT4__IPU1_DISP0_DATA04   0x10
++				MX6QDL_PAD_DISP0_DAT5__IPU1_DISP0_DATA05   0x10
++				MX6QDL_PAD_DISP0_DAT6__IPU1_DISP0_DATA06   0x10
++				MX6QDL_PAD_DISP0_DAT7__IPU1_DISP0_DATA07   0x10
++				MX6QDL_PAD_DISP0_DAT8__IPU1_DISP0_DATA08   0x10
++				MX6QDL_PAD_DISP0_DAT9__IPU1_DISP0_DATA09   0x10
++				MX6QDL_PAD_DISP0_DAT10__IPU1_DISP0_DATA10  0x10
++				MX6QDL_PAD_DISP0_DAT11__IPU1_DISP0_DATA11  0x10
++				MX6QDL_PAD_DISP0_DAT12__IPU1_DISP0_DATA12  0x10
++				MX6QDL_PAD_DISP0_DAT13__IPU1_DISP0_DATA13  0x10
++				MX6QDL_PAD_DISP0_DAT14__IPU1_DISP0_DATA14  0x10
++				MX6QDL_PAD_DISP0_DAT15__IPU1_DISP0_DATA15  0x10
++				MX6QDL_PAD_DISP0_DAT16__IPU1_DISP0_DATA16  0x10
++				MX6QDL_PAD_DISP0_DAT17__IPU1_DISP0_DATA17  0x10
++				MX6QDL_PAD_DISP0_DAT18__IPU1_DISP0_DATA18  0x10
++				MX6QDL_PAD_DISP0_DAT19__IPU1_DISP0_DATA19  0x10
++				MX6QDL_PAD_DISP0_DAT20__IPU1_DISP0_DATA20  0x10
++				MX6QDL_PAD_DISP0_DAT21__IPU1_DISP0_DATA21  0x10
++				MX6QDL_PAD_DISP0_DAT22__IPU1_DISP0_DATA22  0x10
++				MX6QDL_PAD_DISP0_DAT23__IPU1_DISP0_DATA23  0x10
++			>;
++		};
++
++		pinctrl_disp0_pwr: disp0pwrgrp-1 {
++			fsl,pins = <MX6QDL_PAD_EIM_D22__GPIO3_IO22	0x80000000>;
++		};
++
++		pinctrl_edt_ft5x06: edtft5x06grp-1 {
++			fsl,pins = <MX6QDL_PAD_EIM_DA2__GPIO3_IO02	0x80000000>;
++		};
++	};
++};
++
++&ipu1_di0_disp0 {
++	remote-endpoint = <&display0_in>;
++};
+-- 
+2.7.4
+
