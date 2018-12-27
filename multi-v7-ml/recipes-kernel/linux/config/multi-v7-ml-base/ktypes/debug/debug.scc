@@ -23,6 +23,8 @@ include features/snvs-rtc/snvs-rtc.scc
 include features/cyclonev-wdt/cyclonev-wdt.scc
 # zynq-qspi requires a non-mainline patch!
 include features/zynq-qspi/zynq-qspi.scc
+# tun support for VPN
+include features/tun/tun.scc
 # <-- also in standard kernel
 # --> in debug kernel
 include features/oprofile/oprofile.scc

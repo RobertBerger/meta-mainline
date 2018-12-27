@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Enable TUN/TAP for packet reception/transmission in user space programs"
+define KFEATURE_COMPATIBILITY all
+
+kconf non-hardware tun.cfg
