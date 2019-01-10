@@ -1,3 +1,20 @@
+# In this version of U-Boot we don't need this mender patch:
+
+# SRC_URI_remove := "file://0006-env-Kconfig-Add-descriptions-so-environment-options-.patch"
+
+# U-Boot version specific patches for all machines:
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PV}:"
+
+# In case you want to create something with mkimage this restores
+# backwards compatibility, which was broken in U-Boot 2018.11
+
+SRC_URI_append = "\
+     file://0001-New-item-at-list-end-for-backwards-compatibility.patch \
+"
+
+# U-Boot verssion and machine specific changes:
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PV}/${MACHINE}:"
 
 # patches

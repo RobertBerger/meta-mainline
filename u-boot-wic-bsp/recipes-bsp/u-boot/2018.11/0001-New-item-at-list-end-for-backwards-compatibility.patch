@@ -1,0 +1,33 @@
+From 379140a3d4b3b70b023e1acc7dfff9ce6982abae Mon Sep 17 00:00:00 2001
+From: Robert Berger <robert.berger@ReliableEmbeddedSystems.com>
+Date: Fri, 30 Nov 2018 16:14:39 +0100
+Subject: [PATCH] New item at list end for backwards compatibility
+
+Signed-off-by: Robert Berger <robert.berger@ReliableEmbeddedSystems.com>
+---
+ include/image.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/image.h b/include/image.h
+index 031c355..866e9f1 100644
+--- a/include/image.h
++++ b/include/image.h
+@@ -251,7 +251,6 @@ enum {
+ 	IH_TYPE_FLATDT,			/* Binary Flat Device Tree Blob	*/
+ 	IH_TYPE_KWBIMAGE,		/* Kirkwood Boot Image		*/
+ 	IH_TYPE_IMXIMAGE,		/* Freescale IMXBoot Image	*/
+-	IH_TYPE_IMX8IMAGE,		/* Freescale IMX8Boot Image	*/
+ 	IH_TYPE_UBLIMAGE,		/* Davinci UBL Image		*/
+ 	IH_TYPE_OMAPIMAGE,		/* TI OMAP Config Header Image	*/
+ 	IH_TYPE_AISIMAGE,		/* TI Davinci AIS Image		*/
+@@ -278,6 +277,7 @@ enum {
+ 	IH_TYPE_PMMC,            /* TI Power Management Micro-Controller Firmware */
+ 	IH_TYPE_STM32IMAGE,		/* STMicroelectronics STM32 Image */
+ 	IH_TYPE_SOCFPGAIMAGE_V1,	/* Altera SOCFPGA A10 Preloader	*/
++	IH_TYPE_IMX8IMAGE,              /* Freescale IMX8Boot Image     */
+ 
+ 	IH_TYPE_COUNT,			/* Number of image types */
+ };
+-- 
+2.7.4
+
