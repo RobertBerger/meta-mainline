@@ -3,7 +3,10 @@
 
 #@DESCRIPTION: Machine configuration for u-boot-wic systems
 
-MACHINE_EXTRA_RDEPENDS = " kernel-modules kernel-devicetree"
+# the default MACHINE_EXTRA_RRECOMMENDS
+# would not install the kernel modules on the core-image-minimal rootfs
+# we could also build a core-image-basic to get them included or:
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += " kernel-modules kernel-devicetree"
 
 EXTRA_IMAGEDEPENDS += "u-boot wic-tools"
 
@@ -24,13 +27,17 @@ IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
 SERIAL_CONSOLES = "115200;ttyPS0 115200;ttyO0 115200;ttymxc1 115200;ttymxc0 115200;ttyS0"
 SERIAL_CONSOLES_CHECK = "${SERIAL_CONSOLES}"
 
-PREFERRED_VERSION_u-boot ?= "2018.07%"
+#PREFERRED_VERSION_u-boot ?= "2018.07%"
+#PREFERRED_PROVIDER_u-boot-mkimage-native ?= "u-boot-mkimage-native"
+
+PREFERRED_VERSION_u-boot ?= "2018.11%"
+PREFERRED_PROVIDER_u-boot-mkimage-native ?= "u-boot-tools-native"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-yocto-custom"
 
 # kernel version
-KERNEL_VERSION_PATCHLEVEL="4.14"
-KERNEL_SUBLEVEL="47"
+KERNEL_VERSION_PATCHLEVEL="4.19"
+KERNEL_SUBLEVEL="13"
 PREFERRED_VERSION_linux-yocto-custom = "${KERNEL_VERSION_PATCHLEVEL}.${KERNEL_SUBLEVEL}%"
 
 # don't use instead of "default" version of linux libc headers this version
@@ -55,7 +62,7 @@ SPL_BINARY = "${SPL_BINARYNAME}"
 UBOOT_SUFFIX = "img"
 UBOOT_MACHINE_am335x-phytec-wega = "pcm051_rev3_defconfig"
 UBOOT_MACHINE_imx6q-phytec-mira-rdk-nand = "pcm058_defconfig"
-UBOOT_MACHINE_beagle-bone-black = "am335x_boneblack_defconfig"
+UBOOT_MACHINE_beagle-bone-black = "am335x_evm_defconfig"
 UBOOT_ENTRYPOINT = "0x0"
 UBOOT_LOADADDRESS = "0x0"
 
