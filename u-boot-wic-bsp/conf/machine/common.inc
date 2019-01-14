@@ -15,8 +15,7 @@ IMAGE_INSTALL_append = " u-boot-uenv-helper"
 DEFAULTTUNE = "armv7a-neon"
 include conf/machine/include/arm/arch-armv7a.inc
 
-IMAGE_FSTYPES += "tar.bz2 wic wic.bmap"
-#IMAGE_FSTYPES += "tar.bz2 wic"
+IMAGE_FSTYPES += " tar.bz2 wic"
 
 # zedboard:  ttyPS0
 # sitara:    ttyO0

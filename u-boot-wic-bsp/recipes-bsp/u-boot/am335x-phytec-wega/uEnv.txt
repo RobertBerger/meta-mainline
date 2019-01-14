@@ -12,8 +12,10 @@
 # uImage/fdt over tftp, rootfs from mmc:
 # run uenvcmd_mmc
 #
+# --> default here <--
 # uImage/fdt from mmc 0:1 /boot, rootfs from /dev/mmcblk0p1:
 # run uenvcmd_mmc_all
+# --> default here <--
 #
 # fix it at the end of this file as you like and:
 # run uenvcmd
@@ -113,10 +115,10 @@ compose_default_tftp_nfs=run expand_bootfile; echo bootfile: ${bootfile}; run ex
 uenvcmd_tftp_nfs=run compose_default_tftp_nfs; run netload; run compose_nfsboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}
 
 # uImage/fdt over tftp, rootfs over nfs
-uenvcmd=run uenvcmd_tftp_nfs
+#uenvcmd=run uenvcmd_tftp_nfs
 
 # uImage/fdt over tftp, rootfs from mmc
 #uenvcmd=run uenvcmd_mmc
 
 # uImage/fdt from mmc 0:1 /boot, rootfs from /dev/mmcblk0p1
-#uenvcmd=run uenvcmd_mmc_all
+uenvcmd=run uenvcmd_mmc_all
