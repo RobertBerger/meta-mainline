@@ -1,12 +1,7 @@
-meta-mainline
-=============
+u-boot-wic-bsp
+==============
 
-Yocto meta layer, boards with mainline (u-boot, kernel) support
+Check u-boot-wic-bsp/README.md
 
-supported boards
-================
-beagle-bone-black
-beagle-xm
-m28evk
 
 
