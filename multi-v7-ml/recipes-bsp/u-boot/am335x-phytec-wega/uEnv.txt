@@ -1,0 +1,124 @@
+##############################################################
+# reset u-boot env (if necessary):
+# => env default -a
+#
+# load uEnv.txt:
+# => ext4load mmc 0:1 0x80300000 uEnv.txt
+# => env import -t 0x80300000 ${filesize}
+#
+# uImage/fdt over tftp, rootfs over nfs:
+# => run uenvcmd_tftp_nfs
+#
+# uImage/fdt over tftp, rootfs from mmc:
+# => run uenvcmd_mmc
+#
+# --> default here <--
+# uImage/fdt from mmc 0:1 /boot, rootfs from /dev/mmcblk0p1:
+# => run uenvcmd_mmc_all
+# --> default here <--
+#
+# fix it at the end of this file as you like and:
+# => run uenvcmd
+##############################################################
+
+hostname=am335x-phytec-wega
+
+kernel=uImage
+kernel_addr_r=0x80300000
+expand_bootfile=setenv bootfile ${hostname}/${kernel}
+
+fdt=uImage-am335x-wega-rdk.dtb
+fdt_new=am335x-wega-rdk.dtb
+fdt_addr_r=0x815f0000
+expand_fdtfile=setenv fdtfile ${hostname}/${fdt}
+
+ipaddr=192.168.42.11
+serverip=192.168.42.1
+gatewayip=192.168.42.1
+netmask=255.255.255.0
+# read from elsewhere 
+# usbethaddr=0:0:1:2:3:64
+netdev=eth0
+
+# --> uImage from tftp
+kernel_netload=tftp ${kernel_addr_r} ${bootfile}
+# <-- uImage from tftp
+
+# --> fdt from tftp
+fdt_netload=tftp ${fdt_addr_r} ${fdtfile}
+# <-- fdt from tftp
+
+# --> uImage and fdt from tftp
+netload=run kernel_netload fdt_netload
+# <-- uImage and fdt from tftp
+
+# --> generic bootargs
+# default:
+bootargs=console=ttyO0,115200n8
+# bootgraph:
+#bootargs=initcall_debug printk.time=y console=ttyO2,115200n8
+# bootchart:
+#bootargs=initcall_debug printk.time=y init=/sbin/bootchartd console=ttyO2,115200n8
+# <-- generic bootargs
+
+# --> rootfs from nfs
+nfsroot=/opt/poky/wega-rootfs
+ips_to_bootargs=setenv bootargs ${bootargs} ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}:${netdev}:off
+nfs_to_bootargs=setenv bootargs ${bootargs} nfsroot=${serverip}:${nfsroot},v3,tcp
+default_to_bootargs=setenv bootargs ${bootargs} noinitrd nohlt panic=1
+compose_nfs_bootargs=run ips_to_bootargs; run nfs_to_bootargs; run default_to_bootargs
+nfsboot=echo Booting from nfs uEnv.txt from ext4...; run compose_nfs_bootargs
+
+# --> bring up network
+#netup=dcache off; usb start
+#netup=usb start
+# <-- bring up network
+
+compose_nfsboot=run nfsboot
+# <-- rootfs from nfs
+
+# --> rootfs from mmc
+mmc_to_bootargs=setenv bootargs ${bootargs} root=/dev/mmcblk0p1 rw rootwait
+compose_mmc_bootargs=run ips_to_bootargs; run mmc_to_bootargs; run default_to_bootargs
+mmcboot=echo Booting from tftp/mmc - uEnv.txt from ext4...; run compose_mmc_bootargs
+compose_mmcboot=run mmcboot 
+
+compose_mmc_default=run expand_bootfile; echo bootfile: ${bootfile}; run expand_fdtfile; echo fdtfile: ${fdtfile}; ping ${serverip}
+uenvcmd_mmc=run compose_mmc_default; run netload; run compose_mmcboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}
+<-- rootfs from mmc
+
+# --> all from mmc
+bootdir=/boot
+expand_mmc_all_bootfile=setenv bootfile ${bootdir}/${kernel}
+expand_mmc_all_fdtfile=setenv fdtfile ${bootdir}/${fdt_new}
+
+kernel_mmcload=ext4load mmc 0:1 ${kernel_addr_r} ${bootfile}
+echo_kernel_mmcload=echo "ext4load mmc 0:1 ${kernel_addr_r} ${bootfile}"
+
+fdt_mmcload=ext4load mmc 0:1 ${fdt_addr_r} ${fdtfile}
+echo_fdt_mmcload=echo "ext4load mmc 0:1 ${fdt_addr_r} ${fdtfile}"
+
+mmcload=run echo_kernel_mmcload; run kernel_mmcload; run echo_fdt_mmcload; run fdt_mmcload
+
+mmcroot=/dev/mmcblk0p1 rw rootfstype=ext4 rootwait
+mmc_to_bootargs=setenv bootargs ${bootargs} root=${mmcroot}
+mmc_default_to_bootargs=setenv bootargs ${bootargs} noinitrd nohlt panic=1
+compose_mmc_bootargs=run mmc_to_bootargs; run mmc_default_to_bootargs
+mmc_all_boot=echo Booting from mmc - uEnv.txt from ext4...; run compose_mmc_bootargs
+compose_mmc_all_boot=run mmc_all_boot
+
+compose_mmc_all_default=run expand_mmc_all_bootfile; echo bootfile: ${bootfile}; run expand_mmc_all_fdtfile; echo fdtfile: ${fdtfile}
+uenvcmd_mmc_all=run compose_mmc_all_default; run mmcload; run compose_mmc_all_boot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}
+# <-- all from mmc
+
+compose_default_tftp_nfs=run expand_bootfile; echo bootfile: ${bootfile}; run expand_fdtfile; echo fdtfile: ${fdtfile}; ping ${serverip}
+uenvcmd_tftp_nfs=run compose_default_tftp_nfs; run netload; run compose_nfsboot; printe bootargs; bootm ${kernel_addr_r} - ${fdt_addr_r}
+
+# uImage/fdt over tftp, rootfs over nfs
+#uenvcmd=run uenvcmd_tftp_nfs
+
+# uImage/fdt over tftp, rootfs from mmc
+#uenvcmd=run uenvcmd_mmc
+
+# uImage/fdt from mmc 0:1 /boot, rootfs from /dev/mmcblk0p1
+uenvcmd=run uenvcmd_mmc_all

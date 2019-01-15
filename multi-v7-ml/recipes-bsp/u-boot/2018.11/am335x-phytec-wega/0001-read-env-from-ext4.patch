@@ -1,0 +1,34 @@
+From fb70671eea9a2303dc0b9fa32d2f95c11febadaa Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Wed, 8 Aug 2018 20:51:57 +0200
+Subject: [PATCH] envboot
+
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
+---
+ include/configs/pcm051.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/pcm051.h b/include/configs/pcm051.h
+index 5381ed1..f7df7aa 100644
+--- a/include/configs/pcm051.h
++++ b/include/configs/pcm051.h
+@@ -29,6 +29,7 @@
+ 	"bootcmd_" #devtypel #instance "=" \
+ 	"setenv mmcdev " #instance"; "\
+ 	"setenv bootpart " #instance":2 ; "\
++        "run envboot; "\
+ 	"run mmcboot\0"
+ 
+ #define BOOTENV_DEV_NAME_LEGACY_MMC(devtypeu, devtypel, instance) \
+@@ -69,7 +70,7 @@
+ 	"loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr\0" \
+ 	"bootscript=echo Running bootscript from mmc${mmcdev} ...; " \
+ 		"source ${loadaddr}\0" \
+-	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}\0" \
++	"loadbootenv=ext4load mmc ${mmcdev} ${loadaddr} ${bootenv} || fatload mmc ${mmcdev} ${loadaddr} ${bootenv}\0" \
+ 	"importbootenv=echo Importing environment from mmc ...; " \
+ 		"env import -t $loadaddr $filesize\0" \
+ 	"ramargs=setenv bootargs console=${console} " \
+-- 
+2.7.4
+
