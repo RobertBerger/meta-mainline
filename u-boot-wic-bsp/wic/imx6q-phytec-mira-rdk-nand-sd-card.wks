@@ -1,21 +1,34 @@
 # short-description: Create SD card image with a boot partition
 # long-description:
 # Create an image that can be written onto a SD card using dd for use
-# with am335x-phytec-wega.
+# with imx6q-phytec-mira-rdk-nand.
 # It uses SPL and u-boot
 #
 # The disk layout used is:
 #  ----- --------- --------------
-# | MLO | u-boot  |    rootfs    |
+# | SPL |    rootfs              |
 #  ----- --------- --------------
-# ^     ^         ^              ^
-# |     |         |              |
-# 128K  384K      4MiB + rootfs + IMAGE_EXTRA_SPACE (default 10MiB)
+# ^     ^                        ^
+# |     |                        |
+# 1K    384K + uboot.img + uEnv.txt (sample) in rootfs + IMAGE_EXTRA_SPACE (default 10MiB)
 #
 part SPL --source rawcopy --sourceparams="file=SPL" --ondisk mmcblk --no-table --align 1
 # u-boot.img and uEnv.txt go on SD card ext4 partition
-# u-boot.img part u-boot --source rawcopy --sourceparams="file=u-boot.img" --ondisk mmcblk --no-table --align 384
 part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 384
+
+
+# The disk layout could also be used:
+#  ----- --------- --------------
+# | SPL | u-boot  |    rootfs    |
+#  ----- --------- --------------
+# ^     ^         ^              ^
+# |     |         |              |
+# 1K    138K      4MB + rootfs + IMAGE_EXTRA_SPACE (default 10MiB)
+#
+# part SPL --source rawcopy --sourceparams="file=SPL" --ondisk mmcblk --no-table --align 1
+# u-boot.img part u-boot --source rawcopy --sourceparams="file=u-boot.img" --ondisk mmcblk --no-table --align 138
+# part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 4096
+
 
 # -->
 ###############################

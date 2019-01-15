@@ -1,34 +1,34 @@
 ##############################################################
 # reset u-boot env (if necessary):
-# env default -a
+# => env default -a
 #
 # load uEnv.txt:
-# ext4load mmc 0:1 0x80300000 uEnv.txt
-# env import -t 0x80300000 ${filesize}
+# => ext4load mmc 0:1 0x80300000 uEnv.txt
+# => env import -t 0x80300000 ${filesize}
 #
 # uImage/fdt over tftp, rootfs over nfs:
-# run uenvcmd_tftp_nfs
+# => run uenvcmd_tftp_nfs
 #
 # uImage/fdt over tftp, rootfs from mmc:
-# run uenvcmd_mmc
+# => run uenvcmd_mmc
 #
 # --> default here <--
 # uImage/fdt from mmc 0:1 /boot, rootfs from /dev/mmcblk0p1:
-# run uenvcmd_mmc_all
+# => run uenvcmd_mmc_all
 # --> default here <--
 #
 # fix it at the end of this file as you like and:
-# run uenvcmd
+# => run uenvcmd
 ##############################################################
 #
-# for tftp/nfs:
+# for tftp/nfs in theory - here just modify uEnv.txt
 #
-# setenv bootcmd 'run uenvcmd_tftp_nfs'
-# setenv ipaddr <something>
-# setenv gatewayip <something>
-# setenv serverip <something>
-# saveenv
-# reset
+# => setenv bootcmd 'run uenvcmd_tftp_nfs'
+# => setenv ipaddr <something>
+# => setenv gatewayip <something>
+# => setenv serverip <something>
+# => saveenv
+# => reset
 #
 ############################################################## 
 

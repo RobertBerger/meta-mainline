@@ -2,7 +2,8 @@
 # long-description:
 # Create an image that can be written onto a SD card using dd for use
 # with am335x-phytec-wega.
-# It uses SPL and u-boot
+# It uses MLO and u-boot.img
+# uEnv.txt is in the rootfs /uEnv.txt
 #
 # The disk layout used is:
 #  ----- --------- --------------
@@ -10,7 +11,7 @@
 #  ----- --------- --------------
 # ^     ^         ^              ^
 # |     |         |              |
-# 128K  384K      4MiB + rootfs + IMAGE_EXTRA_SPACE (default 10MiB)
+# 128K  384K      4M + rootfs + IMAGE_EXTRA_SPACE
 #
 part SPL --source rawcopy --sourceparams="file=MLO" --ondisk mmcblk --no-table --align 128
 part u-boot --source rawcopy --sourceparams="file=u-boot.img" --ondisk mmcblk --no-table --align 384
@@ -51,9 +52,3 @@ part / --source rootfs --ondisk mmcblk --fstype=ext4 --label root --align 4096
 #
 # <--
 
-# Notes: (hacked together manually for now and made it work)
-# Those things need to be integrated into Yocto:
-# 1) we need a patched version of u-boot which also searches for uEnv.txt on ext4 or so partition and not only fat
-# 2) we need to add uEnv.txt to / of the rootfs [OK]
-# 3) the generated file to be flashed with etcher needs to be ending with .raw or so
-# 4) create a bitbake wks target automativally

@@ -5,6 +5,11 @@ Install the required prerequisites as defined in the Yocto Project manual for yo
 
 https://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#required-packages-for-the-build-host
 
+Preferred lab setup
+===================
+
+Ideally you have a DHCP server which gives out IP addresses when booting from SD card.
+
 variables
 =========
 
@@ -104,4 +109,90 @@ sudo /opt/etcher/Etcher-cli-1.2.0-linux-x64/etcher core-image-minimal-${BOARD}.w
 first boot
 ==========
 
+beagle-bone-black:
+
+* press S2 while applying power to force booting from SD card
+
+
 The system should start up and boot from SD card.
+
+
+Tests
+=====
+
+sysvinit:
+
+				uenvcmd_mmc_all		uenvcmd_tftp_nfs
+
+am335x-phytec-wega		OK			OK
+
+beagle-bone-black 		OK			OK
+
+mx6q-phytec-mira-rdk-nand       [1] OK                  [2]
+
+
+[1] -->
+
+loads by default uEnv from SPI flash
+
+In order to use whats on the SD card:
+
+Stop U-Boot from booting
+
+# reset u-boot env
+=> env default -a
+
+# load uEnv.txt
+=> ext4load mmc 0:1 0x18000000 uEnv.txt
+=> env import -t 0x18000000 ${filesize}
+
+# boot from SD card
+=> run uenvcmd_mmc_all
+
+------------
+
+# to make it permanent
+
+# reset u-boot env
+=> env default -a
+
+# load uEnv.txt
+=> ext4load mmc 0:1 0x18000000 uEnv.txt
+=> env import -t 0x18000000 ${filesize}
+
+=> printe uenvcmd
+uenvcmd=run uenvcmd_mmc_all
+
+=> setenv bootcmd 'run uenvcmd'
+=> saveenv
+=> reset
+
+[1] <--
+
+[2] -->
+
+Stop U-Boot from booting
+
+# boot from SD card
+=> run uenvcmd_tftp_nfs
+
+------------
+
+# to make it permanent
+
+=> printe uenvcmd
+uenvcmd=run uenvcmd_tftp_nfs
+
+=> saveenv
+=> reset
+
+[2] <--
+
+--------------------------------------------------------------------------
+
+systemd:
+
+                        	uenvcmd_mmc_all         uenvcmd_tftp_nfs
+
+beagle-bone-black		OK                             
+
