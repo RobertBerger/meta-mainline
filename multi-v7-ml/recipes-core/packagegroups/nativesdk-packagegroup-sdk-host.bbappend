@@ -11,7 +11,7 @@ RDEPENDS_${PN} += " \
     nativesdk-make \
     nativesdk-mtd-utils \
     nativesdk-squashfs-tools \
-    nativesdk-u-boot-mkimage \
+    nativesdk-u-boot-tools \
     nativesdk-wget \
     nativesdk-xz \
 "
