@@ -36,4 +36,5 @@ include features/lockdeb/lockdeb.scc
 include features/debinfo/debinfo.scc
 include features/kgdb-kdb/kgdb-kdb.scc
 include features/debug-user/debug-user.scc
+include features/arm-modules-plts/arm-modules-plts.scc
 # <-- in debug kernel

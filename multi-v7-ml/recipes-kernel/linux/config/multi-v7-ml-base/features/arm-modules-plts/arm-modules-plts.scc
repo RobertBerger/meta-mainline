@@ -1,0 +1,4 @@
+define KFEATURE_DESCRIPTION "Use PLTs to allow module memory to spill over into vmalloc area"
+define KFEATURE_COMPATIBILITY all
+
+kconf non-hardware arm-modules-plts.cfg
