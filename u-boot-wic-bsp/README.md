@@ -14,7 +14,7 @@ variables
 =========
 
 ```bash
-export BSP_BRANCH="thud-training-v4.19.x"
+export BSP_BRANCH="thud-training-v4.19.x-next"
 
 export POKY_BRANCH="2018-11-28-thud-2.6+"
 ```
