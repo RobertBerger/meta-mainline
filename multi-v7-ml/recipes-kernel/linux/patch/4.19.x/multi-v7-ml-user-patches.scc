@@ -24,3 +24,6 @@
 #patch patches/phyBOARD-MIRA/dts/0008-phytec-mira-imx6q-phytec-mira-rdk-nand.dts.patch
 patch patches/phyBOARD-MIRA/patches-multi-v7-defconfig/0001-revert-patch-e7e73b10d690c5352cb11b1941a09e4f3dc4c8c.patch
 # <-- Phyboard MIRA
+# --> all ARM
+patch patches/all/0001-avoid-oopsing-in-kprobes-arm-due-to-typo.patch
+# <-- all ARM
