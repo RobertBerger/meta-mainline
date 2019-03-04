@@ -1,0 +1,45 @@
+From: "Mathieu Desnoyers" <(address hidden)>
+Subject: Fix: kprobes: optimized kprobes illegal instruction
+
+commit e46daee53bb5 ("ARM: 8806/1: kprobes: Fix false positive with
+FORTIFY_SOURCE") introduced a regression in optimized kprobes. It
+triggers "invalid instruction" oopses when using kprobes instrumentation
+through lttng and perf. This commit was introduced in kernel v4.20, and
+has been backported to stable kernels 4.19 and 4.14.
+
+This crash was also reported by Hongzhi Song on the redhat bugzilla
+where the patch was originally introduced.
+
+Link: https://bugzilla.redhat.com/show_bug.cgi?id=1639397
+Link: https://bugs.lttng.org/issues/1174
+Link: https://lore.kernel.org/lkml/342740659.2887.1549307721609.JavaMail.zimbra@efficios.com
+Fixes: e46daee53bb5 ("ARM: 8806/1: kprobes: Fix false positive with FORTIFY_SOURCE")
+
+Signed-off-by: Mathieu Desnoyers <(address hidden)>
+Reported-by: Robert Berger <(address hidden)>
+Tested-by: Robert Berger <(address hidden)>
+Acked-by: Kees Cook <(address hidden)>
+Cc: Robert Berger <(address hidden)>
+Cc: Masami Hiramatsu <(address hidden)>
+Cc: William Cohen <(address hidden)>
+Cc: Laura Abbott <(address hidden)>
+Cc: Kees Cook <(address hidden)>
+Cc: Russell King <(address hidden)>
+Cc: <(address hidden)> # v4.14+
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: patches@armlinux.org.uk
+---
+
+diff --git a/arch/arm/probes/kprobes/opt-arm.c b/arch/arm/probes/kprobes/opt-arm.c
+index 2c118a6ab358..0dc23fc227ed 100644
+--- a/arch/arm/probes/kprobes/opt-arm.c
++++ b/arch/arm/probes/kprobes/opt-arm.c
+@@ -247,7 +247,7 @@ int arch_prepare_optimized_kprobe(struct optimized_kprobe *op, struct kprobe *or
+ 	}
+ 
+ 	/* Copy arch-dep-instance from template. */
+-	memcpy(code, (unsigned char *)optprobe_template_entry,
++	memcpy(code, (unsigned long *)&optprobe_template_entry,
+ 			TMPL_END_IDX * sizeof(kprobe_opcode_t));
+ 
+ 	/* Adjust buffer according to instruction. */
