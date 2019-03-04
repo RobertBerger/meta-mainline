@@ -1,26 +1,48 @@
-From 63f6e299aed7214ff2e53a6e462c5ebefb40c3de Mon Sep 17 00:00:00 2001
-From: genius user <genius@ReliableEmbeddedSystems.com>
-Date: Thu, 29 Jun 2017 14:39:43 +0000
-Subject: [PATCH] ext4load
+From 9def9aa1b6fa4eb01bc54b692faefcd382dd5306 Mon Sep 17 00:00:00 2001
+From: student <student@ReliableEmbeddedSystems.com>
+Date: Tue, 5 Feb 2019 09:40:04 +0100
+Subject: [PATCH] boot from eMMC as well
 
-Signed-off-by: genius user <genius@ReliableEmbeddedSystems.com>
+Signed-off-by: student <student@ReliableEmbeddedSystems.com>
 ---
- include/environment/ti/mmc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/environment/ti/mmc.h | 22 +++++-----------------
+ 1 file changed, 5 insertions(+), 17 deletions(-)
 
 diff --git a/include/environment/ti/mmc.h b/include/environment/ti/mmc.h
-index b987f71..295db3d 100644
+index 785fc15..00d1d46 100644
 --- a/include/environment/ti/mmc.h
 +++ b/include/environment/ti/mmc.h
-@@ -20,7 +20,7 @@
+@@ -22,25 +22,13 @@
  	"bootenvfile=uEnv.txt\0" \
  	"importbootenv=echo Importing environment from mmc${mmcdev} ...; " \
  		"env import -t ${loadaddr} ${filesize}\0" \
 -	"loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
-+	"loadbootenv=ext4load mmc ${mmcdev} ${loadaddr} ${bootenvfile} || fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
++	"loadbootenv=ext4load mmc ${mmcdev} ${loadaddr} ${bootenvfile} || ext4load mmc 1 ${loadaddr} ${bootenvfile} || fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}\0" \
  	"loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}\0" \
  	"loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}\0" \
- 	"envboot=mmc dev ${mmcdev}; " \
+-	"envboot=mmc dev ${mmcdev}; " \
+-		"if mmc rescan; then " \
+-			"echo SD/MMC found on device ${mmcdev};" \
+-			"if run loadbootscript; then " \
+-				"run bootscript;" \
+-			"else " \
+-				"if run loadbootenv; then " \
+-					"echo Loaded env from ${bootenvfile};" \
+-					"run importbootenv;" \
+-				"fi;" \
+-				"if test -n $uenvcmd; then " \
+-					"echo Running uenvcmd ...;" \
+-					"run uenvcmd;" \
+-				"fi;" \
+-			"fi;" \
+-		"fi;\0" \
++        "envboot=mmc rescan; "\
++                "run loadbootenv; " \
++                "run importbootenv; " \
++                "run uenvcmd;\0" \
+ 	"mmcloados=run args_mmc; " \
+ 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
+ 			"if run loadfdt; then " \
 -- 
 2.7.4
 
