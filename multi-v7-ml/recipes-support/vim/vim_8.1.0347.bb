@@ -1,27 +1,27 @@
 SUMMARY = "Vi IMproved - enhanced vi editor"
 SECTION = "console/utils"
+
+PROVIDES = "xxd"
 DEPENDS = "ncurses gettext-native"
 # vimdiff doesn't like busybox diff
 RSUGGESTS_${PN} = "diffutils"
 LICENSE = "uganda.txt"
-LIC_FILES_CHKSUM = "file://../runtime/doc/uganda.txt;md5=c74ec0ada9a68354f9461e81d3596f61"
-
-# add to LICENSE_PATH to avoid warning
-LICENSE_PATH += "${WORKDIR}/git/runtime/doc/"
+LIC_FILES_CHKSUM = "file://../runtime/doc/uganda.txt;endline=287;md5=f1f82b42360005c70b8c19b0ef493f72"
 
 SRC_URI = "git://github.com/vim/vim.git \
            file://disable_acl_header_check.patch;patchdir=.. \
            file://vim-add-knob-whether-elf.h-are-checked.patch;patchdir=.. \
-           file://0001-patch-7.4.1733.patch;patchdir=.. \
+           file://0001-src-Makefile-improve-reproducibility.patch;patchdir=.. \
 "
-SRCREV = "758535a1df4c5e86b45dddf12db2a54dea28ca40"
+SRCREV = "f1c118be93184e8e57e3e80b1b3383f464ed649e"
 
 S = "${WORKDIR}/git/src"
 
-VIMDIR = "vim${@d.getVar('PV',1).split('.')[0]}${@d.getVar('PV',1).split('.')[1]}"
+VIMDIR = "vim${@d.getVar('PV').split('.')[0]}${@d.getVar('PV').split('.')[1]}"
 
-inherit autotools update-alternatives
-inherit autotools-brokensep
+inherit autotools-brokensep update-alternatives
+
+CLEANBROKEN = "1"
 
 # vim configure.in contains functions which got 'dropped' by autotools.bbclass
 do_configure () {
@@ -36,10 +36,12 @@ do_configure () {
 
 #Available PACKAGECONFIG options are gtkgui, acl, x11, tiny
 PACKAGECONFIG ??= ""
-PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'acl', 'acl', '', d)}"
-PACKAGECONFIG += "${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'selinux', '', d)}"
+PACKAGECONFIG += " \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'acl selinux', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11 gtkgui', '', d)} \
+"
 
-PACKAGECONFIG[gtkgui] = "--enable-gtk2-test --enable-gui=gtk2,--enable-gui=no,gtk+,"
+PACKAGECONFIG[gtkgui] = "--enable-gui=gtk2,--enable-gui=no,gtk+,"
 PACKAGECONFIG[acl] = "--enable-acl,--disable-acl,acl,"
 PACKAGECONFIG[x11] = "--with-x,--without-x,xt,"
 PACKAGECONFIG[tiny] = "--with-features=tiny,--with-features=big,,"
@@ -57,7 +59,7 @@ EXTRA_OECONF = " \
     vim_cv_memmove_handles_overlap=yes \
     vim_cv_stat_ignores_slash=no \
     vim_cv_terminfo=yes \
-    vim_cv_tgent=non-zero \
+    vim_cv_tgetent=non-zero \
     vim_cv_toupper_broken=no \
     vim_cv_tty_group=world \
     STRIP=/bin/true \
@@ -101,14 +103,19 @@ FILES_${PN}-common = " \
     ${datadir}/${BPN}/${VIMDIR}/plugin \
     ${datadir}/${BPN}/${VIMDIR}/print \
     ${datadir}/${BPN}/${VIMDIR}/spell \
+    ${datadir}/icons \
 "
 
-RDEPENDS_${PN} = "ncurses-terminfo-base"
+RDEPENDS_${BPN} = "ncurses-terminfo-base"
 # Recommend that runtime data is installed along with vim
-RRECOMMENDS_${PN} = "${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-common"
+RRECOMMENDS_${BPN} = "${PN}-syntax ${PN}-help ${PN}-tutor ${PN}-vimrc ${PN}-common"
 
-ALTERNATIVE_${PN} = "vi vim"
+ALTERNATIVE_${PN} = "vi vim xxd"
+ALTERNATIVE_PRIORITY = "100"
 ALTERNATIVE_TARGET = "${bindir}/${BPN}.${BPN}"
 ALTERNATIVE_LINK_NAME[vi] = "${base_bindir}/vi"
 ALTERNATIVE_LINK_NAME[vim] = "${bindir}/vim"
-ALTERNATIVE_PRIORITY = "100"
+ALTERNATIVE_TARGET[xxd] = "${bindir}/xxd"
+ALTERNATIVE_LINK_NAME[xxd] = "${bindir}/xxd"
+
+BBCLASSEXTEND = "native"
